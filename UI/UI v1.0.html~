@@ -40,7 +40,7 @@
 		</style>
 		<!-- html, body, #picture { height: 100%; width: 50%; margin: 0; padding: 0;} -->
 		<script type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=geometry"> <!-- TODO REMOVE KEY-->
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7fV8D8krwq9LGPi5GVP6YM5zO_5lisr0&libraries=geometry"> <!-- TODO REMOVE KEY-->
 		</script>
 		<script type ="text/javascript"
 			src="https://autobahn.s3.amazonaws.com/autobahnjs/latest/autobahn.min.jgz">
