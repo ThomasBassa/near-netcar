@@ -1,14 +1,18 @@
 from os import environ
+from twisted.internet import reactor
 from twisted.internet.defer import inlineCallbacks
 
-from autobahn.wamp.types import CallResult
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
 class MyComponent(ApplicationSession):
 
     def onJoin(self, details):
-        res = yield self.call('aero.near.addNumbers', 2, 3)
-        print("Got result: {}".format(res))
+
+        def addNumbers(x, y):
+           return x + y
+        
+        self.register(addNumbers, 'aero.near.addNumbers')
+        print("Session Joined.")
 
 if __name__ == '__main__':
     runner = ApplicationRunner(

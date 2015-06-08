@@ -12,7 +12,7 @@ class MyComponent(ApplicationSession):
            self.register(addNumbers, 'aero.near.addNumbers')
 
 if __name__ == '__main__':
-   runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
+   runner = ApplicationRunner(url = u"ws://localhost:8080/ws", realm = u"realm1")
    runner.run(MyComponent)
 
 

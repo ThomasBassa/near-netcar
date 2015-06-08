@@ -1,3 +1,5 @@
+'''finally works'''
+
 from os import environ
 from twisted.internet.defer import inlineCallbacks
 
@@ -5,10 +7,17 @@ from autobahn.wamp.types import CallResult
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 
 class MyComponent(ApplicationSession):
-
+	
+    @inlineCallbacks
     def onJoin(self, details):
-        res = yield self.call('aero.near.addNumbers', 2, 3)
-        print("Got result: {}".format(res))
+	print("Session ready")
+
+	try:
+            res = yield self.call(u'aero.near.addNumbers', 2, 3)
+            print("Got result: {}".format(res))
+	except Exception as e:
+         print("call error: {0}".format(e))
+
 
 if __name__ == '__main__':
     runner = ApplicationRunner(
