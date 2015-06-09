@@ -1,0 +1,56 @@
+
+PARTS LIST
+
+
+////////////////////
+//////Batteries/////
+////////////////////
+
+5V - 6V power supply for the servo controller: 
+Tenergy 11106 6V NiMH 2000mAh Battery Pack w/ Hitec Connector
+
+https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&client=safari&rls=en&biw=1028&bih=703&q=6+volt+battery+pack&oq=6+volt+battery+pack&pbx=1&bav=on.2,or.&bvm=bv.95039771,d.eXY&tch=1&ech=1&psi=MDZ3VY2EDYijNr-QgqAN.1433876016731.9&prds=paur:ClkAsKraX7td72MFdoGw5whEirp-AMdJpx995tfOy8XHkqJepBZrTA-DOO4_CAUSMHPIvrtQZvrnzWeWp_zEniT9Te0RDIXsR-Fo7gGhWh4fFx3shJ6HeZLNZxIZAFPVH711kl_xk44f8CxJLi_vvcehtsKybg&ved=0CEEQpis&ei=eTZ3Vcv7L4HasATs8qrADQ
+
+-----------------------------------------------------------------
+
+2-Cells LiPo (4.8V - 9.6V) for the speed controller:
+LiPo 1850 2-cell 7.4V E-Revo VXL Battery Pack 
+
+http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pukg8YCFc2QHwodrF8AGA
+
+
+////////////////////
+/////Misc Items/////
+////////////////////
+
+Servo for testing:
+Adafruit Micro Servo, Product ID: 169
+
+http://www.adafruit.com/products/169?gclid=CIi6kvWNg8YCFYYWHwodDkMAcg
+
+-----------------------------------------------------------------
+
+Pins Female connectors:
+D-Sub Female Crimp Pins - 100 Pack 
+
+http://www.showmecables.com/product/D-Sub-Female-Crimp-Pins-100-Pack.aspx?utm_source=google&utm_medium=cse&utm_campaign=582:100&zmam=49733141&zmac=5&zmas=1&zmap=582:100&gclid=CISJio-Sg8YCFdUWHwodOg4AEw
+
+
+////////////////////
+///Speed Control////
+////////////////////
+
+Speed Controller:
+XL-2.5 Waterproof FWD/REV ESC with Low Voltage Detection (LVD)
+
+https://traxxas.com/products/parts/escs/xl25lvd
+
+
+////////////////////
+/////Heatsinks//////
+////////////////////
+
+Heatsinks (2):
+High Performance Aluminum Heatsink Radiator - Golden (45 x 45 x 10mm)
+
+http://www.dx.com/en/p/high-performance-copper-aluminum-heatsink-radiator-golden-45-x-45-x-10mm-237308?tc=USD&gclid=CjwKEAjwndqrBRC16IyeqPicp3ASJAB-vB-cE2lSBNQvHf2gRciYYlxGwo9oMUXakRN2fF7K4DW_3hoCbKDw_wcB#.VXc4aesmREd
