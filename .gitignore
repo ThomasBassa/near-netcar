@@ -58,3 +58,7 @@ target/
 
 #Temp files/backups?
 *~
+
+# api key
+UI/APIKEY.js
+

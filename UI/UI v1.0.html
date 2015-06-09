@@ -12,7 +12,7 @@
 				padding: 0;
 				top:0;
 			}
-			#rightHalf {
+			#camera-canvas {
 				background:url(temppic.jpg);
 				width: 50%;
 				position: absolute;
@@ -37,20 +37,27 @@
 				position:absolute;
 				width:100%;
 			}
+			.buttonstyle{
+				width:24.75%;
+				height:50%;
+				margin:0;
+				padding:0;
+			}
 		</style>
 		<!-- html, body, #picture { height: 100%; width: 50%; margin: 0; padding: 0;} -->
-		<script type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=geometry"> <!-- TODO REMOVE KEY-->
+		<script src="APIKEY.js">// TODO REMOVE KEY and consolidate?
 		</script>
 		<script type ="text/javascript"
 			src="https://autobahn.s3.amazonaws.com/autobahnjs/latest/autobahn.min.jgz">
 		</script>
-		<script type="text/javascript">
+		<script type="text/javascript"> //TODO separate into files
+			//START AUTOBAHN
 			var connection = new autobahn.Connection({
 				url: 'ws://104.197.76.36:8080/ws',
 				realm: 'realm1'
 			});
 			var mySession;
+			var mode = "Manual";
 			connection.onopen = function (session) {
 				 // 1) subscribe to a topic
 				function onevent(args) {
@@ -76,7 +83,8 @@
 				);
 			}
 			connection.open();
-
+			//END AUTOBAHN
+			//START GOOGLE MAPS
 			function initialize() {
 				var mapOptions = {
 					zoom: 17,
@@ -85,43 +93,53 @@
 
 				var map = new google.maps.Map(document.getElementById('map-canvas'),
 					mapOptions);
-			}
 
+/*				google.maps.event.addListener(map, 'rightclick', function(e){ UNCOMMENT LATER
+					var marker = new google.maps.Marker({
+						position: e.latLng,
+						map: map,
+						title: 'Waypoint'
+					});
+				});
+*/			}
 			function loadScript() {
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
 				script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
-				'&signed_in=true&callback=initialize';
+					'&signed_in=true&callback=initialize';
 				document.body.appendChild(script);
 			}
 			function helloWorld() {
 				console.log("Hello World");
 			}
+			function changeMode() {   // will be for the checkbox thing
+				if(mode == "Manual")
+					mode = "Automatic";
+				else
+					mode = "Manual";
+			}
 
 			window.onload = loadScript;
+			//END GOOGLE MAPS
 		</script>
 	</head>
 	<body onload="initialize()">
 		<div id="map-canvas"></div>
-		<div id="rightHalf"></div>
+		<div id="camera-canvas"></div>
 		<div id="buttonland">
 			<!--<form action="demo_form.asp">
 			<input type="checkbox" name="Mode" value="Auto"> Automatic Mode<br> --><!-- TODO MAKE PUBSUB-->
 				<!--<input type="submit" value="Submit">
 			</form>-->
-			<button type="button" style="width:24.75%;height=50%;margin:0;padding:0;">Automatic Mode</button>
-			<button type="button" style="width:24.75%;height=50%;margin:0;padding:0;">Help!</button>
-			<button onclick="regCallDemo()" style="width:24.75%;height=50%;margin:0;padding:0;">Accelerate!</button>
-			<button type="button" style="width:24.75%;height=50%;margin:0;padding:0;">I hate HTML</button>
+			<button type="button" class=buttonstyle>Automatic Mode</button>
+			<button type="button" class="buttonstyle">Help!</button>
+			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
+			<button type="button" class=buttonstyle>I hate HTML</button>
 
-			<button type="button" style="width:24.75%;height=50%;top:50%;margin:0;padding:0;">Manual Mode</button>
-			<button type="button" style="width:24.75%;height=50%;top:50%;margin:0;padding:0;">More Help!</button>
-			<button type="button" style="width:24.75%;height=50%;top:50%;margin:0;padding:0;">i HaTe My Life</button>
-			<button onclick="helloWorld()" style="width:24.75%;height=50%;top:50%;margin:0;padding:0;">Good luck!</button>
-
+			<button type="button" class=buttonstyle>Manual Mode</button>
+			<button type="button" class=buttonstyle>More Help!</button>
+			<button type="button" class=buttonstyle>i HaTe My Life</button>
+			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>
 		</div>
 	</body>
-
-
-
 </html>
