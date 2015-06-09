@@ -25,13 +25,20 @@ def setServoPulse(channel, pulse):
   pulse /= pulseLength
   pwm.setPWM(channel, 0, pulse)
 
+ def moniter(put)
+   if(put>0)
+    pwm.setPWM(3, 0, servoMin)
+    print "min reached"
+   elif(put<0)
+    pwm.setPWM(3, 0, servoMax)
+    print "max reached"
+   else
+    pwm.setPWM(3, 0, 375)
+
 pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
 while (True):
-  # Change speed of continuous servo on channel O
-  pwm.setPWM(3, 0, servoMin)
-  time.sleep(1)
-  pwm.setPWM(3, 0, servoMax)
-  time.sleep(1)
+
+   
 
 
 
