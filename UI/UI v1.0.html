@@ -94,14 +94,17 @@
 				var map = new google.maps.Map(document.getElementById('map-canvas'),
 					mapOptions);
 
-/*				google.maps.event.addListener(map, 'rightclick', function(e){ UNCOMMENT LATER
+				google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
 					var marker = new google.maps.Marker({
 						position: e.latLng,
 						map: map,
 						title: 'Waypoint'
 					});
+					google.maps.event.addListener(marker, 'rightclick', function(){
+						marker.setVisible(false);
+					});
 				});
-*/			}
+			}
 			function loadScript() {
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
