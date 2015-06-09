@@ -13,8 +13,8 @@ https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&clie
 
 -----------------------------------------------------------------
 
-2-Cells LiPo (4.8V - 9.6V) for the speed controller:
-LiPo 1850 2-cell 7.4V E-Revo VXL Battery Pack 
+2-Cells LiPo (7.4) for the speed controller:
+7600mAh 7.4v 2-cell 25C LiPo Battery
 
 http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pukg8YCFc2QHwodrF8AGA
 
@@ -50,6 +50,10 @@ Speed Controller:
 XL-2.5 Waterproof FWD/REV ESC with Low Voltage Detection (LVD)
 
 https://traxxas.com/products/parts/escs/xl25lvd
+
+OR
+
+Evx-2 speed controller
 
 
 ////////////////////
