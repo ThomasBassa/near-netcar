@@ -32,6 +32,8 @@
 				session.register('com.myapp.accelerate', accelerate);
 				mySession=session;
 
+
+
 			}
 			function regCallDemo(){
 				mySession.call('com.myapp.accelerate', [2, 3, 123, 421]).then(
@@ -39,6 +41,14 @@
 						console.log("Result:", res);
 					}
 				);
+			}
+			function rPCTest(){
+				if(Math.random()>.5){
+					mySession.call('aero.near.joyMonitor', [Math.random()]);
+				}
+				else{
+					mySession.call('aero.near.joyMonitor', [Math.random()*-1]);
+				}
 			}
 			connection.open();
 			//END AUTOBAHN
@@ -99,7 +109,7 @@
 
 			<button type="button" class=buttonstyle>Manual Mode</button>
 			<button type="button" class=buttonstyle>More Help!</button>
-			<button type="button" class=buttonstyle>i HaTe My Life</button>
+			<button onclick="rPCTest()" class=buttonstyle>RPC Test!</button>
 			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>
 		</div>
 	</body>
