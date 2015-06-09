@@ -1,12 +1,7 @@
-'''
-Created by Jayson Clifford
-Copyright (c) 2015 Embry-Riddle NextGen Applied Research Lab.
-All rights reserved.
-'''
-
+from twisted.internet.defer import inlineCallbacks
+from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 import pygame
 
-done = False
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -18,23 +13,39 @@ for i in range(joystick_count):
     joystick.init()
     name = joystick.get_name()
 
-axis = 0
-val = 0.0
 
-while done == False:
-    for event in pygame.event.get():
-        if event.type is pygame.QUIT:
-            done = True
-        if event.type == pygame.JOYBUTTONDOWN:
-            button = event.button
-            print("Button {} on".format(button))
-        if event.type == pygame.JOYBUTTONUP:
-            button = event.button
-            print("Button {} off".format(button))
-        if event.type == pygame.JOYAXISMOTION:
-            val = event.value
-            axis = event.axis        
-    print("Axis {} at {}".format(axis, val))
-    axis = 0
-    val - 0.0                            
-    clock.tick(30)
+class MyComponent(ApplicationSession):
+    @inlineCallbacks
+    def onJoin(self, details):
+        val = (0.0, 0.0)
+        done = False
+        print("Session Ready")
+        while not done:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    print("trying to quit")
+                    done = True
+                if event.type == pygame.JOYBUTTONDOWN:
+                    button = event.button
+                    print("Button {} on".format(button))
+                if event.type == pygame.JOYBUTTONUP:
+                    button = event.button
+                    print("Button {} off".format(button))
+                if event.type == pygame.JOYAXISMOTION:
+                    if event.axis == 0:
+                        oldvalue = val[1]
+                        val = (event.value, oldvalue)
+                    else:
+                        oldvalue = val[0]
+                        val = (oldvalue, event.value)
+            try:
+                yield self.call('aero.near.joyMonitor', val[0])
+            except Exception as e:
+                print("Error {}".format(e))
+            print("Axis {} at {}".format(0, val[0]))
+            print("Axis {} at {}".format(1, val[1]))                        
+            clock.tick(30)
+if __name__ == '__main__':
+    print("Main running")
+    runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
+    runner.run(MyComponent)
