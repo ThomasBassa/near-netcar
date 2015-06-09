@@ -23,6 +23,10 @@ http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pu
 /////Misc Items/////
 ////////////////////
 
+Idea for a camera:
+Tenvis IPROBOT3
+http://www.newegg.com/Product/Product.aspx?Item=N82E16881674001
+
 Servo for testing:
 Adafruit Micro Servo, Product ID: 169
 
