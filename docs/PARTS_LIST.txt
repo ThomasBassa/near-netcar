@@ -35,7 +35,10 @@ http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-
 
 Parallax Laser Range Finder 
 https://www.parallax.com/product/28044
-
+Karlsson Robotics Infrared Proximity Sensor
+http://www.karlssonrobotics.com/cart/infrared-proximity-sensor-long-range-sharp-gp2y0a02yk0f/?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ76VLCFvhH2pxw3apvcThsrqe-x6gGayRVGPnW_eErxoCa37w_wcB
+Sharp GP2D12 IR Range Sensor
+http://www.ebay.com/itm/Sharp-GP2D12-IR-Range-Sensor-FREE-Cable-For-Arduino-compatible-/180882807143?_trksid=p2141725.m3641.l6368
 
 ////////////////////
 /////GPS Sensors////
