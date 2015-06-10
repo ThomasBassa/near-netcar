@@ -30,6 +30,14 @@ Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
 ////////////////////
+////Rangefinders////
+////////////////////
+
+Parallax Laser Range Finder 
+https://www.parallax.com/product/28044
+
+
+////////////////////
 /////GPS Sensors////
 ////////////////////
 
