@@ -8,14 +8,12 @@ PARTS LIST
 
 5V - 6V power supply for the servo controller: 
 Tenergy 11106 6V NiMH 2000mAh Battery Pack w/ Hitec Connector
-
 https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&client=safari&rls=en&biw=1028&bih=703&q=6+volt+battery+pack&oq=6+volt+battery+pack&pbx=1&bav=on.2,or.&bvm=bv.95039771,d.eXY&tch=1&ech=1&psi=MDZ3VY2EDYijNr-QgqAN.1433876016731.9&prds=paur:ClkAsKraX7td72MFdoGw5whEirp-AMdJpx995tfOy8XHkqJepBZrTA-DOO4_CAUSMHPIvrtQZvrnzWeWp_zEniT9Te0RDIXsR-Fo7gGhWh4fFx3shJ6HeZLNZxIZAFPVH711kl_xk44f8CxJLi_vvcehtsKybg&ved=0CEEQpis&ei=eTZ3Vcv7L4HasATs8qrADQ
 
 -----------------------------------------------------------------
 
 2-Cells LiPo (7.4) for the speed controller:
 7600mAh 7.4v 2-cell 25C LiPo Battery
-
 http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pukg8YCFc2QHwodrF8AGA
 
 ////////////////////
@@ -24,8 +22,10 @@ http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pu
 
 Tenvis IPROBOT3
 http://www.newegg.com/Product/Product.aspx?Item=N82E16881674001
+
 Wanscam-HW0034
 http://www.newegg.com/Product/Product.aspx?Item=9SIA5PG3292806
+
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
@@ -35,8 +35,10 @@ http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-
 
 Parallax Laser Range Finder 
 https://www.parallax.com/product/28044
+
 Karlsson Robotics Infrared Proximity Sensor
 http://www.karlssonrobotics.com/cart/infrared-proximity-sensor-long-range-sharp-gp2y0a02yk0f/?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ76VLCFvhH2pxw3apvcThsrqe-x6gGayRVGPnW_eErxoCa37w_wcB
+
 Sharp GP2D12 IR Range Sensor
 http://www.ebay.com/itm/Sharp-GP2D12-IR-Range-Sensor-FREE-Cable-For-Arduino-compatible-/180882807143?_trksid=p2141725.m3641.l6368
 
@@ -46,8 +48,10 @@ http://www.ebay.com/itm/Sharp-GP2D12-IR-Range-Sensor-FREE-Cable-For-Arduino-comp
 
 Adafruit Ultimate GPS Breakout
 http://www.adafruit.com/products/746
+
 Adafruit Ultimate GPS HAT for Raspberry Pi 
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
+
 Flora Wearable Ultimate GPS Module
 http://www.adafruit.com/products/1059
 
@@ -57,14 +61,12 @@ http://www.adafruit.com/products/1059
 
 Servo for testing:
 Adafruit Micro Servo, Product ID: 169
-
 http://www.adafruit.com/products/169?gclid=CIi6kvWNg8YCFYYWHwodDkMAcg
 
 -----------------------------------------------------------------
 
 Pins Female connectors:
 D-Sub Female Crimp Pins - 100 Pack 
-
 http://www.showmecables.com/product/D-Sub-Female-Crimp-Pins-100-Pack.aspx?utm_source=google&utm_medium=cse&utm_campaign=582:100&zmam=49733141&zmac=5&zmas=1&zmap=582:100&gclid=CISJio-Sg8YCFdUWHwodOg4AEw
 
 
@@ -74,19 +76,14 @@ http://www.showmecables.com/product/D-Sub-Female-Crimp-Pins-100-Pack.aspx?utm_so
 
 Speed Controller:
 XL-2.5 Waterproof FWD/REV ESC with Low Voltage Detection (LVD)
-
 https://traxxas.com/products/parts/escs/xl25lvd
 
-OR
-
 Evx-2 speed controller
-
+https://traxxas.com/products/parts/escs/3019Revx2lvd
 
 ////////////////////
 /////Heatsinks//////
 ////////////////////
 
-Heatsinks (2):
 High Performance Aluminum Heatsink Radiator - Golden (45 x 45 x 10mm)
-
 http://www.dx.com/en/p/high-performance-copper-aluminum-heatsink-radiator-golden-45-x-45-x-10mm-237308?tc=USD&gclid=CjwKEAjwndqrBRC16IyeqPicp3ASJAB-vB-cE2lSBNQvHf2gRciYYlxGwo9oMUXakRN2fF7K4DW_3hoCbKDw_wcB#.VXc4aesmREd
