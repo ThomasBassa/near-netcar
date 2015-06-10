@@ -3,4 +3,4 @@
 - `yield` and `@inlineCallbacks` explained:
   http://autobahn.ws/python/asynchronous-programming.html?#twisted-deferreds-and-inlinecallbacks
 - Deferred objects in Twisted: http://twistedmatrix.com/documents/current/api/twisted.internet.defer.Deferred.html
-- More to come...
+- Ubiquiti Aircam software/manuals: https://www.ubnt.com/download/?group=unifi-video-camera-micro
