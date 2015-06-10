@@ -18,18 +18,31 @@ https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&clie
 
 http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pukg8YCFc2QHwodrF8AGA
 
-
 ////////////////////
-/////Misc Items/////
+//////Cameras///////
 ////////////////////
 
-Ideas for a camera:
 Tenvis IPROBOT3
 http://www.newegg.com/Product/Product.aspx?Item=N82E16881674001
 Wanscam-HW0034
 http://www.newegg.com/Product/Product.aspx?Item=9SIA5PG3292806
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
+
+////////////////////
+/////GPS Sensors////
+////////////////////
+
+Adafruit Ultimate GPS Breakout
+http://www.adafruit.com/products/746
+Adafruit Ultimate GPS HAT for Raspberry Pi 
+http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
+Flora Wearable Ultimate GPS Module
+http://www.adafruit.com/products/1059
+
+////////////////////
+/////Misc Items/////
+////////////////////
 
 Servo for testing:
 Adafruit Micro Servo, Product ID: 169
