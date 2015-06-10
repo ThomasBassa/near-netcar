@@ -95,7 +95,7 @@
 					});
 					markers.push(mark);
 					deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(){
-						marker.setVisible(false);
+						marker.setMap(null);
 					}));
 				});
 
@@ -120,10 +120,9 @@
 			function beginDirecting(markerStart){
 				waypoints = new Array();
 				waypoints.push({
-					location: markerStart.position,
-					stopover: false
+					location: markerStart.position
 				});
-				for(i = 0; i < markers.length; i++){
+				for(i = 1; i < markers.length; i++){
 					google.maps.event.clearListeners(markers[i], 'click');
 					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', somethingToMakeThisWork(markers[i])));
 				}
@@ -131,15 +130,13 @@
 			function somethingToMakeThisWork(m){
 				document.getElementById("directionFinisher").disabled = false;
 				waypoints.push({
-					location: m.position,
-					stopover: false
+					location: m.position
 				});
 			}
 			function doneCollectingPoints(){
 				var start = waypoints[0];
 				var end = waypoints[waypoints.length-1];
-				console.log(start.location);
-				console.log(end.location);
+				console.log(waypoints);
 				var request = {
 					origin: start.location,
 					destination: end.location,
