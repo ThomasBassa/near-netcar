@@ -3,8 +3,8 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- html, body, #picture { height: 100%; width: 50%; margin: 0; padding: 0;} -->
-<!--		<script src="APIKEY.js">// TODO REMOVE KEY and consolidate?
-		</script>-->
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&libraries=drawing">// TODO REMOVE KEY and consolidate?
+		</script>
 		<script type ="text/javascript"
 			src="https://autobahn.s3.amazonaws.com/autobahnjs/latest/autobahn.min.jgz">
 		</script>
@@ -54,25 +54,50 @@
 			connection.open();
 			//END AUTOBAHN
 			//START GOOGLE MAPS
+			var markers;
+			var deleteListeners; // array to store listeners for marker deletion
+			var listenersForDirections;
+			var directionsDisplay;
+			var directionsService = new google.maps.DirectionsService();
+			var map;
+			var waypoints;
+
 			function initialize() {
+				directionsDisplay = new google.maps.DirectionsRenderer();
+				directionsDisplay.setMap(map);
+				var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
 				var mapOptions = {
 					zoom: 17,
-					center: new google.maps.LatLng(29.1886, -81.0487)
+					center: myLatLng
 				};
 
-				var map = new google.maps.Map(document.getElementById('map-canvas'),
+				map = new google.maps.Map(document.getElementById('map-canvas'),
 					mapOptions);
 
+				
+				// var helpWindow = new google.maps.InfoWindow({
+				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
+				// 	position: myLatLng
+				// });
+
+				// helpWindow.open(map);
+
+				markers = new Array();
+
+				deleteListeners = new Array();
+
 				google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
-					var marker = new google.maps.Marker({
+					var mark = new google.maps.Marker({
 						position: e.latLng,
 						map: map,
 						title: 'Waypoint'
 					});
-					google.maps.event.addListener(marker, 'rightclick', function(){
+					markers.push(mark);
+					deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(){
 						marker.setVisible(false);
-					});
+					}));
 				});
+
 			}
 			function loadScript() {
 				var script = document.createElement('script');
@@ -80,6 +105,55 @@
 				script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
 					'&signed_in=true&callback=initialize';
 				document.body.appendChild(script);
+			}
+			function directionsStart() {
+				listenersForDirections = new Array();
+				for(i = 0; i < markers.length; i++){
+					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', beginDirecting));
+				}
+				// for each (var m in markers){
+				// 	listenersForDirections.push(new google.maps.event.addListener(m, 'click', beginDirecting);
+				// }
+				//todo later
+			}
+			function beginDirecting(markerStart){
+				waypoints = new Array();
+				waypoints.push({
+					location: markerStart.position,
+					stopover:false
+				});
+				document.getElementById("directionFinisher").disabled = false;
+				for(i = 0; i < markers.length; i++){
+					google.maps.event.clearListeners(markers[i], 'click');
+					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', function(m){
+						waypoints.push({
+							location: m.position,
+							stopover:false
+						});
+					}));
+				}
+			}
+			function doneCollectingPoints(){
+				var start = waypoints[0];
+				var end = waypoints[waypoints.length-1];
+				console.log(start.location);
+				console.log(end.location);
+				var request = {
+					origin: start.location,
+					destination: end.location,
+					travelMode: google.maps.TravelMode.WALKING,
+					unitSystem: google.maps.UnitSystem.IMPERIAL,
+					waypoints: waypoints.slice(1,waypoints.length-1),
+					optimizeWaypoints: false,
+					provideRouteAlternatives: false,
+				};
+				directionsService.route(request, function(response, status){
+					if(status == google.maps.DirectionsStatus.OK){
+						directionsDisplay.setDirections(response);
+					}
+					else
+						console.log("I am stupid -- Jessica King");
+				});
 			}
 			function helloWorld() {
 				console.log("Hello World");
@@ -91,11 +165,12 @@
 					mode = "Manual";
 			}
 
-			window.onload = loadScript;
+			//window.onload = loadScript;
+			google.maps.event.addDomListener(window, 'load', initialize);
 			//END GOOGLE MAPS
 		</script>
 	</head>
-	<body onload="initialize()">
+	<body>
 		<div id="map-canvas"></div>
 		<div id="camera-canvas"></div>
 		<div id="buttonland">
@@ -104,12 +179,12 @@
 				<!--<input type="submit" value="Submit">
 			</form>-->
 			<button type="button" class=buttonstyle>Automatic Mode</button>
-			<button type="button" class="buttonstyle">Help!</button>
+			<button onclick="directionsStart()" class="buttonstyle">Give me Directions!</button>
 			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
-			<button type="button" class=buttonstyle>I hate HTML</button>
+			<button type="button" class=buttonstyle>I hate Javascript + Google Maps + my life</button>
 
 			<button type="button" class=buttonstyle>Manual Mode</button>
-			<button type="button" class=buttonstyle>More Help!</button>
+			<button onclick="doneCollectingPoints()" disabled id="directionFinisher" class=buttonstyle>Done selecting waypoints?</button>
 			<button onclick="rPCTest()" class=buttonstyle>RPC Test!</button>
 			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>
 		</div>
