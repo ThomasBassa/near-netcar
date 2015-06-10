@@ -12,15 +12,17 @@ for i in range(joystick_count):
     joystick = pygame.joystick.Joystick(i)
     joystick.init()
     name = joystick.get_name()
-
-
+val = None
 class MyComponent(ApplicationSession):
-    @inlineCallbacks
+
     def onJoin(self, details):
-        val = (0.0, 0.0)
+        global val
+        val = (0.0,0.0)
         done = False
         print("Session Ready")
-        while not done:
+        @inlineCallbacks
+        def update():
+            global val          
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
@@ -42,9 +44,12 @@ class MyComponent(ApplicationSession):
             except Exception as e:
                 print("Error {}".format(e))
             print("Axis {} at {}".format(0, val[0]))
-            print("Axis {} at {}".format(1, val[1]))                        
-            clock.tick(30)
+            print("Axis {} at {}".format(1, val[1]))
+        l = task.LoopingCall(update)
+        l.start(.033333)
+#        reactor.run()
 if __name__ == '__main__':
     print("Main running")
+    val = (0.0, 0.0)
     runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
