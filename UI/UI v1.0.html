@@ -90,7 +90,8 @@
 					var mark = new google.maps.Marker({
 						position: e.latLng,
 						map: map,
-						title: 'Waypoint'
+						title: 'Waypoint',
+						animation: google.maps.Animation.DROP
 					});
 					markers.push(mark);
 					deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(){
@@ -109,7 +110,7 @@
 			function directionsStart() {
 				listenersForDirections = new Array();
 				for(i = 0; i < markers.length; i++){
-					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', beginDirecting));
+					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', beginDirecting(markers[i])));
 				}
 				// for each (var m in markers){
 				// 	listenersForDirections.push(new google.maps.event.addListener(m, 'click', beginDirecting);
@@ -120,18 +121,19 @@
 				waypoints = new Array();
 				waypoints.push({
 					location: markerStart.position,
-					stopover:false
+					stopover: false
 				});
-				document.getElementById("directionFinisher").disabled = false;
 				for(i = 0; i < markers.length; i++){
 					google.maps.event.clearListeners(markers[i], 'click');
-					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', function(m){
-						waypoints.push({
-							location: m.position,
-							stopover:false
-						});
-					}));
+					listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', somethingToMakeThisWork(markers[i])));
 				}
+			}
+			function somethingToMakeThisWork(m){
+				document.getElementById("directionFinisher").disabled = false;
+				waypoints.push({
+					location: m.position,
+					stopover: false
+				});
 			}
 			function doneCollectingPoints(){
 				var start = waypoints[0];
