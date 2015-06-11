@@ -18,19 +18,12 @@ https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&clie
 
 -----------------------------------------------------------------
 
-2-Cells LiPo (7.4) for the speed controller:
-7600mAh 7.4v 2-cell 25C LiPo Battery
-http://www.maxamps.com/proddetail.php?prod=Lipo-1850-74-ERevo-Pack&gclid=CKHa1pukg8YCFc2QHwodrF8AGA
+4-Cell 1800mah 50C EZ Flite Pro LiPo Battery (14.8 V):
+http://www.headsuphobby.com/148v-1800mah-50C-EZ-Flite-Pro-Lipo-Battery-F-180.htm
 
 ////////////////////
 //////Cameras///////
 ////////////////////
-
-Tenvis IPROBOT3
-http://www.newegg.com/Product/Product.aspx?Item=N82E16881674001
-
-Wanscam-HW0034
-http://www.newegg.com/Product/Product.aspx?Item=9SIA5PG3292806
 
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
@@ -43,17 +36,11 @@ LIDAR-Lite Laser Rangefinder
 http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ7oTmUTfX6Yse7cnXtwcMd9URNekiWv3NAlCizliooBoChQ_w_wcB
 
 ////////////////////
-/////GPS Sensors////
+/////GPS Sensor////
 ////////////////////
-
-Adafruit Ultimate GPS Breakout
-http://www.adafruit.com/products/746
 
 Adafruit Ultimate GPS HAT for Raspberry Pi 
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
-
-Flora Wearable Ultimate GPS Module
-http://www.adafruit.com/products/1059
 
 ////////////////////
 /////Misc Items/////
@@ -74,16 +61,5 @@ http://www.showmecables.com/product/D-Sub-Female-Crimp-Pins-100-Pack.aspx?utm_so
 ///Speed Control////
 ////////////////////
 
-Speed Controller:
-XL-2.5 Waterproof FWD/REV ESC with Low Voltage Detection (LVD)
-https://traxxas.com/products/parts/escs/xl25lvd
-
 Evx-2 speed controller
 https://traxxas.com/products/parts/escs/3019Revx2lvd
-
-////////////////////
-/////Heatsinks//////
-////////////////////
-
-High Performance Aluminum Heatsink Radiator - Golden (45 x 45 x 10mm)
-http://www.dx.com/en/p/high-performance-copper-aluminum-heatsink-radiator-golden-45-x-45-x-10mm-237308?tc=USD&gclid=CjwKEAjwndqrBRC16IyeqPicp3ASJAB-vB-cE2lSBNQvHf2gRciYYlxGwo9oMUXakRN2fF7K4DW_3hoCbKDw_wcB#.VXc4aesmREd
