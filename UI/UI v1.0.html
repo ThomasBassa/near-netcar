@@ -2,9 +2,6 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<!-- html, body, #picture { height: 100%; width: 50%; margin: 0; padding: 0;} -->
-<!--		<script src="APIKEY.js">// TODO REMOVE KEY and consolidate?
-		</script>-->
 		<script type ="text/javascript"
 			src="https://autobahn.s3.amazonaws.com/autobahnjs/latest/autobahn.min.jgz">
 		</script>
@@ -31,10 +28,8 @@
 				}
 				session.register('com.myapp.accelerate', accelerate);
 				mySession=session;
-
-
-
 			}
+			
 			function regCallDemo(){
 				mySession.call('com.myapp.accelerate', [2, 3, 123, 421]).then(
 					function (res) {
@@ -42,6 +37,7 @@
 					}
 				);
 			}
+			
 			function rPCTest(){
 				mySession.call('aero.near.joyMonitor', [-1]);
 				// if(Math.random()>.5){
@@ -53,34 +49,7 @@
 			}
 			connection.open();
 			//END AUTOBAHN
-			//START GOOGLE MAPS
-			function initialize() {
-				var mapOptions = {
-					zoom: 17,
-					center: new google.maps.LatLng(29.1886, -81.0487)
-				};
-
-				var map = new google.maps.Map(document.getElementById('map-canvas'),
-					mapOptions);
-
-				google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
-					var marker = new google.maps.Marker({
-						position: e.latLng,
-						map: map,
-						title: 'Waypoint'
-					});
-					google.maps.event.addListener(marker, 'rightclick', function(){
-						marker.setVisible(false);
-					});
-				});
-			}
-			function loadScript() {
-				var script = document.createElement('script');
-				script.type = 'text/javascript';
-				script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
-					'&signed_in=true&callback=initialize';
-				document.body.appendChild(script);
-			}
+			
 			function helloWorld() {
 				console.log("Hello World");
 			}
@@ -90,12 +59,9 @@
 				else
 					mode = "Manual";
 			}
-
-			window.onload = loadScript;
-			//END GOOGLE MAPS
 		</script>
 	</head>
-	<body onload="initialize()">
+	<body>
 		<div id="map-canvas"></div>
 		<div id="camera-canvas"></div>
 		<div id="buttonland">
@@ -103,13 +69,13 @@
 			<input type="checkbox" name="Mode" value="Auto"> Automatic Mode<br> --><!-- TODO MAKE PUBSUB-->
 				<!--<input type="submit" value="Submit">
 			</form>-->
-			<button type="button" class=buttonstyle>Automatic Mode</button>
-			<button type="button" class="buttonstyle">Help!</button>
+			<button type="button" class=buttonstyle>TODO Automatic Mode</button>
+			<button type="button" class="buttonstyle">TODO Help</button>
 			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
-			<button type="button" class=buttonstyle>I hate HTML</button>
+			<button type="button" class=buttonstyle>...</button>
 
-			<button type="button" class=buttonstyle>Manual Mode</button>
-			<button type="button" class=buttonstyle>More Help!</button>
+			<button type="button" class=buttonstyle>TODO Manual Mode</button>
+			<button type="button" class=buttonstyle>...</button>
 			<button onclick="rPCTest()" class=buttonstyle>RPC Test!</button>
 			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>
 		</div>

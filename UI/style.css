@@ -1,4 +1,5 @@
 #map-canvas {
+	background:url(map.png);
 	width: 50%;
 	position: absolute;
 	left: 0px;
