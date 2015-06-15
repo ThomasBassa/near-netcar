@@ -45,6 +45,8 @@
 
 ###The vehicle shall be IP 67 compliant 
 
+##The vehicle shall be bouyant
+
 ##Communications
 
 ##HD Camera
@@ -52,3 +54,5 @@
 ##Remote Control
 
 ##GPS
+
+##Autonomy
