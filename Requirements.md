@@ -16,16 +16,20 @@
 ##Vehicle Motion:
 
 ###The vehicle shall move forward
-  1. The vehicle's forward motion shall be controlled by the onboard motors
+
+###The vehicle's forward motion shall be controlled by the onboard motors
 
 ###The vehicle shall move backwards
-  1. The vehicle's backward motion shall be controlled by the onboard motors
+
+###The vehicle's backward motion shall be controlled by the onboard motors
 
 ###The vehicle shall move left
-  1. The vehicle's turn direction shall be controlled by an onboard servos
+
+###The vehicle's turn direction shall be controlled by an onboard servos
 
 ###The vehicle shall move right
-  1. The vehicle's turn direction shall be controlled by an onboard servos
+
+###The vehicle's turn direction shall be controlled by an onboard servos
 
 ###The vehicle's speed shall not exceed 30mph
 
