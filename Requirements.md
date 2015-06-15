@@ -5,11 +5,11 @@
 The vehicle shall be mounted with a light
 
   1. The light shall be on while the vehicle is powered
-  2. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light souce
+  2. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
 
 The vehicle shall be mounted with a noise device
 
-  1. The noise device shall sound when an obstacle is detected 20m from it
+  1. The noise device shall sound when an obstacle is detected 20m from the vehicle's front bumper
   2. The noise device shall generate between 60 and 80 decibels when sounding
 
 
