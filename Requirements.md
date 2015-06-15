@@ -6,6 +6,7 @@
 *Vehicle Motion:*
 
 1. The vehicle shall move forward
+  1.1 The vehicle's forward motion shall be controlled by an onboard servos
 2. The vehicle shall move backwards
 3. The vehicle shall move left
 4. The vehicle shall move right
