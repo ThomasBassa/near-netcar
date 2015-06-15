@@ -28,3 +28,14 @@ The vehicle shall stop all movement when communication with ground control is in
 
 The vehicle shall be able to remotely reconnect with ground control
 
+*Obstacle Avoidance*
+
+*Water- and Dust- Proofing*
+
+*Communications*
+
+*HD Camera*
+
+*Remote Control*
+
+*GPS*
