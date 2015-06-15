@@ -2,7 +2,9 @@
 
 *Sound and Lights:*
 
-1.The vehicle shall be mounted with a flashing light
+The vehicle shall be mounted with a flashing light
+
+The vehicle shall make a noise when an object is detected within 20m of it
 
 *Vehicle Motion:*
 
