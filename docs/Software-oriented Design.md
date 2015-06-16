@@ -31,7 +31,15 @@
 * Stop Button: Below the video stream. When clicked, it will command the vehicle to stop moving as fast as possible. To be used in emergencies.
 * Navigational Buttons: Between the Stop Button and the AMC. They will cause navigations to start between waypoints chosen by the user.
   
-  
+# Joystick  
+### Behaviour
+	Joystick produces outputs based on the current position using Pygame. These ouputs should be tuples of floats passed through RPC protocol to the vehicle using Autobahn. The vehicle-mounted pi runs code that maps the joystick's current position to servo commands, turning the wheels of the vehicle accordingly. The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
+
+### Physical
+	The system consists entirely of the joystick and the computer that it's plugged it into via USB. The joystick will be physically next to the computer, and it's code will be on the computer as well. The user interacts by operating the joystick (joysticking) to control the vehicles movement. 
+
+### Software Components 
+	The initial function onJoin runs when the session begins. onJoin then runs the function joyUpdate, which picks up the joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a second. joyMonitor runs directly on the pi, and performs some sort of hardware magic to make the servos turn. Praise Xenu!
   
   
   
