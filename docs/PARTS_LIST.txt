@@ -2,6 +2,10 @@
 PARTS LIST
 
 ////////////////////
+///////Sensors//////
+////////////////////
+
+////////////////////
 ///////Screws///////
 ////////////////////
 
@@ -50,12 +54,8 @@ Servo for testing:
 Adafruit Micro Servo, Product ID: 169
 http://www.adafruit.com/products/169?gclid=CIi6kvWNg8YCFYYWHwodDkMAcg
 
------------------------------------------------------------------
-
-Pins Female connectors:
-D-Sub Female Crimp Pins - 100 Pack 
-http://www.showmecables.com/product/D-Sub-Female-Crimp-Pins-100-Pack.aspx?utm_source=google&utm_medium=cse&utm_campaign=582:100&zmam=49733141&zmac=5&zmas=1&zmap=582:100&gclid=CISJio-Sg8YCFdUWHwodOg4AEw
-
+Servo for Lidar:
+https://www.servocity.com/html/hs-82mg_servo.html#.VYB9HesmREd
 
 ////////////////////
 ///Speed Control////
