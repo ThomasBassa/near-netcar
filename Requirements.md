@@ -56,6 +56,10 @@
 
 ##Communications
 
+###The vehicle shall constantly communicate with ground control while connected
+
+###The vehicle shall respond to commands within 10ms
+
 ##HD Camera
 
 ###The vehicle shall be mounted with a functioning HD camera
@@ -65,8 +69,6 @@
 3. The HD camera shall stream to ground control while the vehicle is powered
 4. The HD camera shall be facing directly forward from the front of the vehicle
 5. The HD camera shall maintain an onobstructed view of the area directly in front of the vehicle
-
-##Remote Control
 
 ##Autonomy
 
