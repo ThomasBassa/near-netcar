@@ -9,27 +9,27 @@
 
 ###The vehicle shall be mounted with a noise device
 
-  1. The noise device shall sound when an obstacle is detected 20m from the vehicle's front bumper
+  1. The noise device shall sound when an obstacle is detected 20 m from the vehicle's front bumper
   2. The noise device shall generate between 60 and 80 decibels when sounding
 
 
 ##Vehicle Motion:
 
-###The vehicle shall move forward
+###The vehicle shall be able to move forward
 
-###The vehicle's forward motion shall be controlled by the onboard motors
+###(Note)The vehicle's forward motion shall be controlled by the onboard motors
 
-###The vehicle shall move backwards
+###The vehicle shall be able to move backwards
 
-###The vehicle's backward motion shall be controlled by the onboard motors
+###(Note)The vehicle's backward motion shall be controlled by the onboard motors
 
-###The vehicle shall move left
+###The vehicle shall be able to turn left
 
-###The vehicle's turn direction shall be controlled by an onboard servos
+###(Note)The vehicle's turn direction shall be controlled by an onboard servo
 
-###The vehicle shall move right
+###The vehicle shall be able to turn right
 
-###The vehicle's turn direction shall be controlled by an onboard servos
+###(Note)The vehicle's turn direction shall be controlled by an onboard servo
 
 ###The vehicle's speed shall not exceed 30mph
 
@@ -39,11 +39,13 @@
 
 ###The vehicle shall be able to remotely reconnect with ground control upon signal loss
 
+###The vehicle shall be able to operate for at least an hour at a time
+
 ##Obstacle Avoidance
 
-###The vehicle shall stop after detected an object in its direct path
+###The vehicle shall stop after detecting an object in its direct path
 
-1. The vehicle shall stop a minimum of 15m from a detected object
+1. The vehicle shall stop a minimum of 5 m from a detected object
 2. The vehicle shall switch to manual control when an obstruction has been detected
 
 ##Water- and Dust- Proofing
@@ -52,13 +54,15 @@
 
 ###The vehicle shall be bouyant
 
-###The vehicle shall not reach a temperature exceeding the capacity of its components
+###*The vehicle shall not reach a temperature exceeding the capacity of its components*
+
+###The vehicle shall be able to operate in temperatures between 20 and 30 degrees Celsius 
 
 ##Communications
 
 ###The vehicle shall constantly communicate with ground control while connected
 
-###The vehicle shall respond to commands within 10ms
+###The vehicle shall respond to commands within 10 ms
 
 ##HD Camera
 
@@ -68,7 +72,7 @@
 2. The HD camera shall have a resolution of 720p
 3. The HD camera shall stream to ground control while the vehicle is powered
 4. The HD camera shall be facing directly forward from the front of the vehicle
-5. The HD camera shall maintain an onobstructed view of the area directly in front of the vehicle
+5. The HD camera shall maintain an unobstructed view of the area directly in front of the vehicle
 
 ##Autonomy
 
