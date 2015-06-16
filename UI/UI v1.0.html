@@ -65,11 +65,11 @@
 			var count;
 			var markerLatLngs;
 			var uniqueId;
+			var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
 
 			function initialize() {
 				directionsDisplay = new google.maps.DirectionsRenderer();
 				directionsDisplay.setMap(map);
-				var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
 				var mapOptions = {
 					zoom: 17,
 					center: myLatLng,
