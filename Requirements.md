@@ -41,6 +41,10 @@
 
 ##Obstacle Avoidance
 
+###The vehicle shall stop after detected an object in its direct path
+
+1.The vehicle shall stop a minimum of 10m from a detected object
+
 ##Water- and Dust- Proofing
 
 ###The vehicle shall be IP 67 compliant 
