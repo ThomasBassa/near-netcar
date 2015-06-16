@@ -43,7 +43,8 @@
 
 ###The vehicle shall stop after detected an object in its direct path
 
-1.The vehicle shall stop a minimum of 10m from a detected object
+1. The vehicle shall stop a minimum of 10m from a detected object
+2. The vehicle shall switch to manual control when an obstruction has been detected
 
 ##Water- and Dust- Proofing
 
@@ -54,6 +55,13 @@
 ##Communications
 
 ##HD Camera
+
+###The vehicle shall be mounted with a functioning HD camera
+
+1. The HD camera shall have a minimum of a 120 degree viewing area
+2. The HD camera shall have a resolution of 1080p
+3. The HD camera shall stream to ground control while the vehicle is powered
+4. The HD camera shall be facing directly forward from the front of the vehicle
 
 ##Remote Control
 
