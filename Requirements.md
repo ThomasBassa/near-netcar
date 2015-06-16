@@ -14,32 +14,19 @@
 
 
 ##Vehicle Motion:
-
-###The vehicle shall be able to move forward
-
-###(Note)The vehicle's forward motion shall be controlled by the onboard motors
-
-###The vehicle shall be able to move backwards
-
-###(Note)The vehicle's backward motion shall be controlled by the onboard motors
-
-###The vehicle shall be able to turn left
-
-###(Note)The vehicle's turn direction shall be controlled by an onboard servo
-
-###The vehicle shall be able to turn right
-
-###(Note)The vehicle's turn direction shall be controlled by an onboard servo
-
-###The vehicle's speed shall not exceed 30mph
-
-###The vehicle's motion shall be controlled by ground control
-
-###The vehicle shall stop all movement when communication with ground control is interrupted
-
-###The vehicle shall be able to remotely reconnect with ground control upon signal loss
-
-###The vehicle shall be able to operate for at least an hour at a time
+ - The vehicle shall be able to move forward
+   - (Note)The vehicle's forward motion shall be controlled by the onboard motors
+ - The vehicle shall be able to move backwards
+   - (Note)The vehicle's backward motion shall be controlled by the onboard motors
+ - The vehicle shall be able to turn left
+   - (Note)The vehicle's turn direction shall be controlled by an onboard servo
+ - The vehicle shall be able to turn right
+   - (Note)The vehicle's turn direction shall be controlled by an onboard servo
+ - The vehicle's speed shall not exceed 30mph
+ - The vehicle's motion shall be controlled by ground control
+ - The vehicle shall stop all movement when communication with ground control is interrupted
+ - The vehicle shall be able to remotely reconnect with ground control upon signal loss
+ - The vehicle shall be able to operate for at least an hour at a time###The vehicle shall be able to operate for at least an hour at a time
 
 ##Obstacle Avoidance
 
@@ -50,19 +37,16 @@
 
 ##Water- and Dust- Proofing
 
-###The vehicle shall be IP 67 compliant 
-
-###The vehicle shall be bouyant
-
-###*The vehicle shall not reach a temperature exceeding the capacity of its components*
-
-###The vehicle shall be able to operate in temperatures between 20 and 30 degrees Celsius 
+ - The vehicle shall be IP 67 compliant
+ - The vehicle shall be bouyant
+ - *The vehicle shall not reach a temperature exceeding the capacity of its components*
+ - The vehicle shall be able to operate in temperatures between 20 and 30 degrees Celsius
 
 ##Communications
 
-###The vehicle shall constantly communicate with ground control while connected
+ - The vehicle shall constantly communicate with ground control while connected
 
-###The vehicle shall respond to commands within 10 ms
+ - The vehicle shall respond to commands within 10 ms
 
 ##HD Camera
 
@@ -81,4 +65,4 @@
 1. The vehicle shall move only along sidewalks while moving autonomously
 2. *The vehicle shall stop when it detects itself as being off-path*
 
-###The vehicle shall have the option to be manually controlled
+- The vehicle shall have the option to be manually controlled
