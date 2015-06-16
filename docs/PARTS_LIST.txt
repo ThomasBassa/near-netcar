@@ -5,6 +5,10 @@ PARTS LIST
 ///////Sensors//////
 ////////////////////
 
+To detect sidewalk:
+RGB Color Sensor with IR filter and white LED
+http://www.adafruit.com/product/1334
+
 ////////////////////
 ///////Screws///////
 ////////////////////
