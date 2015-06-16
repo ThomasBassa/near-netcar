@@ -8,7 +8,7 @@
 * The UI shall display the vehicle's position on a map
 * The UI shall display the vehicle's current speed
 * The user shall be able to place waypoints on the map
-* The UI shall have a help window
+* The UI shall have a help
 
 ## Comms
 * The vehicle shall communicate with the ground station at a rate of at least 30 Hz
