@@ -45,7 +45,7 @@
 
 ###The vehicle shall be IP 67 compliant 
 
-##The vehicle shall be bouyant
+###The vehicle shall be bouyant
 
 ##Communications
 
@@ -53,6 +53,8 @@
 
 ##Remote Control
 
-##GPS
-
 ##Autonomy
+
+###The vehicle shall have the option to be autonomous
+
+###The vehicle shall have the option to be manually controlled
