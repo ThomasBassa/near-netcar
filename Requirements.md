@@ -52,7 +52,7 @@
 
 ###The vehicle shall be bouyant
 
-###The vehicle shall 
+###The vehicle shall not reach a temperature exceeding the capacity of its components
 
 ##Communications
 
