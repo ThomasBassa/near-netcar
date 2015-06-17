@@ -11,6 +11,6 @@ We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; s
 
 ![screenshot 2015-06-17 13 09 40](https://cloud.githubusercontent.com/assets/11369623/8214180/61576aa0-14f5-11e5-80a5-221eb7742fef.png)
 
-
+(Above) lip for waterproofing, we have one of these printed; has been modified after printing to fit. (Below) lip in SolidWorks
 
 ![screenshot 2015-06-17 13 11 34](https://cloud.githubusercontent.com/assets/11369623/8214183/6881ce60-14f5-11e5-943d-adec01ff3cb0.png)
