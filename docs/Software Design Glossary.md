@@ -4,7 +4,8 @@
 * Ground Station (GS) - User interface. The website and the joystick. Everything on the operator's end.
 * RPC - Used for calling a method on another computer
 * PubSub - A system where on computer is a publisher and another is a subscriber and they both are atached to a server  
-* 
+* Swag - the essence of 2011
+* 30 Hz - really fast
 
 ## System Design
 * Joystick Code
