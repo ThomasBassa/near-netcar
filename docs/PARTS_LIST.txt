@@ -7,12 +7,16 @@ PARTS LIST
 ////////////////////
 
 To sink heat. We REALLY need 2 of these
+RC 1/10 Car Aluminum Heat Sink Fit 540 550
 http://www.ebay.com/itm/RC-1-10-Car-Aluminum-Heat-Sink-Fit-540-550-Stock-and-Modified-Motors-Blue-7012-/280881192160
 
 ////////////////////
 ///////Sensors//////
 ////////////////////
 
+To detect Magnetic waves:
+Triple Axis Compass Magnetometer Sensor Module
+http://www.amazon.com/365buying-GY-271-HMC5883L-Compass-Magnetometer/dp/B008V9S64E/ref=redir_mobile_desktop?ie=UTF8&dpID=41TYy8Yo-%2BL&dpPl=1&keywords=magnetometer&pi=AC_SX200_QL40&qid=1434569185&ref=plSrch&ref_=mp_s_a_1_1&sr=8-1
 To detect sidewalk:
 RGB Color Sensor with IR filter and white LED
 http://www.adafruit.com/product/1334
