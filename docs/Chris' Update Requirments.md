@@ -1,7 +1,7 @@
 # Requirements
 
 ## Payload
-1. The vehicle shall be able to carry a volume of one cubic foot
+1. The vehicle shall be able to carry a volume of 1.04166666667 cubic feet (15x15x8 in, or 4 stacked pizza boxes)
 2. The vehicle shall be able to carry a maximum of 3 lbs
 3. The vehicle shall be able to carry a box with a maximum surface area of 6 square feet
 
