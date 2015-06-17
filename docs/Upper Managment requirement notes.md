@@ -1,5 +1,8 @@
 # Requirements
 
+*no payload requirments*
+*3 lb 1 ft cubed*
+
 ### Sound and Lights:
 1. The vehicle shall be mounted with a light *Ambiguous*
 2. The light shall be on while the vehicle is powered
@@ -7,6 +10,7 @@
 4. The vehicle shall be mounted with a noise device *Ambiguous*
 5. The noise device shall sound when an obstacle is detected 20 m from the vehicle's front bumper *Always beeping*
 6. The noise device shall generate between 60 and 80 decibels when sounding *Shorten*
+*300 lumens*
 
 ### Vehicle Motion:
 1. The vehicle shall be able to move forward
