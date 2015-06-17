@@ -69,7 +69,16 @@ second. joyMonitor runs	directly on the pi, and performs some sort of hardware m
 * Output - PWM-based servo controls
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
-  
+# Vehicle Camera
+
+### Behaviour
+An HD camera will be mounted to the front of the vehicle so that it faces forward. The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
+
+### Physical
+
+
+### Software Components
+The camera's sensor captures shots of what it sees at a rate of 30 hz. Software inside the camera converts the frames that are captured into a 30fps video at 720p resolution. That video is then sent to the webpage that is controlled by the webpage and displayed in real time.  
   
   
   
