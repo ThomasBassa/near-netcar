@@ -5,7 +5,7 @@
 2. The vehicle shall be able to carry a maximum of 3 lbs
 3. The vehicle shall be able to carry a box with a maximum surface area of 6 square feet
 
-## Sound and Lights:
+## Sound and Lights
 1. The vehicle shall have a light mounted on top of the vehicle
 2. The light shall be on while the vehicle is powered
 3. The light shall have a minimum of 300 lumens
@@ -15,7 +15,7 @@
 6. The noise device shall repeatedly sound at an interval of 2 seconds
 7. The noise device shall generate between 60 and 65 decibels when sounding
 
-## Vehicle Motion:
+## Vehicle Motion
 1. The vehicle shall be able to move forward
 2. The vehicle shall be able to move backwards
 3. The vehicle shall be able to turn left
