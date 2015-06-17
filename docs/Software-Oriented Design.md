@@ -54,20 +54,20 @@ The initial function onJoin runs when the session begins. onJoin then runs the f
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn. 
 
-Function - onJoin()
-Args - self, details (WAMP stuff)
-Output - n/a
-Behavior - Runs the functions within when the session connects
+### Function - onJoin()
+*Args - self, details (WAMP stuff)
+*Output - n/a
+*Behavior - Runs the functions within when the session connects
 
-Function - joyUpdate()
-Args - n/a
-Output - Tuple of floats called val
-Behavior - Picks up the movements of the joystick 30 times a second, converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
+### Function - joyUpdate()
+*Args - n/a
+*Output - Tuple of floats called val
+*Behavior - Picks up the movements of the joystick 30 times a second, converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
-Function - joyMonitor()
-Args - put
-Output - PWM-based servo controls
-Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
+### Function - joyMonitor()
+*Args - put
+*Output - PWM-based servo controls
+*Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
   
   
