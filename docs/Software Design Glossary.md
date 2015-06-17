@@ -2,7 +2,9 @@
 
 ## Glossary
 * Ground Station (GS) - User interface. The website and the joystick. Everything on the operator's end.
-* RPC - The system we are using to output the joystick insturctions
+* RPC - Used for calling a method on another computer
+* PubSub - A system where on computer is a publisher and another is a subscriber and they both are atached to a server  
+* 
 
 ## System Design
 * Joystick Code
