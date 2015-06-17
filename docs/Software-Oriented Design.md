@@ -87,13 +87,17 @@ The camera's sensor captures shots of what it sees at a rate of 30 hz. Software 
 1. User asks to put vehicle in auto mode
 2. System puts vehicle in auto mode
 3. User clicks deisred place on provided map
-4. System creates and displays waypoint on map and connects it to previous point
+4. System creates and displays waypoint on map and connects it to previous point. Repeat steps 3 & 4 until User ceases creation of waypoints
 5. User tells the system to begin navigation
 6. System determines closest path from known sidewalk junctions & transmits to Pi--nav starts  
+
+##### Alternate Flows
+1. User indicates a waypoint to remove
+2. System removes waypoint from the route and connects the previous and next waypoints
   
-  
-  
-  
-  
+### Manual Vehicle Movement
+1. User moves joystick
+2. System changes vehicle movement accordingly. Repeat steps 1 & 2 as needed
+
   
   
