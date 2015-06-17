@@ -80,7 +80,16 @@ An HD camera will be mounted to the front of the vehicle so that it faces forwar
 ### Software Components
 The camera's sensor captures shots of what it sees at a rate of 30 hz. Software inside the camera converts the frames that are captured into a 30fps video at 720p resolution. That video is then sent to the webpage that is controlled by the webpage and displayed in real time.  
   
-  
+# Use Cases
+
+### Navigation Activation
+
+1. User asks to put vehicle in auto mode
+2. System puts vehicle in auto mode
+3. User clicks deisred place on provided map
+4. System creates and displays waypoint on map and connects it to previous point
+5. User tells the system to begin navigation
+6. System determines closest path from known sidewalk junctions & transmits to Pi--nav starts  
   
   
   
