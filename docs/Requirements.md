@@ -1,72 +1,63 @@
 # Requirements
 
 ### Sound and Lights:
-* The vehicle shall be mounted with a light
-* The light shall be on while the vehicle is powered
-* The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
-* The vehicle shall be mounted with a noise device
-* The noise device shall sound when an obstacle is detected 20 m from the vehicle's front bumper
-* The noise device shall generate between 60 and 80 decibels when sounding
-
+1. The vehicle shall be mounted with a light
+2. The light shall be on while the vehicle is powered
+3. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
+4. The vehicle shall be mounted with a noise device
+5. The noise device shall sound when an obstacle is detected 20 m from the vehicle's front bumper
+6. The noise device shall generate between 60 and 80 decibels when sounding
 
 ### Vehicle Motion:
-* The vehicle shall be able to move forward
-   - (Note)The vehicle's forward motion shall be controlled by the onboard motors
-* The vehicle shall be able to move backwards
-   - (Note)The vehicle's backward motion shall be controlled by the onboard motors
-* The vehicle shall be able to turn left
-   - (Note)The vehicle's turn direction shall be controlled by an onboard servo
-* The vehicle shall be able to turn right
-   - (Note)The vehicle's turn direction shall be controlled by an onboard servo
-* The vehicle's speed shall not exceed 30mph
-* The vehicle's motion shall be controlled by ground control
-* The vehicle shall stop all movement when communication with ground control is interrupted
-* The vehicle shall be able to remotely reconnect with ground control upon signal loss
-* The vehicle shall be able to operate for at least an hour at a time###The vehicle shall be able to operate for at least an hour at a time
+1. The vehicle shall be able to move forward
+2. The vehicle shall be able to move backwards
+3. The vehicle shall be able to turn left
+4. The vehicle shall be able to turn right
+5. The vehicle's speed shall not exceed 30mph
+6. The vehicle's motion shall be controlled by ground control
+7. The vehicle shall stop all movement after communication with ground control is interrupted
+8. The vehicle shall be able to remotely reconnect with ground control upon signal loss
+9. The vehicle shall be able to operate for at least an hour at a time
 
 ### Obstacle Avoidance
-
-* The vehicle shall stop after detecting an object in its direct path
-* The vehicle shall stop a minimum of 5 m from a detected object
-* The vehicle shall switch to manual control when an obstruction has been detected
+1. The vehicle shall be able to detect objects that are up to 20 m in front of it
+2. The vehicle shall stop after detecting an object in its direct path
+3. The vehicle shall stop a minimum of 5 m from a detected object
+4. The vehicle shall be able to navigate around detected obstacles after stopping
 
 ### Water- and Dust-Proofing
-
-* The vehicle shall be IP 67 compliant
-* The vehicle shall be bouyant
-* The vehicle shall be able to operate in temperatures between 20 and 30 degrees Celsius
+1. The vehicle shall be IP 67 compliant
+2. The vehicle shall be buoyant
+3. The vehicle shall be able to operate in temperatures between 0 and 40 degrees Celsius
 
 ### HD Camera
+1. The vehicle shall be equipped with a functioning HD camera
+2. The HD camera shall have a minimum of a 120 degree viewing area
+3. The HD camera shall have a minimum resolution of 720p
+4. The HD camera shall stream to ground control while the vehicle is powered
+5. The HD camera shall face directly forward from the front of the vehicle
+6. The HD camera shall be unobstructed by other components of the vehicle
 
-* The vehicle shall be mounted with a functioning HD camera
-* The HD camera shall have a minimum of a 120 degree viewing area
-* The HD camera shall have a resolution of 720p
-* The HD camera shall stream to ground control while the vehicle is powered
-* The HD camera shall be facing directly forward from the front of the vehicle
-* The HD camera shall maintain an unobstructed view of the area directly in front of the vehicle
+### Ground Station
+1. The ground station shall show a live HD camera feed from the vehicle
+2. The ground station shall send instructions to the vehicle while it is in autonomous mode
+3. The ground station shall be able to switch the vehicle between manual and autonomous mode
+4. The ground station shall be able to cease vehicle movement
+5. The ground station shall display the vehicle's position on a map
+6. The ground station shall display the vehicle's current speed
+7. The user shall be able to place waypoints on the map
+8. The ground station shall be able to provide help regarding use of the system
 
-### UI
-* The UI shall show a live HD camera feed from the vehicle
-* The UI shall send instructions to the vehicle while it is in autonomous mode
-* The UI shall be able to switch the vehicle between manual and autonomous mode
-* The UI shall be able to cease vehicle movement
-* The UI shall display the vehicle's position on a map
-* The UI shall display the vehicle's current speed
-* The user shall be able to place waypoints on the map
-* The UI shall have a help window to explain functions
-
-### Comms
-* The vehicle shall communicate with the ground station at a rate of at least 30 Hz
-* The vehicle shall stop itself in the event of a lost connection
-* The vehicle shall receive movement instructions from the ground station
-* The vehicle shall constantly communicate with ground control while connected
-* The vehicle shall respond to commands within 10 ms
+### Communications
+1. The vehicle shall communicate with the ground station at a rate of at least 30 Hz while connected
+2. The vehicle shall receive movement instructions from the ground station
+3. The vehicle shall respond to commands within 10 ms
 
 ### Autonomous Navigation
-* The vehicle shall stay on top of and within the bounds of the sidewalks while moving
-* The vehicle shall be able to navigate among user-specified waypoints
-* The vehicle shall travel along the shortest possible safe path between waypoints
-* The vehicle shall have the option to be autonomous
-* The vehicle shall move only along sidewalks while moving autonomously
-* The vehicle shall stop when it detects itself as being off-path
-* The vehicle shall have the option to be manually controlled
+1. The vehicle shall stay on top of and within the bounds of sidewalks while moving autonomously
+2. The vehicle shall be able to navigate among user-specified waypoints
+3. The vehicle shall travel along the shortest possible safe path between waypoints
+4. The vehicle shall have the option to be autonomous
+5. The vehicle shall move only along sidewalks while moving autonomously
+6. The vehicle shall stop when it detects itself as being off-path
+7. The vehicle shall have the option to be manually controlled
