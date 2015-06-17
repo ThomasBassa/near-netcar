@@ -1,5 +1,3 @@
-# Software
-
 ## Glossary
 * Ground Station (GS) - User interface. The website and the joystick. Everything on the operator's end.
 
