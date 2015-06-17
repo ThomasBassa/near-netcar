@@ -75,7 +75,7 @@ second. joyMonitor runs	directly on the pi, and performs some sort of hardware m
 An HD camera will be mounted to the front of the vehicle so that it faces forward. The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
 ### Physical
-
+The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the car.             
 
 ### Software Components
 The camera's sensor captures shots of what it sees at a rate of 30 hz. Software inside the camera converts the frames that are captured into a 30fps video at 720p resolution. That video is then sent to the webpage that is controlled by the webpage and displayed in real time.  
@@ -99,5 +99,9 @@ The camera's sensor captures shots of what it sees at a rate of 30 hz. Software 
 1. User moves joystick
 2. System changes vehicle movement accordingly. Repeat steps 1 & 2 as needed
 
-  
+###Obstacle Avoidance
+1. Vehicle detects an obstacle (with Lidar)
+2. Obstacle registered in map
+3. Vehicle is repelled from obstacle, while simultaneously redirecting itself toward the waypoint (objective)
+4. Vehicle avoids obstacle.
   
