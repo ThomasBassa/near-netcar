@@ -47,13 +47,13 @@
 
 ## Ground Station
 1. The ground station shall show a live HD camera feed from the vehicle
-2. The ground station shall send instructions for waypoint navigation to the vehicle while it is in autonomous mode 
+2. The ground station shall send instructions for waypoint navigation to the vehicle while it is in autonomous mode
 3. The ground station shall be able to switch the vehicle between manual and autonomous mode
 4. The ground station shall be able to cease vehicle movement
 5. The ground station shall display the vehicle's position on a map
 6. The ground station shall display the vehicle's current speed
 7. The user shall be able to place waypoints on the map
-8. The ground station shall be able to provide help regarding use of the system *training system*
+8. The ground station shall provide a training system to educate the user on theuse of the system
 9. The ground station shall display the HD camera's fps
 10. The ground station shall display the cardinal direction the vehicle is facing
 11. The ground station shall display the battery level of the vehicle
@@ -70,5 +70,5 @@
 3. The vehicle shall travel along the shortest possible safe path between waypoints
 4. The vehicle shall have the option to be autonomous
 5. The vehicle shall move only along sidewalks while moving autonomously
-6. The vehicle shall travel back to the sidewalk when it detects itself as being off-path 
+6. The vehicle shall travel back to the sidewalk when it detects itself as being off-path
 7. The vehicle shall have the option to be manually controlled
