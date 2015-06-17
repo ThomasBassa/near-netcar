@@ -18,6 +18,7 @@
 7. The vehicle shall stop all movement after communication with ground control is interrupted *Go back to last waypoint*
 8. The vehicle shall be able to remotely reconnect with ground control upon signal loss
 9. The vehicle shall be able to operate for at least an hour at a time
+*control at least 1-2 miles away*
 
 ### Obstacle Avoidance
 1. The vehicle shall be able to detect objects that are up to 20 m in front of it

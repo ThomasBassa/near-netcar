@@ -2,8 +2,8 @@
 
 ## Payload
 1. The vehicle shall be able to carry a volume of one cubic foot
-2. The vehicle shall be able to carry of 3 lbs
-3. The vehicle shall be able to carry a pizza box with a maximum surface area of 154 inches 
+2. The vehicle shall be able to carry a maximum of 3 lbs
+3. The vehicle shall be able to carry a box with a maximum surface area of 6 square feet
 
 ## Sound and Lights:
 1. The vehicle shall have a light mounted on top of the vehicle
@@ -54,12 +54,15 @@
 6. The ground station shall display the vehicle's current speed
 7. The user shall be able to place waypoints on the map
 8. The ground station shall be able to provide help regarding use of the system *training system*
-*A lot more status info, battery voltage, water status, direction, etc.
+9. The ground station shall display the HD camera's fps
+10. The ground station shall display the cardinal direction the vehicle is facing
+11. The ground station shall display the battery level of the vehicle
+12. The ground station shall display the temperature of the vehicle
 
 ## Communications
-1. The vehicle shall communicate with the ground station at a rate of at least 30 Hz while connected *30 Hz is a lot, just make it responsive*
+1. The vehicle shall communicate with the ground station at a rate of at least 30 Hz while connected
 2. The vehicle shall receive movement instructions from the ground station
-3. The vehicle shall respond to commands within 10* -> 150 ms *how do we test*
+3. The vehicle shall respond to commands within 150 ms
 
 ## Autonomous Navigation
 1. The vehicle shall stay on top of and within the bounds of sidewalks while moving autonomously
@@ -67,5 +70,5 @@
 3. The vehicle shall travel along the shortest possible safe path between waypoints
 4. The vehicle shall have the option to be autonomous
 5. The vehicle shall move only along sidewalks while moving autonomously
-6. The vehicle shall stop when it detects itself as being off-path *how to test* *also it should just get back on the path*  
+6. The vehicle shall travel back to the sidewalk when it detects itself as being off-path 
 7. The vehicle shall have the option to be manually controlled
