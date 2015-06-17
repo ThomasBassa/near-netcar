@@ -26,9 +26,9 @@
   
 #### Major components, location, interaction
 * Google Map: Top 3/4ths of the screen. Left half of the screen. Is used to drop waypoints, give directions while navigating, and update the user on the vehicle's location.
-* Video Feed: Top 3/4ths of the screen. Right half of the screen. Is used to provide the user with a visual of what is in front of the vehicle.
-* Autonomous Mode Checkbox (AMC): Below the map. When clicked, it will swap the vehicle from manual to autonomous mode and vice versa. 
-* Stop Button: Below the video stream. When clicked, it will command the vehicle to stop moving as fast as possible. To be used in emergencies.
+* Video Feed: Top 3/4ths of the screen. Right half of the screen. Is used to provide the user with a visual of what is in front of the vehicle and aid in navigation.
+* Autonomous Mode Checkbox (AMC): Below the map. When clicked, it will swap the vehicle from manual to autonomous mode and vice versa. It operates on PubSub. The vehicle subscribes to what the ground station publishes on the channel aero.near.modeSwitch. The ground station publishes when the state of the checkbox changes. This causes the vehicle to switch modes.
+* Stop Button: Below the video stream. When clicked, it will command the vehicle to stop moving as fast as possible. It calls an RPC named aero.near.emergStop to tell the robot to begin slowing down and eventually stopping. It will stop the robot from 30 mph to 0 in 15 meters. To be used in emergencies.
 * Navigational Buttons: Between the Stop Button and the AMC. They will cause navigations to start between waypoints chosen by the user.
   
 # Joystick  
