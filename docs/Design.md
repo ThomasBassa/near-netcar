@@ -41,3 +41,19 @@ We need to add more detail to this part. We'll talk about it.
 ###Obstacle Avoidance
 
 The car will be mounted with a lidar on a rotating servo. The servo will sweep back and forth, giving the lidar a 180 degree range of 'vision'. The results of the lidar scanning will be used to create a map of the world around the car, which will be constantly updated as the lidar continues to scan, and the car drives around. When the lidar detects an obstacle in the car's path, the obstacle will have a repulsion factor based on its distance; the closer the object, the more the car is repelled. Likewise, the waypoint to which the car is traveling will have an attraction factor of some value. The car will avoid the obstacle in its path while at the same time moving towards the objective in the most efficient way possible.
+
+###Sound and Lights
+
+An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
+
+<!---
+Add pinout screen shot
+--> 
+
+Raspberry Pi                            Active buzzer module
+    GND   ------------------------------------- ‘-’ 
+    GPIO11 ------------------------------------- ‘s’
+
+The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. The GPIO library for Raspberry Pi will be used in the program.
+
+A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The LED will be on whenever the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires- two pins, power and ground. The GPIO library will again be used.
