@@ -53,7 +53,7 @@
 5. The ground station shall display the vehicle's position on a map
 6. The ground station shall display the vehicle's current speed
 7. The user shall be able to place waypoints on the map
-8. The ground station shall provide a training system to educate the user on theuse of the system
+8. The ground station shall provide a training system to educate the user on the use of the system
 9. The ground station shall display the HD camera's fps
 10. The ground station shall display the cardinal direction the vehicle is facing
 11. The ground station shall display the battery level of the vehicle
