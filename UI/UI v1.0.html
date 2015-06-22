@@ -247,7 +247,12 @@
 				console.log("Hello World");
 			}
 			function changeMode() {   // will be for the checkbox thing
-				mySession.publish('aero.near.changeMode', []);
+				if(document.getElementById("switch1").checked == "checked"){
+					mySession.publish('aero.near.makeAuto', [true]);
+				}
+				else {
+					mySession.publish('aero.near.makeAuto', [false]);
+				}
 				// if(mode == "Manual")
 				// 	mode = "Automatic";
 				// else
