@@ -66,6 +66,7 @@
 			var markerLatLngs;
 			var uniqueId;
 			var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
+			var carMarker;
 
 			function initialize() {
 				directionsDisplay = new google.maps.DirectionsRenderer();
@@ -78,7 +79,13 @@
 
 				map = new google.maps.Map(document.getElementById('map-canvas'),
 					mapOptions);
-
+				icon = 'littlearrow.png';
+				carMarker = new google.maps.Marker({
+					position: myLatLng,
+					map: map,
+					title: 'Vehicle',
+					icon: icon
+				});
 				
 				// var helpWindow = new google.maps.InfoWindow({
 				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
