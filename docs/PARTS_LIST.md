@@ -45,6 +45,21 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 Adafruit Ultimate GPS HAT for Raspberry Pi
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
 
+## Horn
+
+DC 24V Electronic Red LED Flashing Alarm Buzzer Siren 100dB BJ-3
+http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
+
+## Flashing LEDs
+
+New White / Amber Emergency 86-LED Waterproof Police Fireman Truck Strobe Light #742 NEW 4"x2"
+http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
+
+## Some small screen
+
+Nintendo 3ds XL bottom screen
+
+
 ## Misc Items
 
 ### Servo for testing:
