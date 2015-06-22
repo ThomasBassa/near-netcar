@@ -1,0 +1,29 @@
+<The goal of design is so that we're not floundering around when
+it comes time to build. And we work through the logic of 
+everything before we do it.>
+
+
+1. 
+<We need a description of the system. The purpose. What it should do
+, just a summary type thing that should be about a paragraph.>
+
+2. 
+<Then we make a chart showing the different subsystems on our vehicle
+and how they work together. Use box diagram. This should include 
+obstacle avoidance, motor control, servo control, the raspberry Pi,
+the light, struts, the sound, batteries, crossbar.io and its 
+communication, anything you think is separate from other things 
+but important>
+
+3. 
+<Then for each thing in your diagram, write about its design>
+
+<What is design? A blueprint for how you'll put things together.
+This means what's connected in hardware. What pins go to what.
+What libraries or type of communication (I2C or Serial or Wifi).
+How it'll attach to the vehicle. Write a few use cases about what 
+it'll actually do in the system (if applicable). What parts will 
+be used?Write pseudo code (if applicable) and name the algorithms that
+will be used (if applicable). EXPLAIN YOUR CHOICES ALWAYS. For prints,
+what kind of plastic and why?>
+

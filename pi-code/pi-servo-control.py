@@ -12,6 +12,8 @@ pwm = PWM(0x40,debug=True)
 servoMin = 150  # Min pulse length out of 4096
 servoMax = 600  # Max pulse length out of 4096
 
+pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
+
 class MyComponent(ApplicationSession):
 
     def onJoin(self, details):
@@ -35,9 +37,6 @@ if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
     runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
-
-# This runs AFTER the runner is killed-- basically never
-pwm.setPWMFreq(60)                        # Set frequency to 60 Hz
 
 
   

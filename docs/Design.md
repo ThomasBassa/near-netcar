@@ -1,4 +1,6 @@
 #Design
+Summary
+The vehicle will be able to communicate with the ground station.  The vehicle shall also be able to navigate sidewalks autonomously between waypoints determined by a user at the ground station while avoiding obstacles.  In addition, the vehicle will be controlled by motion given by the joystick when in manual mode.  The vehicle shall be able to send live HD feed of camera while the vehicle is on. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on and in motion. The vehicle will conform to IP66 standards, making it water, dust, and touch resistant.  
 
 <!---
 It might be a good idea to label the figures in here so that you can refer to them as Figure 1, Figure 2, etc.
@@ -41,3 +43,20 @@ We need to add more detail to this part. We'll talk about it.
 ###Obstacle Avoidance
 
 The car will be mounted with a lidar on a rotating servo. The servo will sweep back and forth, giving the lidar a 180 degree range of 'vision'. The results of the lidar scanning will be used to create a map of the world around the car, which will be constantly updated as the lidar continues to scan, and the car drives around. When the lidar detects an obstacle in the car's path, the obstacle will have a repulsion factor based on its distance; the closer the object, the more the car is repelled. Likewise, the waypoint to which the car is traveling will have an attraction factor of some value. The car will avoid the obstacle in its path while at the same time moving towards the objective in the most efficient way possible.
+
+###Sound and Lights
+
+An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
+
+<!---
+Add pinout screen shot
+--> 
+
+Raspberry Pi                            Active buzzer module
+
+    GND   ------------------------------------- ‘-’ 
+    GPIO11 ------------------------------------- ‘s’
+
+The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. The GPIO library for Raspberry Pi will be used in the program.
+
+A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The LED will be on whenever the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires- two pins, power and ground. The GPIO library will again be used.
