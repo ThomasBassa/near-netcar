@@ -51,8 +51,8 @@ Add pinout screen shot
 --> 
 
 Raspberry Pi                            Active buzzer module
+
     GND   ------------------------------------- ‘-’ 
-    
     GPIO11 ------------------------------------- ‘s’
 
 The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. The GPIO library for Raspberry Pi will be used in the program.
