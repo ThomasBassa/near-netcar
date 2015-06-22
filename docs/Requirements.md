@@ -12,7 +12,8 @@
 3. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
 4. The vehicle shall be mounted with a noise device
 5. The noise device shall repeatedly sound at an interval of 2 seconds
-6. The noise device shall generate between 60 and 65 decibels when sounding
+6. The noise device shall sound constantly when an obsticle is detected
+7. The noise device shall generate between 60 and 65 decibels when sounding
 
 ## Vehicle Motion
 1. The vehicle shall be able to move forward
