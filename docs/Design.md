@@ -2,8 +2,8 @@
 Summary
 The vehicle will be able to communicate with the ground station.  The vehicle shall also be able to navigate sidewalks autonomously between waypoints determined by a user at the ground station while avoiding obstacles.  In addition, the vehicle will be controlled by motion given by the joystick when in manual mode.  The vehicle shall be able to send live HD feed of camera while the vehicle is on. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on and in motion. The vehicle will conform to IP66 standards, making it water, dust, and touch resistant.  
 
-![Waterproof Box](waterProof)
-![Vehicle Layout](vehicleLayout)
+![waterProof]()
+![vehicleLayout]()
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
