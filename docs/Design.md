@@ -70,3 +70,26 @@ Raspberry Pi                            Active buzzer module
 The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. The GPIO library for Raspberry Pi will be used in the program.
 
 A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The LED will be on whenever the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires- two pins, power and ground. The GPIO library will again be used.
+
+Servo/Motor Control
+Behavior 
+•	Uses the output from the joystick to control speed and direction of the vehicle.  This output is produced into two different methods, horizontal and vertical.  Horizontal output controls the direction of the vehicle (rotational degrees of the servos) and Vertical output controls the speed of the vehicle (negative output = positive acceleration, positive output = negative acceleration).  
+•	Servo control method --> Horizontal(param)
+o	This method changes the PWM signal to the servo using I2C library.
+•	Motor control method--> Vertical(param)
+o	Figure out what code we need to talk to the motor controller
+Physical
+•	This system consists of two servo motors, two motors, a servo controller, and an Evx-2 speed controller.  The two servo motors are directly connected to the vehicle and wired to a raspberry pi which connects to a website using crossbar.io.  This website uses RPC, passing joystick data over the Wi-Fi by calling the method Horizontal to the Pi which controls the rotation of the servos.  The Evx-2 speed controller will be mounted onto the robot and wired to the motors and raspberry pi.  Like the servos, the data from the joystick is transferred using RPC over the internet using crossbar.io to call the method Vertical and sent to the pi which feeds the speed controller data. 
+Software Components
+•	Pi connects to the website through crossbar.io.  Ground control calls methods Horizontal(param) and Vertical(param) with the data from the joystick to control speed and direction of the robot.  
+•	PWM Frequency- 1700Hz
+•	Pi controls with i2c
+Function Horizontal(param)
+•	This function controls the direction of the servos
+•	Param is the input form the joystick and is a number between -1 and 1 on the x-axis
+•	This function is called by the ground station using RPC 
+Function Vertical(param)
+•	This function controls the acceleration and speed of the motors.
+•	Param is the input from the joystick and is a number between -1 and 1 on the y-axis
+•	This function is called by the ground station using RPC
+
