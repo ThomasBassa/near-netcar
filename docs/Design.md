@@ -76,7 +76,9 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 •	Servo control method --> Horizontal(param)
 o	This method changes the PWM signal to the servo using I2C library.
 •	Motor control method--> Vertical(param)
+
 **Test code for Motor??**
+
 import RPi.GPIO as GPIO
 from time import sleep
  
