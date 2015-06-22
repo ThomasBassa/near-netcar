@@ -1,5 +1,6 @@
 # Glossary
 * Ground Station (GS) - User interface. The website and the joystick. Everything on the operator's end.
+* Vehicle - The RC car and the onboard Pi 
 
 # System Design
 * Joystick Code
@@ -74,7 +75,7 @@ second. joyMonitor runs	directly on the pi, and performs some sort of hardware m
 An HD camera will be mounted to the front of the vehicle so that it faces forward. The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
 ## Physical
-The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the car.             
+The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the vehicle.             
 
 ## Software Components
 The camera's sensor captures shots of what it sees at a rate of 30 hz. Software inside the camera converts the frames that are captured into a 30fps video at 720p resolution. That video is then sent to the webpage that is controlled by the webpage and displayed in real time.  
@@ -88,7 +89,7 @@ The camera's sensor captures shots of what it sees at a rate of 30 hz. Software 
 3. User clicks deisred place on provided map
 4. System creates and displays waypoint on map and connects it to previous point. Repeat steps 3 & 4 until User ceases creation of waypoints
 5. User tells the system to begin navigation
-6. System determines closest path from known sidewalk junctions & transmits to Pi--nav starts  
+6. System determines closest path from known sidewalk junctions & transmits to vehicle - nav starts  
 
 ## Alternate Flows
 1. User indicates a waypoint to remove
