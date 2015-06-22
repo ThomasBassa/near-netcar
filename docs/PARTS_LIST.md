@@ -55,11 +55,6 @@ http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/
 New White / Amber Emergency 86-LED Waterproof Police Fireman Truck Strobe Light #742 NEW 4"x2"
 http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
 
-## Some small screen
-
-Nintendo 3ds XL bottom screen
-
-
 ## Misc Items
 
 ### Servo for testing:
