@@ -247,10 +247,11 @@
 				console.log("Hello World");
 			}
 			function changeMode() {   // will be for the checkbox thing
-				if(mode == "Manual")
-					mode = "Automatic";
-				else
-					mode = "Manual";
+				mySession.publish('aero.near.changeMode', []);
+				// if(mode == "Manual")
+				// 	mode = "Automatic";
+				// else
+				// 	mode = "Manual";
 			}
 
 			//window.onload = loadScript;
@@ -266,6 +267,11 @@
 			<input type="checkbox" name="Mode" value="Auto"> Automatic Mode<br> --><!-- TODO MAKE PUBSUB-->
 				<!--<input type="submit" value="Submit">
 			</form>-->
+			<form action="#" method="get">
+				<input type="checkbox" id="switch1" name="switch1" class="switch" />
+				<label for="switch1">Autonomous Mode</label>
+			</form>
+			<br></br>
 			<button type="button" class=buttonstyle>Automatic Mode</button>
 			<button onclick="directionsStart()" id="directionBeginner" class="buttonstyle">Give me Directions!</button>
 			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
