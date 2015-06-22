@@ -2,10 +2,8 @@
 Summary
 The vehicle will be able to communicate with the ground station.  The vehicle shall also be able to navigate sidewalks autonomously between waypoints determined by a user at the ground station while avoiding obstacles.  In addition, the vehicle will be controlled by motion given by the joystick when in manual mode.  The vehicle shall be able to send live HD feed of camera while the vehicle is on. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on and in motion. The vehicle will conform to IP66 standards, making it water, dust, and touch resistant.  
 
-![Waterproof box]()
-
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](https://www.lucidchart.com/documents/edit/7cb4f0c2-743a-47cb-979c-035d6247918a?)
+![Waterproof Box](waterProof)
+![Vehicle Layout](vehicleLayout)
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
@@ -76,40 +74,7 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 •	Servo control method --> Horizontal(param)
 o	This method changes the PWM signal to the servo using I2C library.
 •	Motor control method--> Vertical(param)
-
-**Test code for Motor??**
-
-import RPi.GPIO as GPIO
-from time import sleep
- 
-GPIO.setmode(GPIO.BOARD)
- 
-Motor1A = 16
-Motor1B = 18
-Motor1E = 22
- 
-GPIO.setup(Motor1A,GPIO.OUT)
-GPIO.setup(Motor1B,GPIO.OUT)
-GPIO.setup(Motor1E,GPIO.OUT)
- 
-print "Going forwards"
-GPIO.output(Motor1A,GPIO.HIGH)
-GPIO.output(Motor1B,GPIO.LOW)
-GPIO.output(Motor1E,GPIO.HIGH)
- 
-sleep(2)
- 
-print "Going backwards"
-GPIO.output(Motor1A,GPIO.LOW)
-GPIO.output(Motor1B,GPIO.HIGH)
-GPIO.output(Motor1E,GPIO.HIGH)
- 
-sleep(2)
- 
-print "Now stop"
-GPIO.output(Motor1E,GPIO.LOW)
- 
-GPIO.cleanup()**
+##o	Figure out what code we need to talk to the motor controller
 ###Physical
 •	This system consists of two servo motors, two motors, a servo controller, and an Evx-2 speed controller.  The two servo motors are directly connected to the vehicle and wired to a raspberry pi which connects to a website using crossbar.io.  This website uses RPC, passing joystick data over the Wi-Fi by calling the method Horizontal to the Pi which controls the rotation of the servos.  The Evx-2 speed controller will be mounted onto the robot and wired to the motors and raspberry pi.  Like the servos, the data from the joystick is transferred using RPC over the internet using crossbar.io to call the method Vertical and sent to the pi which feeds the speed controller data. 
 ###Software Components
