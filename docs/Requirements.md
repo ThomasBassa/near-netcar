@@ -11,9 +11,8 @@
 3. The light shall have a minimum of 300 lumen
 3. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
 4. The vehicle shall be mounted with a noise device
-5. The noise device shall sound when an obstacle is detected 20 m from the vehicle's front bumper
-6. The noise device shall repeatedly sound at an interval of 2 seconds
-7. The noise device shall generate between 60 and 65 decibels when sounding
+5. The noise device shall repeatedly sound at an interval of 2 seconds
+6. The noise device shall generate between 60 and 65 decibels when sounding
 
 ## Vehicle Motion
 1. The vehicle shall be able to move forward
