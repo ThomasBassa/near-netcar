@@ -67,6 +67,8 @@
 			var uniqueId;
 			var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
 			var carMarker;
+			var poly;
+
 
 			function initialize() {
 				directionsDisplay = new google.maps.DirectionsRenderer();
@@ -86,20 +88,39 @@
 					title: 'Vehicle',
 					icon: icon
 				});
-				
-				// var helpWindow = new google.maps.InfoWindow({
-				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
-				// 	position: myLatLng
-				// });
-
-				// helpWindow.open(map);
 
 				markers = new Array();
 				listenersForDirections = new Array();
 				deleteListeners = new Array();
 				waypoints  = new Array();
 				markerLatLngs = new Array();
+
 				uniqueId = 0;
+				carMarker.id = uniqueId;
+				markers[0] = carMarker;
+				uniqueId++;
+
+				// var helpWindow = new google.maps.InfoWindow({
+				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
+				// 	position: myLatLng
+				// });
+
+				// helpWindow.open(map);
+				
+
+
+				//line making
+				var polyOptions = {
+					strokeColor: '#000000',
+					strokeOpacity: 1.0,
+					strokeWeight: 3
+				};
+
+				poly = new google.maps.Polyline(polyOptions);
+				poly.setMap(map);
+				var path = poly.getPath();
+				path.push(carMarker.position);
+
 
 				google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
 					var mark = new google.maps.Marker({
@@ -115,11 +136,16 @@
 					deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(e){
 						deleteMarker(mark.id);
 					}));
+
+					var path = poly.getPath(); //temp to connect markers
+					path.push(e.latLng);
 				});
 			}
 			function deleteMarker(id) {
 				for (var i = 0; i < markers.length; i++) {
 		            if (markers[i].id == id) {
+		            	var path = poly.getPath();
+		            	path.removeAt(i);
 		                //Remove the marker from Map                  
 		                markers[i].setMap(null);
 		 				markers[i] = null;
@@ -158,7 +184,7 @@
 			// function beginDirecting(markerStart){
 			// 	waypoints = new Array();
 			// 	waypoints.push({
-			// 		location: markerStart.position
+			// 		location: markerStart.position        ugly code, ignore it
 			// 	});
 			// 	for(i = 1; i < markers.length; i++){
 			// 		google.maps.event.clearListeners(markers[i], 'click');
