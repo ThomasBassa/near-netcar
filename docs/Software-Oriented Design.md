@@ -4,14 +4,42 @@
 * Vehicle - The RC car and its onboard Pi
 
 # System Design
-This is the set of subsystems we believe are necessary in this system. <!--Why?-->
+This is the set of subsystems we believe are necessary in this system.
 * Joystick Code
 * Navigation (Autonomous and otherwise)
 * Camera (Hardware overlap)
 * Website Frontend
 
+# Use Cases
+
+## Navigation Activation
+
+1. User asks to put vehicle in auto mode
+2. System puts vehicle in auto mode
+3. User clicks desired place on provided map
+4. System creates and displays waypoint on map and connects it to previous point.
+*Repeat steps 3 & 4 until user is done*
+5. User tells the system to begin navigation
+6. System determines closest path from known sidewalk junctions & transmits to vehicle - navigation starts  
+
+### Alternate Flows
+*For step 3*:
+1. User indicates a waypoint to remove
+2. System removes waypoint from the route and connects the previous and next waypoints
+
+## Manual Vehicle Movement
+1. User moves joystick
+2. System sends information to vehicle accordingly.
+3. Vehicle moves
+
+## Obstacle Avoidance
+1. Vehicle detects an obstacle (with Lidar)
+2. Obstacle registered in map
+3. Vehicle is repelled from obstacle, while simultaneously redirecting itself toward the waypoint (objective)
+4. Vehicle avoids obstacle.
+
 # Subsystem Design
-<!-- These could probably be reordered. -->
+
 ## Website Frontend
 
 ### Behaviour
@@ -35,7 +63,6 @@ It allows the user to see through the vehicle's eyes via the onboard camera and
 enables the vehicle's course to be set in automatic mode.
 It also shows where the vehicle is in geographic space
 so the user is also able to plan where he or she wants to go.
-<!-- Directional instructions? What? -->
 It provides directional instructions to take the user wherever
 they want to go on campus as well.
 It also enables emergency stops through the stop button.
@@ -121,31 +148,3 @@ The camera's sensor captures shots of what it sees at a rate of 30 hz.
 Default software in the camera converts the frames that are captured
 into a 30fps video at 720p resolution. That video is then sent to the UI
 that is controlled by the ground station and displayed in real time.  
-
-<!-- These should probably show up as the first section of the document... I'll do it later. -->
-# Use Cases
-
-## Navigation Activation
-
-1. User asks to put vehicle in auto mode
-2. System puts vehicle in auto mode
-3. User clicks desired place on provided map
-4. System creates and displays waypoint on map and connects it to previous point.
-*Repeat steps 3 & 4 until user is done*
-5. User tells the system to begin navigation
-6. System determines closest path from known sidewalk junctions & transmits to vehicle - navigation starts  
-
-### Alternate Flows
-*For step 3*:
-1. User indicates a waypoint to remove
-2. System removes waypoint from the route and connects the previous and next waypoints
-
-## Manual Vehicle Movement
-1. User moves joystick
-2. System changes vehicle movement accordingly. Repeat steps 1 & 2 as needed
-
-## Obstacle Avoidance
-1. Vehicle detects an obstacle (with Lidar)
-2. Obstacle registered in map
-3. Vehicle is repelled from obstacle, while simultaneously redirecting itself toward the waypoint (objective)
-4. Vehicle avoids obstacle.
