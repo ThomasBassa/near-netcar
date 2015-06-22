@@ -77,7 +77,7 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 o	This method changes the PWM signal to the servo using I2C library.
 •	Motor control method--> Vertical(param)
 
-import RPi.GPIO as GPIO
+**import RPi.GPIO as GPIO
 from time import sleep
  
 GPIO.setmode(GPIO.BOARD)
@@ -107,7 +107,7 @@ sleep(2)
 print "Now stop"
 GPIO.output(Motor1E,GPIO.LOW)
  
-GPIO.cleanup()
+GPIO.cleanup()**
 ###Physical
 •	This system consists of two servo motors, two motors, a servo controller, and an Evx-2 speed controller.  The two servo motors are directly connected to the vehicle and wired to a raspberry pi which connects to a website using crossbar.io.  This website uses RPC, passing joystick data over the Wi-Fi by calling the method Horizontal to the Pi which controls the rotation of the servos.  The Evx-2 speed controller will be mounted onto the robot and wired to the motors and raspberry pi.  Like the servos, the data from the joystick is transferred using RPC over the internet using crossbar.io to call the method Vertical and sent to the pi which feeds the speed controller data. 
 ###Software Components
