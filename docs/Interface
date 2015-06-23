@@ -18,7 +18,6 @@ converts the position to a tuple of floats, and calls the function 	joyMonitor()
 * Returns - PWM-based servo controls 
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
-
 ### Function - joyMove()
 * Args -
 * Returns - The motors moving the tires forwards and backwards 
@@ -45,9 +44,14 @@ converts the position to a tuple of floats, and calls the function 	joyMonitor()
 
 ## Battery
 
+### Function - showBattery
+* Args - 
+* Returns - The battery status as a percentage float
+* Behavior - The vehicle sends its battery level to the Ground System, which will display the information on the webpage
+
 ## Temperature
 
 ### Function - showTemp
 * Args - 
-* Returns - The vehicle's temperature on the webpage
+* Returns - The vehicle's temperature as a percentage float
 * Behavior - The vehicle sends its temperature to the Ground System, which will display the information on the webpage
