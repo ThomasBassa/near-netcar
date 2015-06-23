@@ -64,3 +64,8 @@ https://www.servocity.com/html/hs-82mg_servo.html#.VYB9HesmREd
 
 Evx-2 speed controller
 https://traxxas.com/products/parts/escs/3019Revx2lvd
+
+### Storage thing for pizza
+
+Storage bin
+http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=REC-_-NavPLPHorizontal1_rr-_-NA-_-100671079-_-N
