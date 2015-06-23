@@ -93,4 +93,4 @@ o	This method changes the PWM signal to the servo using I2C library.
 •	This function controls the acceleration and speed of the motors.
 •	Param is the input from the joystick and is a number between -1 and 1 on the y-axis
 •	This function is called by the ground station using RPC
-
+###Use Cases
