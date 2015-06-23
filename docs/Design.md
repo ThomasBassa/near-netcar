@@ -20,13 +20,17 @@ The vehicle will conform to IP54 standards, protecting it from water, dust, and 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
 <!--
-This needs to be more specific. We have struts finished! Which is good. I'd like to see a diagram with the strut's measurements (don't worry, we have this. We just need a pic of our actual design in SolidWorks. Explain the top thingy. That it'll be used to hold the payload up. How will it be used to hold the payload up? Also, use complete sentences. It sounds better.
+This needs to be more specific. We have struts finished! Which is good.
+I'd like to see a diagram with the strut's measurements (don't worry, we have this.
+We just need a pic of our actual design in SolidWorks. Explain the top thingy. That it'll be used to hold the payload up.
+How will it be used to hold the payload up? Also, use complete sentences. It sounds better.
 -->
 <!--
 Didn't mention the material used in the print. Specify which material and why. Always talk about why. Talk about how much infill used and why.
 -->
-This strut design was printed using the TAZ 5 printer.  The vehicle has one strut mounted onto the front and one onto back of the chassis to give suport for the suspension.
-<!---
+This strut design was printed using the TAZ 5 printer.
+The vehicle has one strut mounted onto the front and one onto back of the chassis to give suport for the suspension.
+<!--
 Is this a duplicate picture? A picture of the actual vehicle might be nice.
 -->
 <!--
@@ -36,21 +40,38 @@ Why is it tilted in the picture?
 
 
 We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; shocks are screwed into these.
-This block was printed to give suport for the shocks.  Four blocks were used to glue one block to each side of the top 2 holes on each strut to suport the nails we later used to prop up the spings on the strut. They were glued using acetone.
+This block was printed to give suport for the shocks.
+Four blocks were used to glue: one block to each side of the top 2 holes on each strut,
+to suport the nails we later used to prop up the spings on the strut. They were glued using acetone.
 
 ![screenshot 2015-06-17 13 09 40](https://cloud.githubusercontent.com/assets/11369623/8214180/61576aa0-14f5-11e5-80a5-221eb7742fef.png)
 
+<!-- Thomas: How much of this is necessary when you could link to Autobahn docs... especially if this is copy/paste? -->
 #Ground Station Communication
-Application components connect to Crossbar.io and can then talk to each other using two patterns Remote Procedure Calls and Publish & Subscribe. Crossbar.io directes and transmitts messages to the right components ("message routing").
+Application components connect to Crossbar.io and can then talk to each other using two patterns:
+Remote Procedure Calls and Publish & Subscribe. Crossbar.io directes and transmitts messages to the right components ("message routing").
 
 ###Remote Procedure Calls
-Remote Procedure Call (RPC) is a messaging pattern involving peers of three roles: Caller, Callee, and Dealer. A Caller issues calls to remote procedures by providing the procedure URI and any arguments for the call. The Callee will execute the procedure using the supplied arguments to the call and return the result of the call to the Caller. Callees register procedures they provide with Dealers. Callers initiate procedure calls first to Dealers. Dealers route calls incoming from Callers to Callees implementing the procedure called, and route call results back from Callees to Callers. The Caller and Callee will usually run application code, while the Dealer works as a generic router for remote procedure calls decoupling Callers and Callees.
+Remote Procedure Call (RPC) is a messaging pattern involving peers of three roles:
+Caller, Callee, and Dealer. A Caller issues calls to remote procedures by providing the procedure URI
+and any arguments for the call. The Callee will execute the procedure using the supplied arguments to the call
+and return the result of the call to the Caller. Callees register procedures they provide with Dealers.
+Callers initiate procedure calls first to Dealers. Dealers route calls incoming from Callers to Callees
+implementing the procedure called, and route call results back from Callees to Callers.
+The Caller and Callee will usually run application code, while the Dealer works
+as a generic router for remote procedure calls decoupling Callers and Callees.
 
-With the Remote Procedure Call pattern, any component can register a procedure that other components can call and call all procedures registered by other components. Crossbar.io routes calls to the component that registered the respective procedure and returns the result to the caller: RPC pattern - registering a procedure with the Crossbar.io router, PRC pattern - calling a remote procedure and receiving the result, routed via Crossbar.io.
+With the Remote Procedure Call pattern, any component can register a procedure that other components can call and call all 
+procedures registered by other components. Crossbar.io routes calls to the component that registered the respective procedure 
+and returns the result to the caller: RPC pattern - registering a procedure with the Crossbar.io router, PRC pattern - 
+calling a remote procedure and receiving the result, routed via Crossbar.io.
 
 ###Publish & Subscribe
-With the Publish & Subscribe pattern, any component can subscribe to receive events published from other components and publish events which other subscribed components will receive. Crossbar.io routes event published to all components that have subscribed to receive events for the topic.
+With the Publish & Subscribe pattern, any component can subscribe to receive events published from other components and 
+publish events which other subscribed components will receive. Crossbar.io routes event published to all components that have 
+subscribed to receive events for the topic.
 
+<!-- Thomas: This bit is probably okay though since their documentation for code is kind of thick -->
 ###Methods
 To PUBLISH an event - session.publish('join.session', 'Session joined')
 
@@ -95,7 +116,8 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
   - switch back to assisted after 20 sec
 
 #Sound and Lights
-An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
+An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
+The buzzer will be wired to the Pi in the following way:
 
 <!--
 Add pinout screen shot
@@ -106,9 +128,12 @@ Add pinout screen shot
     GND   ------------------------------------- ‘-’
     GPIO11 ------------------------------------- ‘s’
 
-The GPIO library for Raspberry Pi will be used in the program. The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'.
+The GPIO library for Raspberry Pi will be used in the program. The method GPIO.write(pin, power) will be used with the 
+parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'.
 
-A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The light will be on while the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground. The GPIO library will again be used.
+A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The light will be on while the vehicle is 
+powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground.
+The GPIO library will again be used.
 
 #Servo/Motor Control
 ###Behavior
@@ -157,22 +182,28 @@ Param is the input from the joystick and is a number between -1 and 1 on the y-a
 This function is called by the ground station using RPC.
 
 #Sidewalk Detection
-An RGB sensor will be mounted onto the front bumper of the car, and the Raspberry Pi will communicate with it using I2C (address 0x29), with wiring (from the website) VDD to 3-5 V DC, ground to common ground, SCL to I2C Clock and SDA to I2C Data. The sensor will keep track of the colour of the ground directly in front of the vehicle; whenever the ground is not white or light grey (sidewalk coloured), the car will turn in the opposite direction as the joystick input being given, for 1 second, before returning control to the user, thereby keeping the vehicle on the sidewalk.
+An RGB sensor will be mounted onto the front bumper of the car, and the Raspberry Pi will communicate with it using I2C 
+(address 0x29), with wiring (from the website) VDD to 3-5 V DC, ground to common ground, SCL to I2C Clock and SDA to I2C 
+Data. The sensor will keep track of the colour of the ground directly in front of the vehicle; whenever the ground is not 
+white or light grey (sidewalk coloured), the car will turn in the opposite direction as the joystick input being given, for 1 
+second, before returning control to the user, thereby keeping the vehicle on the sidewalk.
 
 Note on colours: RGB values will be considered 'sidewalk colours' as long as either
 
-1. all values are greater than 200 (very light colours; coloured light or different times of day may result in the sidewalk looking tinted a different colour; these are very light and we won't run into any ground coloured like this (ie no roads or nature are these colours, well maybe a flower or something but we'd only have an issue if the floor were made entirely of pastel flowers, which isn't happening)
-2. all values within two of each other, and greater than 160 (accounts of slightly darker sidewalks, with the values very close, only greyscale colours will be allowed, and no asphalt will be this light)
+1. all values are greater than 200 (very light colours; coloured light or different times of day may result in the sidewalk 
+looking tinted a different colour; these are very light and we won't run into any ground coloured like this (ie no roads or 
+nature are these colours, well maybe a flower or something but we'd only have an issue if the floor were made entirely of 
+pastel flowers, which isn't happening)
+2. all values within two of each other, and greater than 160 (accounts of slightly darker sidewalks, with the values very 
+close, only greyscale colours will be allowed, and no asphalt will be this light) 
 
 ###Use Case - Sidewalk Lost
-
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on
   - colour sensor comes on
 4. if colour sensor detects no sidewalk
   - use last joystick input (left/right) and turn opposite direction for 1 second
-
 
 #Mounting Container
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
@@ -185,4 +216,6 @@ The container has a lid for protection.
 Add text here
 
 #Waterproofing
-To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
+To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
+container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
+come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
