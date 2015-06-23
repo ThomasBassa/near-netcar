@@ -95,6 +95,7 @@ o	This method changes the PWM signal to the servo using I2C library.
 •	This function is called by the ground station using RPC
 ###Use Cases
 Use Case- obstacle detection
+
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on 
@@ -111,6 +112,7 @@ Use Case- obstacle detection
     •   switch back to assisted after 20 sec
 
 Use Case- avoiding sidewalks
+
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on 
@@ -119,4 +121,5 @@ Use Case- avoiding sidewalks
     •   use last joystick input (left/right) and use opposite for 1 sec
 
 Use Case- switch to manual mode
+
 1. press button on website to switch to manual mode
