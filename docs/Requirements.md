@@ -54,11 +54,6 @@
 8. The ground station shall provide a training system to educate the user on the use of the system
 9. The ground station shall display the HD camera's fps
 
-<Not neccessary, but would be useful:>
-1. The ground station shall display the battery level of the vehicle
-
-2. The ground station shall display the temperature of the vehicle
-
 ## Communications
 1. The vehicle shall communicate with the ground station at a rate of at least 30 Hz while connected
 2. The vehicle shall receive movement instructions from the ground station
