@@ -12,10 +12,6 @@ http://www.ebay.com/itm/RC-1-10-Car-Aluminum-Heat-Sink-Fit-540-550-Stock-and-Mod
 Adafruit 10-DOF IMU Breakout - L3GD20H + LSM303 + BMP180
 http://www.adafruit.com/product/1604
 
-To detect sidewalk:
-RGB Color Sensor with IR filter and white LED
-http://www.adafruit.com/product/1334
-
 ## Screws
 
 250 Piece T-maxx Screw kit :
