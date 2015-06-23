@@ -36,14 +36,9 @@ be buttons to begin directional instructions for manual mode.
 These directional instructions will also be used to help the vehicle
 navigate autonomously. Waypoints are able to be placed on the map to give
 instructions on where the vehicle needs to go in both manual and autonomous mode.
-<<<<<<< HEAD
 There will also be some vehicle statistics displayed below the camera feed,
 such as temperature of the vehicle, which will be used to tell when the vehicle is about to overheat. 
 Heading, which will aid in navigation, and battery level, to tell when the vehicle will lose power.
-=======
-There will also be some data displayed below the camera feed,
-such as temperature of the vehicle, heading, and battery level.
->>>>>>> origin/master
 
 ### Role
 The website frontend is used to display vehicle status information.
@@ -56,14 +51,9 @@ they want to go on campus as well.
 It also enables emergency stops through the stop button.
 Finally, it allows the user to put the vehicle into autonomous mode,
 so it can navigate on its own if the user does not want to control it.
-<<<<<<< HEAD
 The website frontend will show important information about the current status of the car 
-such as the battery life of the car, the vehicle's temperature, the ardinal direction the vehicle is facing,
-the camera framerate, and the vehicle's current speed.
-=======
-The website frontend will show important information about the current status
-of the car such as the battery life of the car or the vehicle's temperature.
->>>>>>> origin/master
+such as the battery life of the car, the vehicle's temperature, the cardinal direction the vehicle is facing,
+the camera's framerate, and the vehicle's current speed.
 
 ### Major components, location, interaction
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
@@ -82,11 +72,7 @@ of the car such as the battery life of the car or the vehicle's temperature.
 * Navigational Buttons: Between the Stop Button and the AMC.
   They will cause navigations to start between waypoints chosen by the user.
 * Data: Below the camera feed.
-<<<<<<< HEAD
   Will display the current heading and battery level to the user.
-=======
-  Will display important information such as heading and battery level to the user.
->>>>>>> origin/master
   It will also show the vehicle's temperature, the camera's framerate, and the vehicle's current speed.
 
 ## Joystick
