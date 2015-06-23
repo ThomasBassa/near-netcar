@@ -1,23 +1,16 @@
 #Design
-The vehicle will be able to communicate with the ground station.  The vehicle shall also be able to navigate sidewalks autonomously between waypoints determined by a user at the ground station while avoiding obstacles.  In addition, the vehicle will be controlled by motion given by the joystick when in manual mode.  The vehicle shall be able to send live HD feed of camera while the vehicle is on. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on and in motion. The vehicle will conform to IP66 standards, making it water, dust, and touch resistant.  
 
-![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/BlockDiagram.png)
+The vehicle will communicate with the ground station.  The vehicle shall have two modes: assisted manual mode and manual mode. In manual mode, a user at the ground station controls the vehicle using a joystick. In assisted manual mode, the vehicle intervenes when an obstacle is detected and keeps the vehicle on the sidewalk. The user can switch between the two modes. The vehicle shall be able to send live HD feed from a camera while the vehicle is powered. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on. The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.  
 
-<Figure 1.> <h1> Figure 1: Block Diagram of vehicle systems
+![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
 
-![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/HardwareConnection.png)
+**Figure 1.** Figure 1: Block Diagram of Vehicle Components
 
-<Figure 2.> <h2> Figure 2: Block diagram of Hardware Connections
+![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
 
-![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
+**Figure 2.** Figure 2: Block diagram of Hardware Connections
 
-![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
-
-<!---
-It might be a good idea to label the figures in here so that you can refer to them as Figure 1, Figure 2, etc.
---> 
-
-###Car Design
+#Car Design
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
@@ -51,50 +44,24 @@ We need to add more detail to this part. We'll talk about it.
 
 ![screenshot 2015-06-17 13 11 34](https://cloud.githubusercontent.com/assets/11369623/8214183/6881ce60-14f5-11e5-943d-adec01ff3cb0.png)
 
-###Obstacle Avoidance
 
-The car will be mounted with a lidar on a rotating servo. The servo will sweep back and forth, giving the lidar a 180 degree range of 'vision'. The results of the lidar scanning will be used to create a map of the world around the car, which will be constantly updated as the lidar continues to scan, and the car drives around. When the lidar detects an obstacle in the car's path, the obstacle will have a repulsion factor based on its distance; the closer the object, the more the car is repelled. Likewise, the waypoint to which the car is traveling will have an attraction factor of some value. The car will avoid the obstacle in its path while at the same time moving towards the objective in the most efficient way possible.
+##Ground Station Communication
 
-###Sound and Lights
+Add text here
 
-An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
+![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CommunicationsBlocks.png)
 
-<!---
-Add pinout screen shot
---> 
+**Figure 2.** Block diagram of server communications
 
-Raspberry Pi                            Active buzzer module
+#Obstacle Avoidance
 
-    GND   ------------------------------------- ‘-’ 
-    GPIO11 ------------------------------------- ‘s’
+The vehicle will be mounted with a lidar laser rangefinder. The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on, it will start in manual mode and after 20 seconds elapse (timer), it will switch to assisted manual mode. In assisted manual mode, the servo will sweep back and forth constantly, on an axis that will establish a 1.2373 degree field of vision which will detect obstacles. This was determined using Figure <>. If an obstacle is detected, the vehicle will cease motion and alert the user (by publishing an obstacle detection event) that an obstacle is obstructing its path. The user will then have an option to override the alert and control the vehicle manually. Choosing to switch it to manual mode will only last 20 seconds before automatically switching back to assisted manual mode.
 
-The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. The GPIO library for Raspberry Pi will be used in the program.
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/AssistManualState.png)
 
-A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The LED will be on whenever the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires- two pins, power and ground. The GPIO library will again be used.
+**Figure 2.** State diagram of manual assisted and manual mode
 
-#Servo/Motor Control
-###Behavior 
-•	Uses the output from the joystick to control speed and direction of the vehicle.  This output is produced into two different methods, horizontal and vertical.  Horizontal output controls the direction of the vehicle (rotational degrees of the servos) and Vertical output controls the speed of the vehicle (negative output = positive acceleration, positive output = negative acceleration).  
-•	Servo control method --> Horizontal(param)
-o	This method changes the PWM signal to the servo using I2C library.
-•	Motor control method--> Vertical(param)
-##o	Figure out what code we need to talk to the motor controller
-###Physical
-•	This system consists of two servo motors, two motors, a servo controller, and an Evx-2 speed controller.  The two servo motors are directly connected to the vehicle and wired to a raspberry pi which connects to a website using crossbar.io.  This website uses RPC, passing joystick data over the Wi-Fi by calling the method Horizontal to the Pi which controls the rotation of the servos.  The Evx-2 speed controller will be mounted onto the robot and wired to the motors and raspberry pi.  Like the servos, the data from the joystick is transferred using RPC over the internet using crossbar.io to call the method Vertical and sent to the pi which feeds the speed controller data. 
-###Software Components
-•	Pi connects to the website through crossbar.io.  Ground control calls methods Horizontal(param) and Vertical(param) with the data from the joystick to control speed and direction of the robot.  
-•	PWM Frequency- 1700Hz
-•	Pi controls with i2c
-###Function Horizontal(param)
-•	This function controls the direction of the servos
-•	Param is the input form the joystick and is a number between -1 and 1 on the x-axis
-•	This function is called by the ground station using RPC 
-###Function Vertical(param)
-•	This function controls the acceleration and speed of the motors.
-•	Param is the input from the joystick and is a number between -1 and 1 on the y-axis
-•	This function is called by the ground station using RPC
-###Use Cases
-Use Case- obstacle detection
+###Use Case - Obstacle Detection
 
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
@@ -115,7 +82,55 @@ Use Case- obstacle detection
     •   switch to manual mode
     •   switch back to assisted after 20 sec
 
-Use Case- avoiding sidewalks
+#Sound and Lights
+
+<!---
+Find dB level
+-->
+
+An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
+
+<!---
+Add pinout screen shot
+--> 
+
+Raspberry Pi                            Active buzzer module
+
+    GND   ------------------------------------- ‘-’ 
+    GPIO11 ------------------------------------- ‘s’
+
+The GPIO library for Raspberry Pi will be used in the program. The method GPIO.write(pin, power) will be used with the parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'. 
+
+A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicle. The light will be on while the vehicle is powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground. The GPIO library will again be used.
+
+#Servo/Motor Control
+###Behavior 
+This system uses the output from the joystick to control speed and direction of the vehicle.  This output is produced into two different vehicle methods, horizontal and vertical.  Horizontal output controls the direction of the vehicle (rotational degrees of the servos) and Vertical output controls the speed of the vehicle (negative output = positive acceleration, positive output = negative acceleration).  
+•	Servo control method --> Horizontal(param): This method changes the PWM signal to the servo using I2C library. Turning to the right is 150. Changing to the left is 600. The last value received is saved in a variable to be used for sidewalk detection.
+
+•	Motor control method--> Vertical(param): This method changes the I2C output to the motors using I2C library.
+
+<!---
+Figure out motor code
+--> 
+
+###Physical
+This system consists of two servos, two motors, a servo controller, and an Evx-2 speed controller.  The two servos are directly connected to the vehicle and wired to a Raspberry Pi that connects to a website using crossbar.io.  This website uses RPC, passing joystick data over the Wi-Fi by calling the method Horizontal() to the Pi which controls the rotation of the servos.  The Evx-2 speed controller will be mounted onto the robot and wired to the motors and Raspberry Pi.  Like the servos, the data from the joystick is transferred using RPC over the internet using crossbar.io to call the method Vertical() and sent to the Pi which feeds the speed controller data. 
+
+###Software Components
+The Pi connects to the ground station through crossbar.io.  Ground control calls methods Horizontal(param) and Vertical(param) with the data from the joystick to control speed and direction of the robot. The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
+
+###Function Horizontal(param)
+This function controls the direction of the servos. Param is the input from the joystick and is a number between -1 and 1 on the x-axis. This function is called by the ground station using RPC.
+
+###Function Vertical(param)
+This function controls the acceleration and speed of the motors. Param is the input from the joystick and is a number between -1 and 1 on the y-axis. This function is called by the ground station using RPC.
+
+#Sidewalk Detection
+
+Talk about color sensor.
+
+###Use Case - Sidewalk Lost
 
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
@@ -124,17 +139,9 @@ Use Case- avoiding sidewalks
     •   colour sensor comes on 
 4. if colour sensor detects no sidewalk
 
-    •   use last joystick input (left/right) and use opposite for 1 sec
-
-Use Case- switch to manual mode
-
-1. press button on website to switch to manual mode
+    •   use last joystick input (left/right) and turn opposite direction for 1 second
 
 
 #Mounting Container
-28 Qt. Latch Box
-
-Dimensions: 23”x16”x6”
-
-Holes will be drilled into the container around the struts and attached to the struts with zip ties.The holes at the bottom of the container will then be sealed with rubber cement to prevent water from entering.
+A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used. Holes will be drilled into the container around the struts and attached to the struts with zip ties. The holes at the bottom of the container will then be sealed with rubber cement to prevent water from entering the container. The container has a lid for protection.
 
