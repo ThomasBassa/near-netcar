@@ -131,10 +131,10 @@ Use Case- switch to manual mode
 1. press button on website to switch to manual mode
 
 
-###Mounting Container
+#Mounting Container
 28 Qt. Latch Box
 
 Dimensions: 23”x16”x6”
 
-Holes will be drilled into the container around the struts and attacked to the struts with zip ties.The holes at the bottom of the container will then be sealed with rubber cement to prevent water from coming in.
+Holes will be drilled into the container around the struts and attached to the struts with zip ties.The holes at the bottom of the container will then be sealed with rubber cement to prevent water from entering.
 
