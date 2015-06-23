@@ -12,7 +12,7 @@
 3. The light shall be visible to any sighted person in the forward path of the vehicle with an unobstructed view of the light source
 4. The vehicle shall be mounted with a noise device
 5. The noise device shall repeatedly sound at an interval of 2 seconds
-6. The noise device shall sound constantly when an obsticle is detected
+6. The noise device shall sound constantly when an obstacle is detected
 7. The noise device shall generate between 60 and 65 decibels when sounding
 
 ## Vehicle Motion
@@ -20,20 +20,21 @@
 2. The vehicle shall be able to move backwards
 3. The vehicle shall be able to turn left
 4. The vehicle shall be able to turn right
-5. The vehicle's speed shall not exceed 30mph
-6. The vehicle's motion shall be controlled by ground control when in manual mode
-7. The vehicle shall travel back to last waypoint after it loses connection
+5. The vehicle's speed shall not exceed 25mph
+6. The vehicle's motion shall be controlled by ground control
 8. The vehicle shall be able to remotely reconnect with ground control upon signal loss
-9. The vehicle shall be able to operate for at least an hour at a time
-10. The vehicle shall be able to be controlled at least 2 miles away in manual mode
+9. The vehicle shall be able to operate for at least 30 minutes at a time
+10. The vehicle shall be able to be controlled at least 2 miles away
 
-## Obstacle Avoidance
-1. The vehicle shall be able to detect objects that are up to 20 m in front of it
-2. The vehicle shall stop a minimum of 5 m from a detected object
-3. The vehicle shall be able to navigate around detected obstacles after stopping
+## Obstacle Avoidance (ie not hitting things)
+1. The vehicle shall be able to detect objects that are up to 20m in front of it
+2. The vehicle shall stop a minimum of 5m from a detected object
+3. The vehicle shall alert the user when an obstacle has been detected
+4. The user shall have the option of a manual override after the vehicle has stopped due to a detected obstacle
+5. The manual override shall turn off obstacle avoidance for 20 seconds at a time
 
 ## Water- and Dust-Proofing
-1. The vehicle shall be IP 66 compliant
+1. The vehicle shall be IP 54 compliant
 2. The vehicle shall be able to operate in temperatures between 0 and 50 degrees Celsius
 
 ## HD Camera
@@ -47,28 +48,17 @@
 
 ## Ground Station
 1. The ground station shall show a live HD camera feed from the vehicle
-2. The ground station shall send instructions for waypoint navigation to the vehicle while it is in autonomous mode
-3. The ground station shall be able to switch the vehicle between manual and autonomous mode
 4. The ground station shall be able to cease vehicle movement
 5. The ground station shall display the vehicle's position on a map
 6. The ground station shall display the vehicle's current speed
-7. The user shall be able to place waypoints on the map
 8. The ground station shall provide a training system to educate the user on the use of the system
 9. The ground station shall display the HD camera's fps
-10. The ground station shall display the cardinal direction the vehicle is facing
-11. The ground station shall display the battery level of the vehicle
-12. The ground station shall display the temperature of the vehicle
+
+<Not neccessary, but would be useful:>
+1. The ground station shall display the battery level of the vehicle
+2. The ground station shall display the temperature of the vehicle
 
 ## Communications
 1. The vehicle shall communicate with the ground station at a rate of at least 30 Hz while connected
 2. The vehicle shall receive movement instructions from the ground station
 3. The vehicle shall respond to commands within 150 ms
-
-## Autonomous Navigation
-1. The vehicle shall stay on top of and within the bounds of sidewalks while moving autonomously
-2. The vehicle shall be able to navigate among user-specified waypoints
-3. The vehicle shall travel along the shortest possible safe path between waypoints
-4. The vehicle shall have the option to be autonomous
-5. The vehicle shall move only along sidewalks while moving autonomously
-6. The vehicle shall travel back to the sidewalk when it detects itself as being off-path
-7. The vehicle shall have the option to be manually controlled
