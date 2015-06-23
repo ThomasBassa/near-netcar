@@ -73,7 +73,6 @@ the camera's framerate, and the vehicle's current speed.
 ### Behaviour
 
 Joystick produces outputs based on the current position using Pygame.
-<!-- The exact type & format of the tuples needs to show later -->
 These outputs should be tuples of floats passed through RPC protocol to the vehicle using Autobahn.
 The vehicle-mounted pi runs code that maps the joystick's current position to servo commands,
 turning the wheels of the vehicle accordingly.
@@ -90,20 +89,18 @@ The initial function onJoin runs when the session begins. onJoin then runs the f
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
-#### Function - onJoin()
-* Args - salf, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
-* Returns - n/a
+#### Function - onJoin(detials)
+* Args - 
+* Returns - none
 * Behavior - Runs the functions within when the session connects
 
 #### Function - joyUpdate()
-* Args - n/a
 * Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
-* Args - put
- <!-- get put range from hardware team -->
+* Args - the float that contains the 1 to -1 range of the joystick axis
 * Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
@@ -111,8 +108,6 @@ converts the position to a tuple of floats, and calls the function 	joyMonitor()
 
 ### Behaviour
 An HD camera will be mounted to the front of the vehicle so that it faces forward.
-<!-- The following line/paragraph is useless, how do I build it? -->
-The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
 ### Physical
 The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the vehicle.
