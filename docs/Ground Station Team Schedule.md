@@ -10,7 +10,7 @@
   * Change button text
   * Actually make the button work
 * Car stats (location, direction, speed, battery %)
-  * Get GPS stats from onboard sensor
+  * Get GPS stats from onboard sensor (we code the whole thing)
   * Figure out how to get direction and speed and do the math for that
   * Read voltages from battery
   * Do speed and battery life math
