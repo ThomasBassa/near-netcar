@@ -31,13 +31,10 @@ of the area surrounding the vehicle that both refresh at 30 Hz.
 Below the map and video feed is a toggleable switch to change the mode of
 the vehicle between manual and autonomous navigation. There is also a Stop button
 that causes the vehicle to stop moving as quickly as possible, to be used
-in an emergency situation. In order to aid in navigation, there will also
-be buttons to begin directional instructions for manual mode.
-These directional instructions will also be used to help the vehicle
-navigate autonomously. Waypoints are able to be placed on the map to give
-instructions on where the vehicle needs to go in both manual and autonomous mode.
-There will also be some vehicle statistics displayed below the camera feed,
-such as temperature of the vehicle, which will be used to tell when the vehicle is about to overheat. 
+in an emergency situation. These directional instructions will also be used 
+to help the vehicle navigate autonomously. There will also be some vehicle statistics 
+displayed below the camera feed,such as temperature of the vehicle, 
+which will be used to tell when the vehicle is about to overheat. 
 Heading, which will aid in navigation, and battery level, to tell when the vehicle will lose power.
 
 ### Role
@@ -49,8 +46,7 @@ so the user is also able to plan where he or she wants to go.
 It provides directional instructions to take the user wherever
 they want to go on campus as well.
 It also enables emergency stops through the stop button.
-Finally, it allows the user to put the vehicle into autonomous mode,
-so it can navigate on its own if the user does not want to control it.
+
 The website frontend will show important information about the current status of the car 
 such as the battery life of the car, the vehicle's temperature, the cardinal direction the vehicle is facing,
 the camera's framerate, and the vehicle's current speed.
@@ -60,17 +56,14 @@ the camera's framerate, and the vehicle's current speed.
   Is used to provide waypoints, give directions while navigating, and update the user on the vehicle's location.
 * Video Feed: Top 3/4ths of the screen. Right half of the screen.
   Is used to provide the user with a visual of what is in front of the vehicle and aid in navigation.
-* Autonomous Mode Checkbox: Below the map.
-  When clicked, it will swap the vehicle from manual to autonomous mode and vice versa.
-  <!-- There should be a list of all of the Pi-related calls near the end of the doc -->
+* Assisted Mode Checkbox: Below the map.
+  When clicked, it will swap the vehicle from manual to assisted mode and vice versa.
   It operates on PubSub. The vehicle subscribes to what the ground station publishes on the channel modeSwitch.
   The ground station publishes when the state of the checkbox changes. This causes the vehicle to switch modes.
 * Stop Button: Below the video stream.
   When clicked, it will command the vehicle to stop moving as fast as possible.
   It calls an RPC named emergStop to tell the robot to begin slowing down and eventually stop.
   It can stop the robot from 30 mph in 15 meters, to be used in emergencies.
-* Navigational Buttons: Between the Stop Button and the AMC.
-  They will cause navigations to start between waypoints chosen by the user.
 * Data: Below the camera feed.
   Will display the current heading and battery level to the user.
   It will also show the vehicle's temperature, the camera's framerate, and the vehicle's current speed.
