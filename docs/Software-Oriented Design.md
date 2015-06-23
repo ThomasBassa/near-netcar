@@ -36,7 +36,6 @@ be buttons to begin directional instructions for manual mode.
 These directional instructions will also be used to help the vehicle
 navigate autonomously. Waypoints are able to be placed on the map to give
 instructions on where the vehicle needs to go in both manual and autonomous mode.
-<!-- Be specific about the following list-- what specifically -->
 There will also be some data displayed below the camera feed,
 such as temperature of the vehicle, heading, and battery level.
 
@@ -52,7 +51,6 @@ It also enables emergency stops through the stop button.
 Finally, it allows the user to put the vehicle into autonomous mode,
 so it can navigate on its own if the user does not want to control it.
 The website frontend will show important information about the current status
-<!-- Same problem as earlier, specific list -->
 of the car such as the battery life of the car or the vehicle's temperature.
 
 ### Major components, location, interaction
@@ -72,7 +70,6 @@ of the car such as the battery life of the car or the vehicle's temperature.
 * Navigational Buttons: Between the Stop Button and the AMC.
   They will cause navigations to start between waypoints chosen by the user.
 * Data: Below the camera feed.
-  <!-- Third time. Specific list, 3x -->
   Will display important information such as heading and battery level to the user.
   It will also show the vehicle's temperature, the camera's framerate, and the vehicle's current speed.
 
@@ -99,18 +96,19 @@ joystick movement, converts it into a tuple of floats, and passes is to another 
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
 #### Function - onJoin()
-* Args - details (WAMP stuff) <!-- These should be explained, but it's okay...-->
+* Args - salf, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
 * Behavior - Runs the functions within when the session connects
 
 #### Function - joyUpdate()
 * Args - n/a
-* Returns - Tuple of floats called val, -1.1 <= val <= 1.1
+* Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
-* Args - put <!-- What is the type, range/etc of this -->
+* Args - put
+ <!-- get put range from hardware team -->
 * Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
