@@ -2,24 +2,23 @@
 
 ## Movement commands
 
-### Function - onJoin()
-* Args - details (WAMP stuff)
+### Function - onJoin(details)
+* Args - 
 * Returns - 
 * Behavior - Runs the functions within when the session connects
 
 ### Function - joyUpdate()
-* Args - n/a
 * Returns - Tuple of floats called val
 * Behavior - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 ### Function - joyMonitor(put)
-* Args - put 
+* Args - int used in the joystick-servo code
 * Returns - PWM-based servo controls 
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
 ### Function - joyMove()
-* Args -
+* Args - 
 * Returns - The motors moving the tires forwards and backwards 
 * Behavior - Sends joystick forward and backward movement through the Ground System to the vehicle
 
@@ -37,21 +36,20 @@ converts the position to a tuple of floats, and calls the function 	joyMonitor()
 
 ## Horn
 
-### Function - honkHorn
-* Args -
+### Function - honkHorn()
 * Returns - 
 * Behavior -  
 
 ## Battery
 
-### Function - showBattery
+### Function - showBattery()
 * Args - 
 * Returns - The battery status as a percentage float
 * Behavior - The vehicle sends its battery level to the Ground System, which will display the information on the webpage
 
 ## Temperature
 
-### Function - showTemp
+### Function - showTemp()
 * Args - 
 * Returns - The vehicle's temperature as a percentage float
 * Behavior - The vehicle sends its temperature to the Ground System, which will display the information on the webpage
