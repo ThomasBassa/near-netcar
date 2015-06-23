@@ -48,6 +48,8 @@
 
 ## Ground Station
 1. The ground station shall show a live HD camera feed from the vehicle
+2. The ground station shall display the battery level of the vehicle
+3. The ground station shall display the temperature of the vehicle
 4. The ground station shall be able to cease vehicle movement
 5. The ground station shall display the vehicle's position on a map
 6. The ground station shall display the vehicle's current speed
