@@ -26,7 +26,7 @@
 9. The vehicle shall be able to operate for at least 30 minutes at a time
 10. The vehicle shall be able to be controlled at least 2 miles away
 
-## Obstacle Avoidance (ie not hitting things)
+## Obstacle Detection
 1. The vehicle shall be able to detect objects that are up to 20m in front of it
 2. The vehicle shall stop a minimum of 5m from a detected object
 3. The vehicle shall alert the user when an obstacle has been detected
@@ -56,6 +56,7 @@
 
 <Not neccessary, but would be useful:>
 1. The ground station shall display the battery level of the vehicle
+
 2. The ground station shall display the temperature of the vehicle
 
 ## Communications
