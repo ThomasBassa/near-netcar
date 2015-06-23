@@ -10,6 +10,8 @@ This is the set of subsystems we believe are necessary in this system.
 * Camera (Hardware overlap)
 * Website Frontend
 
+# Use Cases 
+
 ## Manual Vehicle Movement
 1. User moves joystick
 2. System sends information to vehicle accordingly.
@@ -17,9 +19,7 @@ This is the set of subsystems we believe are necessary in this system.
 
 ## Obstacle Avoidance
 1. Vehicle detects an obstacle (with Lidar)
-2. Obstacle registered in map
-3. Vehicle is repelled from obstacle, while simultaneously redirecting itself toward the waypoint (objective)
-4. Vehicle avoids obstacle.
+2. The vehicle stops
 
 # Subsystem Design
 
