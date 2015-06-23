@@ -3,11 +3,11 @@ The vehicle will be able to communicate with the ground station.  The vehicle sh
 
 ![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/BlockDiagram.png)
 
-<Figure 1.> # (<h1>)Figure 1: Block Diagram of vehicle systems
+<Figure 1.> <h1> Figure 1: Block Diagram of vehicle systems
 
 ![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/HardwareConnection.png)
 
-<Figure 2.> ## (<h2>)Figure 2: Block diagram of Hardware Connections
+<Figure 2.> <h2> Figure 2: Block diagram of Hardware Connections
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
