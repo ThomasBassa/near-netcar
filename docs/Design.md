@@ -99,14 +99,18 @@ Use Case- obstacle detection
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on 
+
     •   Lidar comes on, servo begins rotating
 4. if an obstacle is detected
+
     •   vehicle stops
     •   alerts user by publishing event
 5. user has option for a 20 sec override
 6. if override option is not taken
+
     •   wait until obstacle has moved
 7. if override option taken
+
     •   start a timer
     •   switch to manual mode
     •   switch back to assisted after 20 sec
@@ -116,8 +120,10 @@ Use Case- avoiding sidewalks
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on 
+
     •   colour sensor comes on 
 4. if colour sensor detects no sidewalk
+
     •   use last joystick input (left/right) and use opposite for 1 sec
 
 Use Case- switch to manual mode
