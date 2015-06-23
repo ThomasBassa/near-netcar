@@ -105,15 +105,13 @@ second. joyMonitor runs	directly on the pi, and performs some sort of hardware m
 
 #### Function - joyUpdate()
 * Args - n/a
-* Returns - Tuple of floats called val <!-- What is the expected range of these? -->
+* Returns - Tuple of floats called val, -1.1 <= val <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
-<!-- What is vals? What is the format of the floats? (range...) -->
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
 * Args - put <!-- What is the type, range/etc of this -->
-* Returns - PWM-based servo controls <!-- What's the type, etc.-->
-<!-- Again, what is val? What's its range, etc... -->
+* Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
 ## Vehicle Camera
