@@ -4,7 +4,6 @@
 
 ### Function - onJoin(details)
 * Args - 
-* Returns - 
 * Behavior - Runs the functions within when the session connects
 
 ### Function - joyUpdate()
