@@ -1,13 +1,11 @@
-#Design
+#Vehicle Design
 
 The vehicle will communicate with the ground station.  The vehicle shall have two modes: assisted manual mode and manual mode. In manual mode, a user at the ground station controls the vehicle using a joystick. In assisted manual mode, the vehicle intervenes when an obstacle is detected and keeps the vehicle on the sidewalk. The user can switch between the two modes. The vehicle shall be able to send live HD feed from a camera while the vehicle is powered. The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on. The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.  
 
 ![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
-
 **Figure 1.** Figure 1: Block Diagram of Vehicle Components
 
 ![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
-
 **Figure 2.** Figure 2: Block diagram of Hardware Connections
 
 #Car Design
@@ -46,20 +44,17 @@ We need to add more detail to this part. We'll talk about it.
 
 
 ##Ground Station Communication
-
 Add text here
 
 ![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CommunicationsBlocks.png)
 
-**Figure 2.** Block diagram of server communications
+**Figure 3.** Block diagram of server communications
 
 #Obstacle Avoidance
-
 The vehicle will be mounted with a lidar laser rangefinder. The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on, it will start in manual mode and after 20 seconds elapse (timer), it will switch to assisted manual mode. In assisted manual mode, the servo will sweep back and forth constantly, on an axis that will establish a 1.2373 degree field of vision which will detect obstacles. This was determined using Figure <>. If an obstacle is detected, the vehicle will cease motion and alert the user (by publishing an obstacle detection event) that an obstacle is obstructing its path. The user will then have an option to override the alert and control the vehicle manually. Choosing to switch it to manual mode will only last 20 seconds before automatically switching back to assisted manual mode.
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/AssistManualState.png)
-
-**Figure 2.** State diagram of manual assisted and manual mode
+**Figure 4.** State diagram of manual assisted and manual mode
 
 ###Use Case - Obstacle Detection
 
@@ -83,11 +78,6 @@ The vehicle will be mounted with a lidar laser rangefinder. The vehicle will hav
     •   switch back to assisted after 20 sec
 
 #Sound and Lights
-
-<!---
-Find dB level
--->
-
 An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. The buzzer will be wired to the Pi in the following way:
 
 <!---
@@ -127,7 +117,6 @@ This function controls the direction of the servos. Param is the input from the 
 This function controls the acceleration and speed of the motors. Param is the input from the joystick and is a number between -1 and 1 on the y-axis. This function is called by the ground station using RPC.
 
 #Sidewalk Detection
-
 Talk about color sensor.
 
 ###Use Case - Sidewalk Lost
@@ -145,3 +134,5 @@ Talk about color sensor.
 #Mounting Container
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used. Holes will be drilled into the container around the struts and attached to the struts with zip ties. The holes at the bottom of the container will then be sealed with rubber cement to prevent water from entering the container. The container has a lid for protection.
 
+#Vehicle Location Tracking
+Add text here
