@@ -36,9 +36,14 @@ be buttons to begin directional instructions for manual mode.
 These directional instructions will also be used to help the vehicle
 navigate autonomously. Waypoints are able to be placed on the map to give
 instructions on where the vehicle needs to go in both manual and autonomous mode.
+<<<<<<< HEAD
 There will also be some vehicle statistics displayed below the camera feed,
 such as temperature of the vehicle, which will be used to tell when the vehicle is about to overheat. 
 Heading, which will aid in navigation, and battery level, to tell when the vehicle will lose power.
+=======
+There will also be some data displayed below the camera feed,
+such as temperature of the vehicle, heading, and battery level.
+>>>>>>> origin/master
 
 ### Role
 The website frontend is used to display vehicle status information.
@@ -51,9 +56,14 @@ they want to go on campus as well.
 It also enables emergency stops through the stop button.
 Finally, it allows the user to put the vehicle into autonomous mode,
 so it can navigate on its own if the user does not want to control it.
+<<<<<<< HEAD
 The website frontend will show important information about the current status of the car 
 such as the battery life of the car, the vehicle's temperature, the ardinal direction the vehicle is facing,
 the camera framerate, and the vehicle's current speed.
+=======
+The website frontend will show important information about the current status
+of the car such as the battery life of the car or the vehicle's temperature.
+>>>>>>> origin/master
 
 ### Major components, location, interaction
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
@@ -72,7 +82,11 @@ the camera framerate, and the vehicle's current speed.
 * Navigational Buttons: Between the Stop Button and the AMC.
   They will cause navigations to start between waypoints chosen by the user.
 * Data: Below the camera feed.
+<<<<<<< HEAD
   Will display the current heading and battery level to the user.
+=======
+  Will display important information such as heading and battery level to the user.
+>>>>>>> origin/master
   It will also show the vehicle's temperature, the camera's framerate, and the vehicle's current speed.
 
 ## Joystick
@@ -98,21 +112,20 @@ joystick movement, converts it into a tuple of floats, and passes is to another 
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
 #### Function - onJoin()
-* Args - details (WAMP stuff) <!-- These should be explained, but it's okay...-->
+* Args - salf, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
 * Behavior - Runs the functions within when the session connects
 
 #### Function - joyUpdate()
 * Args - n/a
-* Returns - Tuple of floats called val <!-- What is the expected range of these? -->
+* Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
-<!-- What is vals? What is the format of the floats? (range...) -->
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
-* Args - put <!-- What is the type, range/etc of this -->
-* Returns - PWM-based servo controls <!-- What's the type, etc.-->
-<!-- Again, what is val? What's its range, etc... -->
+* Args - put
+ <!-- get put range from hardware team -->
+* Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
 ## Vehicle Camera
