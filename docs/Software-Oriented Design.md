@@ -99,18 +99,19 @@ joystick movement, converts it into a tuple of floats, and passes is to another 
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
 #### Function - onJoin()
-* Args - details (WAMP stuff) <!-- These should be explained, but it's okay...-->
+* Args - salf, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
 * Behavior - Runs the functions within when the session connects
 
 #### Function - joyUpdate()
 * Args - n/a
-* Returns - Tuple of floats called val, -1.1 <= val <= 1.1
+* Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
-* Args - put <!-- What is the type, range/etc of this -->
+* Args - put
+ <!-- get put range from hardware team -->
 * Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
