@@ -6,18 +6,15 @@
 
 <!-- What makes joyUpdate distinct from joyMonitor? Do these need to be separate? -->
 ### aero.near.joyUpdate()
-<!-- How many elements are in the tuple? What are their ranges? What does each value mean at its extremes? -->
-* Behavior - Picks up the movements of the joystick 30 times a second,
-converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
-<!-- Still haven't defined what vals is... -->
+* Behavior - Picks up the movements of the joystick 30 times a second, converting to a couple of float values
+* Return - vals, which is a tuple with two floats in the range of -1.1 to 1.1, the values of the horizontal and vertical movement of the axes. A value of 1 or -1 is the extreme of a movement.
 
 ### aero.near.joyMonitor(servoAxis, motorAxis)
-<!-- What does 1 represent? What is -1? For both of these?
-This needs to be made super clear so we don't drive the robot backwards -->
-* Args - servoAxis: float used in the joystick-servo code. Range 1 to -1.
-motorAxis: float used in the joystick-motor code. Range 1 to -1
+* Args - servoAxis: float used in the joystick-servo code. Range 1 to -1. Taken from the axes values, where -1 is forward, 1 is backward
+		 motorAxis: float used in the joystick-motor code. Range 1 to -1
 * Behavior - Takes in val from joyUpdate and uses it to control the servos and motors through the Ground System.
-Sends joystick forward, backward, left, and right movement through the Ground System to the vehicle
+Sends joystick forward, backward, left, and right movement through the Ground System to the vehicle. 
+* Return - none
 
 ### aero.near.switchMode()
 <!-- Is this actually "on and off" or just off? What happens if sent multiple times quickly? -->
@@ -25,7 +22,7 @@ Sends joystick forward, backward, left, and right movement through the Ground Sy
 
 ### aero.near.honkHorn()
 <!-- Describe only the behavior of this call. Not the obstacle... -->
-* Behavior - Every time an obstacle is detected or when the user requests, the horn will sound
+* Behavior - Works when obstacles are detected and when called through the joystick trigger. Makes the horn honk.
 
 ## Publish/Subscribe Topics
 <!-- The PubSub components need a different format:
@@ -33,12 +30,10 @@ Sends joystick forward, backward, left, and right movement through the Ground Sy
 	* Data type, range
 	* Frequency of updates -->
 
-### aero.near.showBattery(batlevel)
-* Args - int that show the percantage of battery left. Range 0 to 100
-* Returns - batlevel
-* Behavior - The vehicle sends its battery level to the Ground System, which will display the information on the webpage
+### aero.near.showBattery(batLevel)
+* batLevel - int, where 0 <= int <= 100
+** Hardware - what's the frequency of this update? **
 
 ### aero.near.showTemp(temp)
-* Args - int that shows the temperature of the vehicle interior range 0 to 2 million
-* Returns - temp
-* Behavior - The vehicle sends its temperature to the Ground System, which will display the information on the webpage
+* int larger than zero, represents temperature
+** Hardware - what's the frequency of this?**
