@@ -5,10 +5,10 @@
 
 # System Design
 This is the set of subsystems we believe are necessary in this system.
-* Joystick Code
-* Navigation (Autonomous and otherwise)
-* Camera (Hardware overlap)
-* Website Frontend
+* Joystick - The way the user will control the vehicle
+* Navigation - How the user will know where to go
+* Camera (Hardware overlap) - What the use will use to see in front of the vehicle
+* Website Frontend - The way the user will see the camera feed, map, and various other statistics about the vehicle 
 
 # Use Cases 
 
@@ -36,9 +36,9 @@ be buttons to begin directional instructions for manual mode.
 These directional instructions will also be used to help the vehicle
 navigate autonomously. Waypoints are able to be placed on the map to give
 instructions on where the vehicle needs to go in both manual and autonomous mode.
-<!-- Be specific about the following list-- what specifically -->
-There will also be some data displayed below the camera feed,
-such as temperature of the vehicle, heading, and battery level.
+There will also be some vehicle statistics displayed below the camera feed,
+such as temperature of the vehicle, which will be used to tell when the vehicle is about to overheat. 
+Heading, which will aid in navigation, and battery level, to tell when the vehicle will lose power.
 
 ### Role
 The website frontend is used to display vehicle status information.
@@ -51,9 +51,9 @@ they want to go on campus as well.
 It also enables emergency stops through the stop button.
 Finally, it allows the user to put the vehicle into autonomous mode,
 so it can navigate on its own if the user does not want to control it.
-The website frontend will show important information about the current status
-<!-- Same problem as earlier, specific list -->
-of the car such as the battery life of the car or the vehicle's temperature.
+The website frontend will show important information about the current status of the car 
+such as the battery life of the car, the vehicle's temperature, the ardinal direction the vehicle is facing,
+the camera framerate, and the vehicle's current speed.
 
 ### Major components, location, interaction
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
@@ -72,8 +72,7 @@ of the car such as the battery life of the car or the vehicle's temperature.
 * Navigational Buttons: Between the Stop Button and the AMC.
   They will cause navigations to start between waypoints chosen by the user.
 * Data: Below the camera feed.
-  <!-- Third time. Specific list, 3x -->
-  Will display important information such as heading and battery level to the user.
+  Will display the current heading and battery level to the user.
   It will also show the vehicle's temperature, the camera's framerate, and the vehicle's current speed.
 
 ## Joystick
