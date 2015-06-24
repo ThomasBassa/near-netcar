@@ -222,6 +222,8 @@ The container has a lid for protection.
 
 #Vehicle Location Tracking
 
+The vehicle's location will be tracked using a GPS module. The GPS module will talk to the Pi with serial communication. The Pi will read string messages from the GPS module. Then the program will interpret the message to find the latitude and longitude of the vehicle. This information will be published over crossbar.io to the ground station. This will happen every main loop iteration. Pin 1 on the module goes to 3.3 V power. Pin 2 is RX and goes to RDX on the Pi. Pin 3 is TX and goes to TDX on the Pi. Pin 4 is ground.
+
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
 
 **Figure 4.** State diagram of manual assisted and manual mode
