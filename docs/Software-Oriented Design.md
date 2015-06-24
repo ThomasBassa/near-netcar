@@ -17,9 +17,11 @@ This is the set of subsystems we believe are necessary in this system.
 2. System sends information to vehicle accordingly.
 3. Vehicle moves
 
-## Obstacle Avoidance
+
+## Obstacle Detection
 1. Vehicle detects an obstacle (with Lidar)
 2. The vehicle stops
+![Use Case: Obstacle Detection](https://raw.githubusercontent.com/ThomasBassa/near-netcar/master/docs/Diagrams/Use%20Cases_%20Obstacle%20stopping%20-%20New%20Page.png)
 
 # Subsystem Design
 
