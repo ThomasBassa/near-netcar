@@ -7,7 +7,8 @@ In assisted manual mode, the vehicle intervenes when an obstacle is detected and
 keeps the vehicle on the sidewalk. The user can switch between the two modes.
 The vehicle shall be able to send live HD feed from a camera while the vehicle is powered.
 The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on.
-The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.  
+The vehicle will conform to IP54 standards, protecting it from water, dust, and touch. 
+The vehicle shall be pretty.
 
 ![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
 **Figure 1.** Figure 1: Block Diagram of Vehicle Components
