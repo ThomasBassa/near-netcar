@@ -11,41 +11,30 @@ The vehicle will conform to IP54 standards, protecting it from water, dust, and 
 The vehicle shall be pretty.
 
 ![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
+
 **Figure 1.** Figure 1: Block Diagram of Vehicle Components
 
 ![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
+
 **Figure 2.** Figure 2: Block diagram of Hardware Connections
 
 #Car Design
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
-<!--
-This needs to be more specific. We have struts finished! Which is good.
-I'd like to see a diagram with the strut's measurements (don't worry, we have this.
-We just need a pic of our actual design in SolidWorks. Explain the top thingy. That it'll be used to hold the payload up.
-How will it be used to hold the payload up? Also, use complete sentences. It sounds better.
--->
-<!--
-Didn't mention the material used in the print. Specify which material and why. Always talk about why. Talk about how much infill used and why.
--->
+**Figure 3.** <>
+
 This strut design was printed using the TAZ 5 printer.
 The vehicle has one strut mounted onto the front and one onto back of the chassis to give suport for the suspension.
-<!--
-Is this a duplicate picture? A picture of the actual vehicle might be nice.
--->
-<!--
-Why is it tilted in the picture?
--->
+
 ![screenshot 2015-06-17 13 06 49](https://cloud.githubusercontent.com/assets/11369623/8214178/5cb7feec-14f5-11e5-985d-d3d6e6b22ce7.png)
 
+**Figure 4.** <>
 
 We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; shocks are screwed into these.
 This block was printed to give suport for the shocks.
 Four blocks were used to glue: one block to each side of the top 2 holes on each strut,
-to suport the nails we later used to prop up the spings on the strut. They were glued using acetone.
-
-![screenshot 2015-06-17 13 09 40](https://cloud.githubusercontent.com/assets/11369623/8214180/61576aa0-14f5-11e5-80a5-221eb7742fef.png)
+to support the nails we later used to prop up the spings on the strut. They were glued using acetone.
 
 <!-- Thomas: How much of this is necessary when you could link to Autobahn docs... especially if this is copy/paste? -->
 #Ground Station Communication
@@ -116,13 +105,21 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
   - switch to manual mode
   - switch back to assisted after 20 sec
 
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ServoRotationDiagram.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainSeq.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ObstacleDetection.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
 #Sound and Lights
 An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
-
-<!--
-Add pinout screen shot
--->
 
     Raspberry Pi                            Active buzzer module
 
@@ -150,9 +147,6 @@ The last value received is saved in a variable to be used for sidewalk detection
 
 - Motor control method--> Vertical(param): This method changes the I2C output to the motors using I2C library.
 
-<!--
-Figure out motor code
--->
 
 <!-- From the ground station team-- look at Interface.md-- this document needs to be consistent with that -->
 ###Physical
@@ -183,6 +177,11 @@ Param is the input from the joystick and is a number between -1 and 1 on the y-a
 This function is called by the ground station using RPC.
 
 #Sidewalk Detection
+
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensor.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
 An RGB sensor will be mounted onto the front bumper of the car, and the Raspberry Pi will communicate with it using I2C 
 (address 0x29), with wiring (from the website) VDD to 3-5 V DC, ground to common ground, SCL to I2C Clock and SDA to I2C 
 Data. The sensor will keep track of the colour of the ground directly in front of the vehicle; whenever the ground is not 
@@ -206,6 +205,10 @@ close, only greyscale colours will be allowed, and no asphalt will be this light
 4. if colour sensor detects no sidewalk
   - use last joystick input (left/right) and turn opposite direction for 1 second
 
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensorSeq.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
 #Mounting Container
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
 Holes will be drilled into the container around the struts and
@@ -213,8 +216,19 @@ attached to the struts with zip ties. The holes at the bottom of the container w
 be sealed with rubber cement to prevent water from entering the container.
 The container has a lid for protection.
 
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/VehicleContainer.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
 #Vehicle Location Tracking
-Add text here
+
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
+
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPSSeqDiagram.png)
+
+**Figure 4.** State diagram of manual assisted and manual mode
 
 #Waterproofing
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
