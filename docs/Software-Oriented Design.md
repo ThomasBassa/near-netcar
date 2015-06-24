@@ -73,7 +73,11 @@ the camera's framerate, and the vehicle's current speed.
 ### Behaviour
 
 Joystick produces outputs based on the current position using Pygame.
+<<<<<<< HEAD
 These outputs should be tuples of floats passed through RPC protocol to the vehicle using Autobahn.
+=======
+These outputs should be tuples of two floats passed through RPC protocol to the vehicle using Autobahn.
+>>>>>>> origin/master
 The vehicle-mounted pi runs code that maps the joystick's current position to servo commands,
 turning the wheels of the vehicle accordingly.
 The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
@@ -89,15 +93,21 @@ The initial function onJoin runs when the session begins. onJoin then runs the f
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
+<<<<<<< HEAD
 #### Function - onJoin(detials)
 * Args - 
 * Returns - none
+=======
+#### Function - onJoin()
+* Args - self, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
+* Returns - n/a
+>>>>>>> origin/master
 * Behavior - Runs the functions within when the session connects
 
 #### Function - joyUpdate()
 * Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
-converts the position to a tuple of floats, and calls the function 	joyMonitor() with vals.
+converts the position to a tuple of two floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put)
 * Args - the float that contains the 1 to -1 range of the joystick axis
