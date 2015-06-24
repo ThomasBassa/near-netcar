@@ -345,8 +345,11 @@ The container has a lid for protection.
 **Figure 12.** Diagram of the container's placement on the vehicle with measurements
 
 #Video Feed
-
-The camera to be used is <>. It is powered through POE.
+The casing will be removed from a Ubiquiti Aircam H.264 1Megapixel/720P 
+camera, and it will be mounted on the top of the vehicle, facing forward. The 
+camera requires 24V, and has 30fps. First the camera’s IP is determined using 
+its provided software. The IP address will be fixed. The port used will be 80. 
+The port and IP will be used to contact the camera from the ground station. 
 
 ![Camera](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CameraSeq.png)
 
