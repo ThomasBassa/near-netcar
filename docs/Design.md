@@ -12,11 +12,11 @@ The vehicle shall be pretty.
 
 ![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
 
-**Figure 1.** Figure 1: Block Diagram of Vehicle Components
+**Figure 1.** Block Diagram of Vehicle Components
 
 ![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
 
-**Figure 2.** Figure 2: Block diagram of Hardware Connections
+**Figure 2.** Block diagram of Hardware Connections
 
 #Car Design
 
