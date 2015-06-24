@@ -241,5 +241,4 @@ The vehicle's location will be tracked using a GPS module. The GPS module will t
 
 #Waterproofing
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
-container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
-come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
+container, which will be fixed to the chassis of the vehicle. Waterproof connectors will be used.
