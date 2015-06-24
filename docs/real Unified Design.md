@@ -264,7 +264,7 @@ This system uses the output from the joystick to control speed and direction of 
 This output is produced into two different vehicle methods, horizontal and vertical.
 Horizontal output controls the direction of the vehicle (rotational degrees of the servos)
 and Vertical output controls the speed of the vehicle
-(negative output = positive acceleration, positive output = negative acceleration).  
+(negative output = positive acceleration, positive output = negative acceleration). Actions shall be processed within 150 ms. 
 - Servo control method --> Horizontal(param): This method changes the PWM signal
 to the servo using I2C library.
 Turning to the right is 150. Changing to the left is 600.
