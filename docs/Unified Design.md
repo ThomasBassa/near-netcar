@@ -95,11 +95,6 @@ The initial function onJoin runs when the session begins. onJoin then runs the f
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
-<<<<<<< HEAD
-##### Function - onJoin(detials)
-* Args - 
-* Returns - none
-=======
 ##### Function - onJoin()
 * Args - self, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
@@ -335,7 +330,7 @@ close, only greyscale colours will be allowed, and no asphalt will be this light
 
 **Figure 4.** State diagram of manual assisted and manual mode
 
-#Mounting Container
+## Mounting Container
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
 Holes will be drilled into the container around the struts and
 attached to the struts with zip ties. The holes at the bottom of the container will
@@ -346,7 +341,7 @@ The container has a lid for protection.
 
 **Figure 4.** State diagram of manual assisted and manual mode
 
-#Vehicle Location Tracking
+## Vehicle Location Tracking
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
 
@@ -354,9 +349,7 @@ The container has a lid for protection.
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPSSeqDiagram.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
-
-#Waterproofing
+## Waterproofing
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
 container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
 come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
