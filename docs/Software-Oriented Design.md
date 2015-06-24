@@ -110,7 +110,6 @@ converts the position to a tuple of two floats, and calls the function 	joyMonit
 
 ### Behaviour
 An HD camera will be mounted to the front of the vehicle so that it faces forward.
-<!-- The following line/paragraph is useless, how do I build it? -->
 The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
 ### Physical
