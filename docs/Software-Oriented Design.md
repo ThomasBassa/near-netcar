@@ -6,7 +6,6 @@
 # System Design
 This is the set of subsystems we believe are necessary in this system.
 * Joystick - The way the user will control the vehicle
-* Navigation - How the user will know where to go
 * Camera (Hardware overlap) - What the use will use to see in front of the vehicle
 * Website Frontend - The way the user will see the camera feed, map, and various other statistics about the vehicle 
 
@@ -16,7 +15,6 @@ This is the set of subsystems we believe are necessary in this system.
 1. User moves joystick
 2. System sends information to vehicle accordingly.
 3. Vehicle moves
-
 
 ## Obstacle Detection
 1. Vehicle detects an obstacle (with Lidar)
