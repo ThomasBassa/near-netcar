@@ -22,14 +22,14 @@ The vehicle shall be pretty.
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
-**Figure 3.** <>
+**Figure 3.** Strut design to be 3D printed
 
 This strut design was printed using the TAZ 5 printer.
 The vehicle has one strut mounted onto the front and one onto back of the chassis to give suport for the suspension.
 
 ![screenshot 2015-06-17 13 06 49](https://cloud.githubusercontent.com/assets/11369623/8214178/5cb7feec-14f5-11e5-985d-d3d6e6b22ce7.png)
 
-**Figure 4.** <>
+**Figure 4.** Cube for the strut
 
 We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; shocks are screwed into these.
 This block was printed to give suport for the shocks.
@@ -69,7 +69,7 @@ To REGISTER a procedure for remote calling - session.register(Horizontal(param))
 
 ![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CommunicationsBlocks.png)
 
-**Figure 3.** Block diagram of server communications
+**Figure 5.** Block diagram of server communications
 
 #Obstacle Avoidance
 The vehicle will be mounted with a lidar laser rangefinder.
@@ -86,7 +86,7 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/AssistManualState.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 6.** State diagram of manual assisted and manual mode
 
 ###Use Case - Obstacle Detection
 
@@ -107,15 +107,15 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ServoRotationDiagram.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 7.** Diagram showing how the servo's rotation angle was determined
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainSeq.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 8.** The main sequence diagram for the vehicle code
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ObstacleDetection.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 9.** Sequence diagram for obstacle detection
 
 #Sound and Lights
 An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
@@ -146,7 +146,6 @@ Turning to the right is 150. Changing to the left is 600.
 The last value received is saved in a variable to be used for sidewalk detection.
 
 - Motor control method--> Vertical(param): This method changes the I2C output to the motors using I2C library.
-
 
 <!-- From the ground station team-- look at Interface.md-- this document needs to be consistent with that -->
 ###Physical
@@ -180,7 +179,7 @@ This function is called by the ground station using RPC.
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensor.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 10.** Picture of the color sensor to be used
 
 An RGB sensor will be mounted onto the front bumper of the car, and the Raspberry Pi will communicate with it using I2C 
 (address 0x29), with wiring (from the website) VDD to 3-5 V DC, ground to common ground, SCL to I2C Clock and SDA to I2C 
@@ -207,7 +206,7 @@ close, only greyscale colours will be allowed, and no asphalt will be this light
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensorSeq.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 11.** Sequence diagram for the color sensor readings
 
 #Mounting Container
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
@@ -218,7 +217,15 @@ The container has a lid for protection.
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/VehicleContainer.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 12.** Diagram of the container's placement on the vehicle with measurements
+
+#Video Feed
+
+The camera to be used is <>. It is powered through POE.
+
+![Camera](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CameraSeq.png)
+
+**Figure 13.** The sequence diagram for the camera HD feed
 
 #Vehicle Location Tracking
 
@@ -226,11 +233,11 @@ The vehicle's location will be tracked using a GPS module. The GPS module will t
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 14.** Picture of the GPS module to be used
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPSSeqDiagram.png)
 
-**Figure 4.** State diagram of manual assisted and manual mode
+**Figure 15.** Sequence diagram for GPS reading and publishing
 
 #Waterproofing
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
