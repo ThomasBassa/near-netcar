@@ -75,11 +75,7 @@ the camera's framerate, and the vehicle's current speed.
 #### Behaviour
 
 Joystick produces outputs based on the current position using Pygame.
-<<<<<<< HEAD
 These outputs should be tuples of floats passed through RPC protocol to the vehicle using Autobahn.
-=======
-These outputs should be tuples of two floats passed through RPC protocol to the vehicle using Autobahn.
->>>>>>> origin/master
 The vehicle-mounted pi runs code that maps the joystick's current position to servo commands,
 turning the wheels of the vehicle accordingly.
 The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
