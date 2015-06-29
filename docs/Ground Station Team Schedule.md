@@ -14,6 +14,7 @@
   * Use GPS to get direction and speed of the vehicle
   * Calculate speed control
   * Calculate baterry life by voltage output
+* Brainstorm presentation
 
 ## Iteration 4
 * Integration
@@ -21,3 +22,4 @@
   * Improvement on first successful build
 * Optional addition of rudimentary autonomous functions (advanced Obj. Avoid., waypoint nav, sidewalk maintenance)
 * Initial preparation for presentation
+* Create training presentation
