@@ -247,7 +247,7 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 
 **Figure 9.** Sequence diagram for obstacle detection
 
-#Sound and Lights
+## Sound and Lights
 An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
 
@@ -313,12 +313,16 @@ The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller w
 
 **Figure 11.** Sequence diagram for the color sensor readings
 
+## Battery
+The battery will power the whole vehicle, and needs to have enough voltage output to power all the sensors. 
+The battery needs to be large enough for all the sensors and the vehicle to run for a half hour.
+
 ## Mounting Container (D006)
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
 Holes will be drilled into the container around the struts and
 attached to the struts with zip ties. The holes at the bottom of the container will
 be sealed with rubber cement to prevent water from entering the container.
-The container has a lid for protection.
+The container has a lid for protection. The vehicle suspension can hold three pounds. 
 
 Storage bin
 http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=REC-_-NavPLPHorizontal1_rr-_-NA-_-100671079-_-N
