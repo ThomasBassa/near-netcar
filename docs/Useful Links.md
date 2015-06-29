@@ -7,3 +7,4 @@
 - Twisted Developer guides (list): http://twistedmatrix.com/documents/current/core/howto/index.html
 - A block of code for embedding camera feed into webpage :
 	https://community.ubnt.com/t5/UniFi-Video/How-to-embed-an-aircam-stream-on-your-website/td-p/635445
+- GPS datasheet (LS200**31**): https://www.sparkfun.com/datasheets/GPS/Modules/PMTK_Protocol.pdf
