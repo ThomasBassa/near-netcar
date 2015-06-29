@@ -36,11 +36,6 @@ http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-
 LIDAR-Lite Laser Rangefinder
 http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ7oTmUTfX6Yse7cnXtwcMd9URNekiWv3NAlCizliooBoChQ_w_wcB
 
-## GPS Sensor
-
-Adafruit Ultimate GPS HAT for Raspberry Pi
-http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
-
 ## Light
 
 DC 24V Electronic Amber LED Flashing Alarm Buzzer Siren 100dB BJ-3
