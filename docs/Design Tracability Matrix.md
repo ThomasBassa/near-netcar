@@ -9,19 +9,19 @@
 | Sound and Lights 4         |C013                          |
 | Sound and Lights 5         |C013                          |
 | Sound and Lights 6         |C013                          |
-| Sound and Lights 7         |:)                            |
-| Sound and Lights 8         |:)                            |
+| Sound and Lights 7         |C013                          |
+| Sound and Lights 8         |C013                          |
 | Vehicle Motion 1           |D001                          |
 | Vehicle Motion 2           |D001                          |
 | Vehicle Motion 3           |D001                          |
 | Vehicle Motion 4           |D001                          |
 | Vehicle Motion 5           |D:                            |
 | Vehicle Motion 6           |D001                          |
-| Vehicle Motion 7           |D:                            |
+| Vehicle Motion 7           |C007                          |
 | Vehicle Motion 8           |D:                            |
 | Vehicle Motion 9           |C007                          |
 | Obstacle Detection 1       |C011                          |
-| Obstacle Detection 2       |:)                            |
+| Obstacle Detection 2       |A005                          |
 | Obstacle Detection 3       |C011                          |
 | Obstacle Detection 4       |C011                          |
 | Obstacle Detection 5       |C011                          |
