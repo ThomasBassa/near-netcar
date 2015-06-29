@@ -313,7 +313,7 @@ The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller w
 
 **Figure 11.** Sequence diagram for the color sensor readings
 
-## Battery
+## Battery (Z069)
 The battery will power the whole vehicle, and needs to have enough voltage output to power all the sensors. 
 The battery needs to be large enough for all the sensors and the vehicle to run for a half hour.
 
