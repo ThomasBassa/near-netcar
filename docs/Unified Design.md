@@ -244,7 +244,7 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 **Figure 9.** Sequence diagram for obstacle detection
 
 #Sound and Lights
-An active buzzer <dB level> will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
+An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
 
     Raspberry Pi                            Active buzzer module
@@ -259,9 +259,12 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground.
 The GPIO library will again be used.
 
-##Servo/Motor Control (D001)
+DC 24V Electronic Amber LED Flashing Alarm Buzzer Siren 100dB BJ-3
+http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
 
-###Behavior (D002)
+## Servo/Motor Control (D001)
+
+### Behavior (D002)
 This system uses the output from the joystick to control speed and direction of the vehicle.
 This output is produced into two different vehicle methods, horizontal and vertical.
 Horizontal output controls the direction of the vehicle (rotational degrees of the servos)
