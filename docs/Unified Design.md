@@ -368,4 +368,4 @@ http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ
 ## Waterproofing (D009)
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
 container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
-come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
+come out and attach to components on the vehicle's exterior, and then sealed with rubber cement. The components of the vehicle will be able to withstand temperatures as low as 0 degrees Celsius, and up to 50 degrees Celsius

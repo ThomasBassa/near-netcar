@@ -26,7 +26,7 @@
 | Obstacle Detection 4       |C011                          |
 | Obstacle Detection 5       |C011                          |
 | Water- and Dust-Proofing 1 |D009                          |
-| Water- and Dust-Proofing 2 |:/ (broke table)              |
+| Water- and Dust-Proofing 2 |D009                          |
 | HD Camera 1                |D007                          |
 | HD Camera 2                |D007                          |
 | HD Camera 3                |D007                          |
@@ -40,7 +40,7 @@
 | Ground Station 4           |B002                          |
 | Ground Station 5           |B002                          |
 | Ground Station 6           |B002                          |
-| Ground Station 7           |:/ (broke table)              |
+| Ground Station 7           |Z011                          |
 | Ground Station 8           |B002                          |
 | Communications 1           |B002                          |
 | Communications 2           |B006                          |
