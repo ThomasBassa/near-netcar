@@ -23,6 +23,9 @@ http://www.amazon.com/T-Maxx-E-Maxx-Piece-Stainless-Screw/dp/B007A1241K
 Tenergy 11106 6V NiMH 2000mAh Battery Pack w/ Hitec Connector
 https://www.google.com/shopping/product/13805714129236869480?sclient=psy-ab&client=safari&rls=en&biw=1028&bih=703&q=6+volt+battery+pack&oq=6+volt+battery+pack&pbx=1&bav=on.2,or.&bvm=bv.95039771,d.eXY&tch=1&ech=1&psi=MDZ3VY2EDYijNr-QgqAN.1433876016731.9&prds=paur:ClkAsKraX7td72MFdoGw5whEirp-AMdJpx995tfOy8XHkqJepBZrTA-DOO4_CAUSMHPIvrtQZvrnzWeWp_zEniT9Te0RDIXsR-Fo7gGhWh4fFx3shJ6HeZLNZxIZAFPVH711kl_xk44f8CxJLi_vvcehtsKybg&ved=0CEEQpis&ei=eTZ3Vcv7L4HasATs8qrADQ
 
+Booster Converter - Voltage Regulator
+http://www.amazon.com/3-5-30V-4-0-30V-Booster-Converter-Regulator/dp/B008FLE7PA
+
 4-Cell 1800mah 50C EZ Flite Pro LiPo Battery (14.8 V):
 http://www.headsuphobby.com/148v-1800mah-50C-EZ-Flite-Pro-Lipo-Battery-F-180.htm
 
