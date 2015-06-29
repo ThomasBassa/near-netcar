@@ -1,31 +1,31 @@
-# Glossary
+# Glossary (A001)
 * Ground Station (GS) - User interface. The website and the joystick.
   Everything on the operator's end.
 * Vehicle - The RC car and its onboard Pi
 
-# System Design
+# System Design (A002)
 This is the set of subsystems we believe are necessary in this system.
 * Joystick - The way the user will control the vehicle
 * Navigation - How the user will know where to go
 * Camera (Hardware overlap) - What the use will use to see in front of the vehicle
 * Website Frontend - The way the user will see the camera feed, map, and various other statistics about the vehicle 
 
-# Use Cases 
+# Use Cases (A003)
 
-## Manual Vehicle Movement
+## Manual Vehicle Movement (A004)
 1. User moves joystick
 2. System sends information to vehicle accordingly.
 3. Vehicle moves
 
-## Obstacle Avoidance
+## Obstacle Avoidance (A005)
 1. Vehicle detects an obstacle (with Lidar)
 2. The vehicle stops
 
-# Subsystem Design
+# Subsystem Design (B001)
 
-## Website Frontend
+## Website Frontend (B002)
 
-### Behaviour
+### Behaviour (B003)
 The website contains a 720p video feed from the camera next to a Google map
 of the area surrounding the vehicle that both refresh at 30 Hz.
 Below the map and video feed is a toggleable switch to change the mode of
@@ -37,7 +37,7 @@ displayed below the camera feed,such as heading, which will aid in navigation,
 battery level, to tell the user when the vehicle will lose power,
 and the speed of the vehicle, to tell the user how fast he/she is going.
 
-### Role
+### Role (B004)
 The website frontend is used to display vehicle status information.
 It allows the user to see through the vehicle's eyes via the onboard camera and
 enables the vehicle's course to be set in automatic mode.
@@ -51,7 +51,7 @@ The website frontend will show important information about the current status of
 such as the battery life of the car, the cardinal direction the vehicle is facing,
 and the vehicle's current speed.
 
-### Major components, location, interaction
+### Major components, location, interaction (B005)
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
   Is used to provide waypoints, give directions while navigating, and update the user on the vehicle's location.
 * Video Feed: Top 3/4ths of the screen. Right half of the screen.
@@ -68,9 +68,9 @@ and the vehicle's current speed.
   Will display the current heading and battery level to the user.
   It will also show the camera's framerate and the vehicle's current speed.
 
-## Joystick
+## Joystick (B006)
 
-### Behaviour
+### Behaviour (B007)
 
 Joystick produces outputs based on the current position using Pygame.
 These outputs should be tuples of two floats passed through RPC protocol to the vehicle using Autobahn.
@@ -78,44 +78,44 @@ The vehicle-mounted pi runs code that maps the joystick's current position to se
 turning the wheels of the vehicle accordingly.
 The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
 
-### Physical
+### Physical (B008)
 The system consists entirely of the joystick and the computer that it's plugged it into via USB.
 The joystick will be physically next to the computer,
 and its code will be on the computer as well.
 The user interacts by operating the joystick to control the vehicle movement.
 
-### Software Components
+### Software Components (B009)
 The initial function onJoin runs when the session begins. onJoin then runs the function joyUpdate, which picks up the
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
 
-#### Function - onJoin()
+#### Function - onJoin() (F001)
 * Args - self, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
 * Behavior - Runs the functions within when the session connects
 
-#### Function - joyUpdate()
+#### Function - joyUpdate() (F002)
 * Args - n/a
 * Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behavior - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of two floats, and calls the function 	joyMonitor() with vals.
 
-#### Function - joyMonitor(put)
+#### Function - joyMonitor(put) (F003)
 * Args - put
  <!-- get put range from hardware team -->
 * Returns - int passed to the servos
 * Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
-## Vehicle Camera
+## Vehicle Camera (C001)
 
-### Behaviour
+### Behaviour (C002)
 An HD camera will be mounted to the front of the vehicle so that it faces forward.
 The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
-### Physical
+### Physical (C003)
 The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the vehicle.
 
-### Software Components
+### Software Components (C004)
 The camera's sensor captures shots of what it sees at a rate of 30 hz.
 Default software in the camera converts the frames that are captured
 into a 30fps video at 720p resolution. That video is then sent to the UI
@@ -124,7 +124,7 @@ that is controlled by the ground station and displayed in real time.
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
-# Hardware Design
+# Hardware Design (C005)
 
 The vehicle will communicate with the ground station.
 The vehicle shall have two modes: assisted manual mode and manual mode.
@@ -143,7 +143,7 @@ The vehicle will conform to IP54 standards, protecting it from water, dust, and 
 
 **Figure 2.** Block diagram of Hardware Connections
 
-## Vehicle Design
+## Vehicle Design (C006)
 
 ![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
 
@@ -161,11 +161,11 @@ This block was printed to give suport for the shocks.
 Four blocks were used to glue: one block to each side of the top 2 holes on each strut,
 to support the nails we later used to prop up the spings on the strut. They were glued using acetone.
 
-## Ground Station Communication
+## Ground Station Communication (C007)
 Application components connect to Crossbar.io and can then talk to each other using two patterns:
 Remote Procedure Calls and Publish & Subscribe. Crossbar.io directes and transmitts messages to the right components ("message routing").
 
-### Remote Procedure Calls
+### Remote Procedure Calls (C008)
 Remote Procedure Call (RPC) is a messaging pattern involving peers of three roles:
 Caller, Callee, and Dealer. A Caller issues calls to remote procedures by providing the procedure URI
 and any arguments for the call. The Callee will execute the procedure using the supplied arguments to the call
@@ -180,12 +180,12 @@ procedures registered by other components. Crossbar.io routes calls to the compo
 and returns the result to the caller: RPC pattern - registering a procedure with the Crossbar.io router, PRC pattern - 
 calling a remote procedure and receiving the result, routed via Crossbar.io.
 
-### Publish & Subscribe
+### Publish & Subscribe (C009)
 With the Publish & Subscribe pattern, any component can subscribe to receive events published from other components and 
 publish events which other subscribed components will receive. Crossbar.io routes event published to all components that have 
 subscribed to receive events for the topic.
 
-### Methods
+### Methods (C010)
 To PUBLISH an event - session.publish('join.session', 'Session joined')
 
 To REGISTER a procedure for remote calling - session.register(Horizontal(param)), 'com.myapp.add2')
@@ -194,7 +194,7 @@ To REGISTER a procedure for remote calling - session.register(Horizontal(param))
 
 **Figure 5.** Block diagram of server communications
 
-## Obstacle Avoidance
+## Obstacle Avoidance (C011)
 The vehicle will be mounted with a lidar laser rangefinder.
 The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on,
 it will start in manual mode and after 20 seconds elapse (timer),
@@ -214,7 +214,7 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 
 **Figure 6.** State diagram of manual assisted and manual mode
 
-### Use Case - Obstacle Detection
+### Use Case - Obstacle Detection (C012)
 
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
@@ -259,9 +259,9 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground.
 The GPIO library will again be used.
 
-##Servo/Motor Control
+##Servo/Motor Control (D001)
 
-###Behavior
+###Behavior (D002)
 This system uses the output from the joystick to control speed and direction of the vehicle.
 This output is produced into two different vehicle methods, horizontal and vertical.
 Horizontal output controls the direction of the vehicle (rotational degrees of the servos)
@@ -274,7 +274,7 @@ The last value received is saved in a variable to be used for sidewalk detection
 
 - Motor control method--> Vertical(param): This method changes the I2C output to the motors using I2C library.
 
-### Physical
+### Physical (D003)
 This system consists of two servos, two motors, a servo controller,
 and an Evx-2 speed controller. The two servos are directly connected to the vehicle
 and wired to a Raspberry Pi that connects to a website using crossbar.io.
@@ -288,13 +288,13 @@ to call the method Vertical() and sent to the Pi which feeds the speed controlle
 Evx-2 speed controller
 https://traxxas.com/products/parts/escs/3019Revx2lvd
 
-###Software Components
+###Software Components (D004)
 The Pi connects to the ground station through crossbar.io.
 Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
 The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
 
-### Use Case - Sidewalk Lost
+### Use Case - Sidewalk Lost (D005)
 1. press button on website to switch to assisted mode
 2. calls method on vehicle
 3. assisted manual comes on
@@ -306,7 +306,7 @@ The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller w
 
 **Figure 11.** Sequence diagram for the color sensor readings
 
-## Mounting Container
+## Mounting Container (D006)
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
 Holes will be drilled into the container around the struts and
 attached to the struts with zip ties. The holes at the bottom of the container will
@@ -320,7 +320,7 @@ http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=RE
 
 **Figure 12.** Diagram of the container's placement on the vehicle with measurements
 
-## Video Feed
+## Video Feed (D007)
 The casing will be removed from a Ubiquiti Aircam H.264 1Megapixel/720P 
 camera, and it will be mounted on the top of the vehicle, facing forward. The 
 camera requires 24V, and has 30fps. First the camera’s IP is determined using 
@@ -331,7 +331,7 @@ The port and IP will be used to contact the camera from the ground station.
 
 **Figure 13.** The sequence diagram for the camera HD feed
 
-## Vehicle Location Tracking
+## Vehicle Location Tracking (D008)
 
 The vehicle's location will be tracked using a GPS module. The GPS module will talk to the Pi with serial communication. The Pi will read string messages from the GPS module. Then the program will interpret the message to find the latitude and longitude of the vehicle. This information will be published over crossbar.io to the ground station. This will happen every main loop iteration. Pin 1 on the module goes to 3.3 V power. Pin 2 is RX and goes to RDX on the Pi. Pin 3 is TX and goes to TDX on the Pi. Pin 4 is ground.
 
@@ -346,7 +346,7 @@ http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ
 
 **Figure 15.** Sequence diagram for GPS reading and publishing
 
-## Waterproofing
+## Waterproofing (D009)
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
 container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
 come out and attach to components on the vehicle's exterior, and then sealed with rubber cement.
