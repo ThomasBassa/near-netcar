@@ -124,7 +124,7 @@ that is controlled by the ground station and displayed in real time.
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
-## Training system
+## Training system (Z011)
 The training system will be a printed manual describing all the features of the website frontend and the joystick.
 The training system is for new users to the vehicle, instructing them so they will know how to handle emergencies. 
 
