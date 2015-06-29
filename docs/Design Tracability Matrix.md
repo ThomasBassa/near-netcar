@@ -1,7 +1,7 @@
 | Requirement ID             | Design Feature               |
 |----------------------------|------------------------------|
 | Payload 1                  |D006                          |
-| Payload 2                  |D:                            |
+| Payload 2                  |D006                          |
 | Payload 3                  |D006                          |
 | Sound and Lights 1         |C013                          |
 | Sound and Lights 2         |C013                          |
@@ -18,7 +18,7 @@
 | Vehicle Motion 5           |D:                            |
 | Vehicle Motion 6           |D001                          |
 | Vehicle Motion 7           |C007                          |
-| Vehicle Motion 8           |D:                            |
+| Vehicle Motion 8           |Z069                          |
 | Vehicle Motion 9           |C007                          |
 | Obstacle Detection 1       |C011                          |
 | Obstacle Detection 2       |A005                          |
