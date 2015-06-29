@@ -327,6 +327,14 @@ http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=RE
 
 **Figure 12.** Diagram of the container's placement on the vehicle with measurements
 
+Alternatively container:
+
+A 20” x 20” x 12” vinyl insulated pizza deliver bag will be mounted on the vehicle. There will be a straight sheet of plastic inserted into the bottom on the bag (dimensions 18” x 16”) to keep it from sturdy. The bag will be kept folded down when empty.
+
+Pizza bag http://www.webstaurantstore.com/choice-20-x-20-x-12-vinyl-insulated-pizza-delivery-bag/124PIBAG5VNL.html
+
+<Diagram here>
+
 ## Video Feed (D007)
 The casing will be removed from a Ubiquiti Aircam H.264 1Megapixel/720P 
 camera, and it will be mounted on the top of the vehicle, facing forward. The 
