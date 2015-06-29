@@ -15,7 +15,7 @@
 | Vehicle Motion 2           |D001                          |
 | Vehicle Motion 3           |D001                          |
 | Vehicle Motion 4           |D001                          |
-| Vehicle Motion 5           |D:                            |
+| Vehicle Motion 5           |NOT YET                       |
 | Vehicle Motion 6           |D001                          |
 | Vehicle Motion 7           |C007                          |
 | Vehicle Motion 8           |Z069                          |
@@ -45,5 +45,3 @@
 | Communications 1           |B002                          |
 | Communications 2           |B006                          |
 | Communications 3           |B006                          |
-
-**Note - can't reconnect if signal lost, car has to do stuff to fix that **
