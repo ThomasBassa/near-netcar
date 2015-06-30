@@ -54,25 +54,25 @@
 			connection.open();
 			//END AUTOBAHN
 			//START GOOGLE MAPS
-			var markers;
-			var deleteListeners; // array to store listeners for marker deletion
-			var listenersForDirections;
-			var directionsDisplay;
-			var directionsService = new google.maps.DirectionsService();
+										// var markers;
+										// var deleteListeners; // array to store listeners for marker deletion
+										// var listenersForDirections;
+										// var directionsDisplay;
+										// var directionsService = new google.maps.DirectionsService();
 			var map;
-			var waypoints;
-			var ifDirecting = false;
-			var count;
-			var markerLatLngs;
-			var uniqueId;
+										// var waypoints;
+										// var ifDirecting = false;
+										// var count;
+										// var markerLatLngs;
+										// var uniqueId;
 			var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
-			var carMarker;
-			var poly;
+										// var carMarker;
+										// var poly;
 
 
 			function initialize() {
-				directionsDisplay = new google.maps.DirectionsRenderer();
-				directionsDisplay.setMap(map);
+										// directionsDisplay = new google.maps.DirectionsRenderer();
+										// directionsDisplay.setMap(map);
 				var mapOptions = {
 					zoom: 17,
 					center: myLatLng,
@@ -89,16 +89,16 @@
 					icon: icon
 				});
 
-				markers = new Array();
-				listenersForDirections = new Array();
-				deleteListeners = new Array();
-				waypoints  = new Array();
-				markerLatLngs = new Array();
+										// markers = new Array();
+										// listenersForDirections = new Array();
+										// deleteListeners = new Array();
+										// waypoints  = new Array();
+										// markerLatLngs = new Array();
 
-				uniqueId = 0;
-				carMarker.id = uniqueId;
-				markers[0] = carMarker;
-				uniqueId++;
+										// uniqueId = 0;
+										// carMarker.id = uniqueId;
+										// markers[0] = carMarker;
+										// uniqueId++;
 
 				// var helpWindow = new google.maps.InfoWindow({
 				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
@@ -110,51 +110,51 @@
 
 
 				//line making
-				var polyOptions = {
-					strokeColor: '#000000',
-					strokeOpacity: 1.0,
-					strokeWeight: 3
-				};
+										// var polyOptions = {
+										// 	strokeColor: '#000000',
+										// 	strokeOpacity: 1.0,
+										// 	strokeWeight: 3
+										// };
 
-				poly = new google.maps.Polyline(polyOptions);
-				poly.setMap(map);
-				var path = poly.getPath();
-				path.push(carMarker.position);
+										// poly = new google.maps.Polyline(polyOptions);
+										// poly.setMap(map);
+										// var path = poly.getPath();
+										// path.push(carMarker.position);
 
 
-				google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
-					var mark = new google.maps.Marker({
-						position: e.latLng,
-						map: map,
-						title: 'Waypoint',
-						animation: google.maps.Animation.DROP,
-					});
-					mark.id = uniqueId;
-					markers.push(mark);
-					uniqueId++;
-					var index = markers.indexOf(mark);
-					deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(e){
-						deleteMarker(mark.id);
-					}));
+										// google.maps.event.addListener(map, 'click', function(e){ //UNCOMMENT LATER
+										// 	var mark = new google.maps.Marker({
+										// 		position: e.latLng,
+										// 		map: map,
+										// 		title: 'Waypoint',
+										// 		animation: google.maps.Animation.DROP,
+										// 	});
+										// 	mark.id = uniqueId;
+										// 	markers.push(mark);
+										// 	uniqueId++;
+										// 	var index = markers.indexOf(mark);
+										// 	deleteListeners.push(google.maps.event.addListener(mark, 'rightclick', function(e){
+										// 		deleteMarker(mark.id);
+										// 	}));
 
-					var path = poly.getPath(); //temp to connect markers
-					path.push(e.latLng);
-				});
+										// 	var path = poly.getPath(); //temp to connect markers
+										// 	path.push(e.latLng);
+										// });
 			}
-			function deleteMarker(id) {
-				for (var i = 0; i < markers.length; i++) {
-		            if (markers[i].id == id) {
-		            	var path = poly.getPath();
-		            	path.removeAt(i);
-		                //Remove the marker from Map                  
-		                markers[i].setMap(null);
-		 				markers[i] = null;
-		                //Remove the marker from array.
-		                markers.splice(i, 1);
-		                return;
-            		}
-        		}
-			}
+										// function deleteMarker(id) {
+										// 	for (var i = 0; i < markers.length; i++) {
+									 //            if (markers[i].id == id) {
+									 //            	var path = poly.getPath();
+									 //            	path.removeAt(i);
+									 //                //Remove the marker from Map                  
+									 //                markers[i].setMap(null);
+									 // 				markers[i] = null;
+									 //                //Remove the marker from array.
+									 //                markers.splice(i, 1);
+									 //                return;
+							   //          		}
+							   //      		}
+										// }
 			function loadScript() {
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
@@ -163,24 +163,24 @@
 				document.body.appendChild(script);
 			}
 
-			function directionsStart() {
-				ifDirecting = true;
-				count = 0;
-				document.getElementById("directionBeginner").disabled = true;
+									// function directionsStart() {
+									// 	ifDirecting = true;
+									// 	count = 0;
+									// 	document.getElementById("directionBeginner").disabled = true;
 
-				// for(i = 0; i < markers.length; i++){
-				// 	listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', somethingToMakeThisWork(markers[i])));
-				// }
-				for(var i = 0; i < markers.length; i++){
-					mark = markers[i];
-					// google.maps.event.clearListeners(markers[i], 'click');
-					listenersForDirections.push(google.maps.event.addListener(mark, 'click', somethingToMakeThisWork(mark)));
-				}
-				// for each (var m in markers){
-				// 	listenersForDirections.push(new google.maps.event.addListener(m, 'click', beginDirecting);
-				// }
-				//todo later
-			}
+									// 	// for(i = 0; i < markers.length; i++){
+									// 	// 	listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', somethingToMakeThisWork(markers[i])));
+									// 	// }
+									// 	for(var i = 0; i < markers.length; i++){
+									// 		mark = markers[i];
+									// 		// google.maps.event.clearListeners(markers[i], 'click');
+									// 		listenersForDirections.push(google.maps.event.addListener(mark, 'click', somethingToMakeThisWork(mark)));
+									// 	}
+									// 	// for each (var m in markers){
+									// 	// 	listenersForDirections.push(new google.maps.event.addListener(m, 'click', beginDirecting);
+									// 	// }
+									// 	//todo later
+									// }
 			// function beginDirecting(markerStart){
 			// 	waypoints = new Array();
 			// 	waypoints.push({
@@ -191,58 +191,58 @@
 			// 		listenersForDirections.push(new google.maps.event.addListener(markers[i], 'click', somethingToMakeThisWork(markers[i])));
 			// 	}
 			// }
-			function somethingToMakeThisWork(m){
-				// count = count + 1;
-				// if(count>=2){
-					document.getElementById("directionFinisher").disabled = false;
-				// }
-				waypoints.push({
-					location: m.position
-				});
-			}
-			function doneCollectingPoints(){
-				var start = waypoints[0];
-				var end = waypoints[waypoints.length-1];
-				console.log(waypoints);
-				if(waypoints.length > 2){
-					var request = {
-						origin: start.location,
-						destination: end.location,
-						travelMode: google.maps.TravelMode.WALKING,
-						unitSystem: google.maps.UnitSystem.IMPERIAL,
-						waypoints: waypoints.slice(1,waypoints.length-1),
-						optimizeWaypoints: false,
-						provideRouteAlternatives: false
-					};
-					console.log("There are waypoints.");
-				} else {
-					var request = {
-						origin: start.location,
-						destination: end.location,
-						travelMode: google.maps.TravelMode.WALKING,
-						unitSystem: google.maps.UnitSystem.IMPERIAL,
-						optimizeWaypoints: false,
-						provideRouteAlternatives: false
-					};
-					console.log("There are no waypoints.");
-				}
-				directionsService.route(request, function(response, status){
-					if(status == google.maps.DirectionsStatus.OK){
-						directionsDisplay.setDirections(response);
-					}
-					else {
-						console.log("I am stupid -- Jessica King");
-					}
-				});
-				ifDirecting = false;
-				document.getElementById("directionBeginner").disabled = false;
-				document.getElementById("directionFinisher").disabled = true;
-				for (var i = 0; i < markers.length; i++) {
-					google.maps.event.clearListeners(markers[i], 'click');
-					listenersForDirections.pop();
-				}
-				waypoints.splice(0,waypoints.length);
-			}
+									// function somethingToMakeThisWork(m){
+									// 	// count = count + 1;
+									// 	// if(count>=2){
+									// 		document.getElementById("directionFinisher").disabled = false;
+									// 	// }
+									// 	waypoints.push({
+									// 		location: m.position
+									// 	});
+									// }
+									// function doneCollectingPoints(){
+									// 	var start = waypoints[0];
+									// 	var end = waypoints[waypoints.length-1];
+									// 	console.log(waypoints);
+									// 	if(waypoints.length > 2){
+									// 		var request = {
+									// 			origin: start.location,
+									// 			destination: end.location,
+									// 			travelMode: google.maps.TravelMode.WALKING,
+									// 			unitSystem: google.maps.UnitSystem.IMPERIAL,
+									// 			waypoints: waypoints.slice(1,waypoints.length-1),
+									// 			optimizeWaypoints: false,
+									// 			provideRouteAlternatives: false
+									// 		};
+									// 		console.log("There are waypoints.");
+									// 	} else {
+									// 		var request = {
+									// 			origin: start.location,
+									// 			destination: end.location,
+									// 			travelMode: google.maps.TravelMode.WALKING,
+									// 			unitSystem: google.maps.UnitSystem.IMPERIAL,
+									// 			optimizeWaypoints: false,
+									// 			provideRouteAlternatives: false
+									// 		};
+									// 		console.log("There are no waypoints.");
+									// 	}
+									// 	directionsService.route(request, function(response, status){
+									// 		if(status == google.maps.DirectionsStatus.OK){
+									// 			directionsDisplay.setDirections(response);
+									// 		}
+									// 		else {
+									// 			console.log("I am stupid -- Jessica King");
+									// 		}
+									// 	});
+									// 	ifDirecting = false;
+									// 	document.getElementById("directionBeginner").disabled = false;
+									// 	document.getElementById("directionFinisher").disabled = true;
+									// 	for (var i = 0; i < markers.length; i++) {
+									// 		google.maps.event.clearListeners(markers[i], 'click');
+									// 		listenersForDirections.pop();
+									// 	}
+									// 	waypoints.splice(0,waypoints.length);
+									// }
 			function helloWorld() {
 				console.log("Hello World");
 			}
@@ -274,10 +274,10 @@
 			</form>-->
 			<form action="#" method="get">
 				<input type="checkbox" id="switch1" name="switch1" class="switch" />
-				<label for="switch1">Autonomous Mode</label>
+				<label for="switch1">Object Avoidance Mode</label>
 			</form>
 			<br></br>
-			<button type="button" class=buttonstyle>Automatic Mode</button>
+			<!--<button type="button" class=buttonstyle>Automatic Mode</button>
 			<button onclick="directionsStart()" id="directionBeginner" class="buttonstyle">Give me Directions!</button>
 			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
 			<button type="button" class=buttonstyle>I hate Javascript + Google Maps + my life</button>
@@ -285,7 +285,7 @@
 			<button type="button" class=buttonstyle>Manual Mode</button>
 			<button onclick="doneCollectingPoints()" disabled id="directionFinisher" class=buttonstyle>Done selecting waypoints?</button>
 			<button onclick="rPCTest()" class=buttonstyle>RPC Test!</button>
-			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>
+			<button onclick="helloWorld()" class=buttonstyle>Hello World onclick test</button>-->
 		</div>
 	</body>
 </html>
