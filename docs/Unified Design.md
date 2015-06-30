@@ -33,8 +33,7 @@ the vehicle between manual and autonomous navigation. There is also a Stop butto
 that causes the vehicle to stop moving as quickly as possible, to be used
 in an emergency situation. These directional instructions will also be used 
 to help the vehicle navigate autonomously. There will also be some vehicle statistics 
-displayed below the camera feed,such as heading, which will aid in navigation, 
-battery level, to tell the user when the vehicle will lose power,
+displayed below the camera feed, such as heading, which will aid in navigation, 
 and the speed of the vehicle, to tell the user how fast he/she is going.
 
 ### Role (B004)
@@ -46,17 +45,16 @@ so the user is also able to plan where he or she wants to go.
 It provides directional instructions to take the user wherever
 they want to go on campus as well.
 It also enables emergency stops through the stop button.
-
 The website frontend will show important information about the current status of the car 
-such as the battery life of the car, the cardinal direction the vehicle is facing,
+such as the cardinal direction the vehicle is facing,
 and the vehicle's current speed.
 
 ### Major components, location, interaction (B005)
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
-  Is used to provide waypoints, give directions while navigating, and update the user on the vehicle's location.
+  Is used to update the user on the vehicle's location.
 * Video Feed: Top 3/4ths of the screen. Right half of the screen.
   Is used to provide the user with a visual of what is in front of the vehicle and aid in navigation.
-* Assisted Mode Checkbox: Below the map.
+* Assisted Mode Switch: Below the map.
   When clicked, it will swap the vehicle from manual to assisted mode and vice versa.
   It operates on PubSub. The vehicle subscribes to what the ground station publishes on the channel modeSwitch.
   The ground station publishes when the state of the checkbox changes. This causes the vehicle to switch modes.
@@ -65,7 +63,7 @@ and the vehicle's current speed.
   It calls an RPC named emergStop to tell the robot to begin slowing down and eventually stop.
   It can stop the robot from 30 mph in 15 meters, to be used in emergencies.
 * Data: Below the camera feed.
-  Will display the current heading and battery level to the user.
+  Will display the current heading to the user.
   It will also show the camera's framerate and the vehicle's current speed.
 
 ## Joystick (B006)
