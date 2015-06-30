@@ -62,3 +62,8 @@ https://traxxas.com/products/parts/escs/3019Revx2lvd
 
 Hot Box
 http://www.webstaurantstore.com/choice-20-x-20-x-12-vinyl-insulated-pizza-delivery-bag/124PIBAG5VNL.html
+
+###Colour Sensors
+
+We need two of these
+http://www.adafruit.com/products/1334
