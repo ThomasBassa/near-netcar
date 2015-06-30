@@ -21,6 +21,9 @@ Sends joystick forward, backward, left, and right movement through the Ground Sy
 ### aero.near.honkHorn()
 * Behavior - Honks the horn for .5  when called
 
+### aero.near.emergStop()
+* Behavior - Stops the vehicle as quickly as possible
+
 ## Publish/Subscribe Topics
 <!-- The PubSub components need a different format:
 	###Name of topic ("offical" name)
