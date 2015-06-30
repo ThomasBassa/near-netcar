@@ -38,7 +38,19 @@ html,body{
 	margin:0;
 	padding:0;
 }
-
+.display{
+	left: 35%;
+	position:absolute;
+	border: 1px solid black;
+	padding: 10px;
+}
+.stop{
+    background:url(stopsign.png);
+	right:128px;
+	top:80%;
+	width:128px;
+	height:128px;
+}
 
 form{
 	

@@ -19,7 +19,8 @@
 			connection.onopen = function (session) {
 				 // 1) subscribe to a topic
 				session.subscribe('aero.near.detect', detected); //subscribes to topic to see if object is detected
-
+				session.subscribe('aero.near.carSpeed', speedUpdate);
+				session.subscribe('aero.near.carPos',posUpdate);
 		  		 // 2) publish an event
 				session.publish('com.myapp.hello', ['Hello, world!']);
 
@@ -248,6 +249,7 @@
 
 			var objectAvoidanceOverride = false;
 			var timer;
+			var speed = 0;
 
 			var objWindow = new google.maps.InfoWindow({
 				content: 'Object Detected!',
@@ -273,10 +275,11 @@
 				else if(document.getElementById("switch1").checked == false && objectAvoidanceOverride == true){
 					objectAvoidanceOverride = false;
 					// mySession.call('aero.near.override', [false]);
-					window.clearTimeout(timer1);
+					window.clearTimeout(timer);
 				}
 
-
+				document.getElementById("display").innerHTML = 
+					"Latitude: "+myLatLng.lat()+"<br>Longitude: "+myLatLng.lng()+"<br>Speed: "+speed;
 
 			}
 			function detected (bool) { //bool is whether or not object is detected
@@ -290,6 +293,16 @@
 				}
 
 			}
+			function speedUpdate (newSpeed) {
+				speed = newSpeed;
+			}
+			function posUpdate(newLat, newLng){
+				myLatLng = new google.maps.LatLng(newLat, newLng);
+				map.setCenter(myLatLng);
+			}
+			function stop(){
+				mySession.call('aero.near.emergStop', []);
+			}
 			//END GOOGLE MAPS
 		</script>
 	</head>
@@ -301,10 +314,15 @@
 			<input type="checkbox" name="Mode" value="Auto"> Automatic Mode<br> --><!-- TODO MAKE PUBSUB-->
 				<!--<input type="submit" value="Submit">
 			</form>-->
-			<form action="#" method="get">
-				<input type="checkbox" id="switch1" name="switch1" class="switch" />
-				<label for="switch1">Object Avoidance Override</label>
-			</form>
+
+			<p id="display" class="display">Latitude: Loading...\nLongitude: Loading...\nSpeed: Loading...</p>
+			<img onclick="stop()" style="cursor:pointer;right:128px;float:right;" src="stopsign.png"/>
+<!--			<button onclick="stop()" class=stop>Stop</button>-->
+			<input type="checkbox" id="switch1" name="switch1" class="switch"/>
+			<label for="switch1">Object Avoidance Override</label>
+
+
+
 			<br></br>
 			<!--<button onclick="overrideOn()" type="button" class=buttonstyle id="override">Object Avoidance Override</button>
 			<button onclick="directionsStart()" id="directionBeginner" class="buttonstyle">Give me Directions!</button>
