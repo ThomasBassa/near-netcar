@@ -24,11 +24,13 @@ class MyComponent(ApplicationSession):
             #pwm.setPWM(3, 0, int(value))
 
             if put < 0:
-             pwm.setPWM( 3, 0, int(425-(put*175)))
+                for x in range(0,100):
+                    pwm.setPWM( 3, 0, int(525-x-(put*175)))
             elif put > 0: 
-             pwm.setPWM( 3, 0, int(425-(put*275)))
+                for x in range(0,100):
+                    pwm.setPWM( 3, 0, int(525-x-(put*275)))
             else:
-             pwm.setPWM( 3, 0, 425)
+                pwm.setPWM( 3, 0, 425)
 
         self.register(joyMonitor, 'aero.near.joyMonitor')
         print("Session Joined.")
@@ -37,10 +39,7 @@ if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
     runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
-
-
-  
-
+    
    
 
 
