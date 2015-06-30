@@ -18,10 +18,7 @@
 			var mode = "Manual";
 			connection.onopen = function (session) {
 				 // 1) subscribe to a topic
-				function onevent(args) {
-					console.log("Event:", args[0]);
-				}
-				session.subscribe('com.myapp.hello', onevent);
+				session.subscribe('aero.near.detect', detected); //subscribes to topic to see if object is detected
 
 		  		 // 2) publish an event
 				session.publish('com.myapp.hello', ['Hello, world!']);
@@ -88,6 +85,7 @@
 					title: 'Vehicle',
 					icon: icon
 				});
+			}
 
 										// markers = new Array();
 										// listenersForDirections = new Array();
@@ -100,12 +98,7 @@
 										// markers[0] = carMarker;
 										// uniqueId++;
 
-				// var helpWindow = new google.maps.InfoWindow({
-				// 	content: 'Left Click to create a waypoint, Right Click to remove it!',
-				// 	position: myLatLng
-				// });
-
-				// helpWindow.open(map);
+				
 				
 
 
@@ -140,7 +133,7 @@
 										// 	var path = poly.getPath(); //temp to connect markers
 										// 	path.push(e.latLng);
 										// });
-			}
+										// }
 										// function deleteMarker(id) {
 										// 	for (var i = 0; i < markers.length; i++) {
 									 //            if (markers[i].id == id) {
@@ -246,21 +239,57 @@
 			function helloWorld() {
 				console.log("Hello World");
 			}
-			function changeMode() {   // will be for the checkbox thing
-				if(document.getElementById("switch1").checked == "checked"){
-					mySession.publish('aero.near.makeAuto', [true]);
-				}
-				else {
-					mySession.publish('aero.near.makeAuto', [false]);
-				}
-				// if(mode == "Manual")
-				// 	mode = "Automatic";
-				// else
-				// 	mode = "Manual";
-			}
 
 			//window.onload = loadScript;
 			google.maps.event.addDomListener(window, 'load', initialize);
+
+			window.setInterval(refresh,33);
+
+
+			var objectAvoidanceOverride = false;
+			var timer;
+
+			var objWindow = new google.maps.InfoWindow({
+				content: 'Object Detected!',
+				position: myLatLng
+			});
+
+			function refresh() {
+				console.log("refreshing");
+				//publishing object avoidance checkbox status
+				if(document.getElementById("switch1").checked == true&&objectAvoidanceOverride==false){
+					console.log("checked");
+					// mySession.call('aero.near.override', [true]);
+					objectAvoidanceOverride = true;
+					console.log("making timer");
+					timer = window.setTimeout( function(){
+						objectAvoidanceOverride = false;
+						// mySession.call('aero.near.override', [false]);
+						document.getElementById("switch1").checked = false;
+						console.log("time's up");
+					}, 20000);
+
+				}
+				else if(document.getElementById("switch1").checked == false && objectAvoidanceOverride == true){
+					objectAvoidanceOverride = false;
+					// mySession.call('aero.near.override', [false]);
+					window.clearTimeout(timer1);
+				}
+
+
+
+			}
+			function detected (bool) { //bool is whether or not object is detected
+				if(bool){
+						
+					objWindow.open(map);
+
+				} else if (bool==false){
+
+					objWindow.close();
+				}
+
+			}
 			//END GOOGLE MAPS
 		</script>
 	</head>
@@ -274,10 +303,10 @@
 			</form>-->
 			<form action="#" method="get">
 				<input type="checkbox" id="switch1" name="switch1" class="switch" />
-				<label for="switch1">Object Avoidance Mode</label>
+				<label for="switch1">Object Avoidance Override</label>
 			</form>
 			<br></br>
-			<!--<button type="button" class=buttonstyle>Automatic Mode</button>
+			<!--<button onclick="overrideOn()" type="button" class=buttonstyle id="override">Object Avoidance Override</button>
 			<button onclick="directionsStart()" id="directionBeginner" class="buttonstyle">Give me Directions!</button>
 			<button onclick="regCallDemo()" class=buttonstyle>Accelerate!(regcalldemo)</button>
 			<button type="button" class=buttonstyle>I hate Javascript + Google Maps + my life</button>
