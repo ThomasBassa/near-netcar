@@ -17,9 +17,22 @@ This is the set of subsystems we believe are necessary in this system.
 2. System sends information to vehicle accordingly.
 3. Vehicle moves
 
-## Obstacle Avoidance (A005)
-1. Vehicle detects an obstacle (with Lidar)
-2. The vehicle stops
+## Assisted Mode (A005)
+1. User clicks switch on Website Frontend
+2. Ground Station sends a boolean to the PubSub server
+3. Vehicle turns off assisted mode for 20 seconds 
+4. Assisted mode turns back on automatically
+
+## Obstacle Detection (C012)
+1. Lidar comes on, servo begins rotating
+2. If an obstacle is detected, the vehicle stops and alerts user by publishing event
+3. User has option for a 20 sec override
+4a. If override option is not taken wait until obstacle has moved
+4b. If override option taken, start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
+
+## Sidewalk Lost (D005)
+1. Color sensor detects vehicle on grass
+2. Use last joystick inputs and runs them backwards until color sensor detects sidewalk 
 
 # Subsystem Design (B001)
 
@@ -216,23 +229,6 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 
 **Figure 6.** State diagram of manual assisted and manual mode
 
-### Use Case - Obstacle Detection (C012)
-
-1. press button on website to switch to assisted mode
-2. calls method on vehicle
-3. assisted manual comes on
-  - Lidar comes on, servo begins rotating
-4. if an obstacle is detected
-  - vehicle stops
-  - alerts user by publishing event
-5. user has option for a 20 sec override
-6. if override option is not taken
-  - wait until obstacle has moved
-7. if override option taken
-  - start a timer
-  - switch to manual mode
-  - switch back to assisted after 20 sec
-
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ServoRotationDiagram.png)
 
 **Figure 7.** Diagram showing how the servo's rotation angle was determined
@@ -261,7 +257,7 @@ A 4" x 2" oblong amber LED marker light will be mounted on the top of the vehicl
 powered. The light will be powered by a battery connected by two bare end lead wires with two pins, power and ground.
 The GPIO library will again be used.
 
-DC 24V Electronic Amber LED Flashing Alarm Buzzer Siren 100dB BJ-3
+DC 24V Electronic Amber LED Flashing Alarm Siren 100dB BJ-3
 http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
 
 ## Servo/Motor Control (D001)
@@ -293,19 +289,11 @@ to call the method Vertical() and sent to the Pi which feeds the speed controlle
 Evx-2 speed controller
 https://traxxas.com/products/parts/escs/3019Revx2lvd
 
-###Software Components (D004)
+### Software Components (D004)
 The Pi connects to the ground station through crossbar.io.
 Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
 The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
-
-### Use Case - Sidewalk Lost (D005)
-1. press button on website to switch to assisted mode
-2. calls method on vehicle
-3. assisted manual comes on
-  - colour sensor comes on
-4. if colour sensor detects no sidewalk
-  - use last joystick input (left/right) and turn opposite direction for 1 second
 
 ![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensorSeq.png)
 
