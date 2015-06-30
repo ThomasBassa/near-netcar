@@ -14,9 +14,9 @@
 Sends joystick forward, backward, left, and right movement through the Ground System to the vehicle.
 * Return - none
 
-### aero.near.switchMode()
+### aero.near.override()
 <!-- Is this actually "on and off" or just off? What happens if sent multiple times quickly? -->
-* Behavior - Switches the obstacle avoidance system on and off, in obedience to the time-out requirement
+* Behavior - Switches the obstacle avoidance override on and off, in obedience to the time-out requirement
 
 ### aero.near.honkHorn()
 * Behavior - Honks the horn for .5  when called
