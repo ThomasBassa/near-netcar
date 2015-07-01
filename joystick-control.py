@@ -53,5 +53,8 @@ class MyComponent(ApplicationSession):
 if __name__ == '__main__':
     print("Main running")
     val = (0.0, 0.0)
-    runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
-    runner.run(MyComponent)
+    try:
+        runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
+        runner.run(MyComponent)
+    except Exception as e:
+        print("Error {}".format(e))
