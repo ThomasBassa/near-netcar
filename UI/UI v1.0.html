@@ -81,19 +81,19 @@
 		//publishing object avoidance checkbox status
 		if (document.getElementById("switch1").checked == true && objectAvoidanceOverride == false) {
 			console.log("checked");
-			// mySession.call('aero.near.override', [true]);
+			mySession.call('aero.near.override', [true]);
 			objectAvoidanceOverride = true;
 			console.log("making timer");
 			timer = window.setTimeout(function() {
 				objectAvoidanceOverride = false;
-				// mySession.call('aero.near.override', [false]);
+				mySession.call('aero.near.override', [false]);
 				document.getElementById("switch1").checked = false;
 				console.log("time's up");
 			}, 20000);
 
 		} else if (document.getElementById("switch1").checked == false && objectAvoidanceOverride == true) {
 			objectAvoidanceOverride = false;
-			// mySession.call('aero.near.override', [false]);
+			mySession.call('aero.near.override', [false]);
 			window.clearTimeout(timer);
 		}
 
