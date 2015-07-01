@@ -3,7 +3,7 @@
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 #from Adafruit_PWM_Servo_Driver import PWM
 #import time
-
+import os
 # This is executed before anything else
 
 # Initialise the PWM device using the default address
@@ -33,6 +33,7 @@ class MyComponent(ApplicationSession):
 #            else:
  #               pwm.setPWM( 3, 0, 425)
             #TODO do stuff with motorAxis, make engine go vroom
+            os.system('cls' if os.name == 'nt' else 'clear')
             print("Servo axis: {}".format(servoAxis))
             print("Motor axis: {}".format(motorAxis))
         self.register(joyMonitor, 'aero.near.joyMonitor')
