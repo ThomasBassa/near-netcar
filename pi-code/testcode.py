@@ -19,7 +19,7 @@ class MyComponent(ApplicationSession):
     def onJoin(self, details):
 
         def joyMonitor(servoAxis, motorAxis):
-            print("calling with value {}".format(servoAxis))
+#            print("calling with value {}".format(servoAxis))
             #value = 375 - (servoAxis*225)
             #pwm.setPWM(3, 0, int(value))
 
@@ -33,8 +33,8 @@ class MyComponent(ApplicationSession):
 #            else:
  #               pwm.setPWM( 3, 0, 425)
             #TODO do stuff with motorAxis, make engine go vroom
-            print("Servo axis: "+servoAxis)
-            print("Motor axis: "+motorAxis)
+            print("Servo axis: {}".format(servoAxis))
+            print("Motor axis: {}".format(motorAxis))
         self.register(joyMonitor, 'aero.near.joyMonitor')
         def honkHorn():
             print("Horn is honking")

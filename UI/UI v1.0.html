@@ -23,6 +23,7 @@
 		session.subscribe('aero.near.detect', detected);
 		session.subscribe('aero.near.carSpeed', speedUpdate);
 		session.subscribe('aero.near.carPos', posUpdate);
+		mySession = session;
 	}
 
 	connection.open();
@@ -66,7 +67,7 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 	window.setInterval(refresh, 33);
-
+	window.setInterval(honk, 2000);
 	var objectAvoidanceOverride = false;
 	var timer;
 	var speed = 0;
@@ -125,6 +126,9 @@
 
 	function stop() {
 		mySession.call('aero.near.emergStop', []);
+	}
+	function honk() {
+		mySession.call('aero.near.honkHorn',[]);
 	}
 	//END GOOGLE MAPS
 	</script>
