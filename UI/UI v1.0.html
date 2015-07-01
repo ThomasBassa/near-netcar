@@ -11,7 +11,7 @@
 		<script type="text/javascript"> //TODO separate into files
 			//START AUTOBAHN
 			var connection = new autobahn.Connection({
-				url: 'ws://104.197.76.36:8080/ws',
+				url: 'ws://localhost:8080/ws',
 				realm: 'realm1'
 			});
 			var mySession;
@@ -137,7 +137,10 @@
 				speed = newSpeed;
 			}
 			function posUpdate(newLat, newLng){
-				myLatLng = new google.maps.LatLng(newLat, newLng);
+				console.log(newLat + " "+ newLng);
+				console.log(newLat[0] + " "+ newLat[1]);
+				myLatLng = new google.maps.LatLng(newLat[0], newLat[1]);
+				console.log(myLatLng.lat()+" "+myLatLng.lng());
 				map.setCenter(myLatLng);
 			}
 			function stop(){
