@@ -23,7 +23,7 @@ Sends joystick forward, backward, left, and right movement through the Ground Sy
 ## Publish/Subscribe Topics
 
 ### aero.near.carPos
-* The latitude and longitude of the vehicle, formatted as a tuple in that order, **and explain the datatype & units**
+* The latitude and longitude of the vehicle, formatted as a tuple of floats in that order. The latitude and longitude will be represented in degrees. 
 * frequency - 33ms
 
 ### aero.near.carSpeed
