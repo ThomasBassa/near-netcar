@@ -71,6 +71,7 @@ and the vehicle's current speed.
   When clicked, it will swap the vehicle from manual to assisted mode and vice versa.
   It operates on PubSub. The vehicle subscribes to what the ground station publishes on the channel modeSwitch.
   The ground station publishes when the state of the checkbox changes. This causes the vehicle to switch modes.
+  There will also be a timer present to indicate the amount of time the override remains in effect.
 * Stop Button: Below the video stream.
   When clicked, it will command the vehicle to stop moving as fast as possible.
   It calls an RPC named emergStop to tell the robot to begin slowing down and eventually stop.
