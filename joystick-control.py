@@ -2,6 +2,9 @@ from twisted.internet.defer import inlineCallbacks
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 import pygame
 from twisted.internet import reactor, task
+import os
+from time import sleep
+
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -40,12 +43,14 @@ class MyComponent(ApplicationSession):
                         oldvalue = val[0]
                         val = (oldvalue, event.value)
             try:
-                yield self.call('aero.near.joyMonitor', val[0])
-                yield self.call('aero.near.joyMonitor', val[1])
+                yield self.call('aero.near.joyMonitor', val[0], val[1])		
+#                yield self.call('aero.near.joyMonitor', val)
             except Exception as e:
-                print("Error {}".format(e))
-            print("Axis {} at {}".format(0, val[0]))
-            print("Axis {} at {}".format(1, val[1]))
+                print("Error - no connection found.")
+	    os.system('cls' if os.name == 'nt' else 'clear')	
+	    print("Jimmy's a big 'ole butthead!")
+        print("Axis {} at {}".format(0, val[0]))
+        print("Axis {} at {}".format(1, val[1]))
 #            print("Axis {} at {}".format(2, val[2]))
         l = task.LoopingCall(update)
         l.start(.033333)
@@ -53,5 +58,8 @@ class MyComponent(ApplicationSession):
 if __name__ == '__main__':
     print("Main running")
     val = (0.0, 0.0)
-    runner = ApplicationRunner(url = u"ws://104.197.76.36:8080/ws", realm = u"realm1")
-    runner.run(MyComponent)
+    try:
+        runner = ApplicationRunner(url = u"ws://10.33.92.126:8080/ws", realm = u"realm1")
+        runner.run(MyComponent)
+    except Exception as e:
+        print("Error {}".format(e))

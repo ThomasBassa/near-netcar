@@ -23,6 +23,7 @@
 		session.subscribe('aero.near.detect', detected);
 		session.subscribe('aero.near.carSpeed', speedUpdate);
 		session.subscribe('aero.near.carPos', posUpdate);
+		mySession = session;
 	}
 
 	connection.open();
@@ -66,7 +67,7 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 	window.setInterval(refresh, 33);
-
+	window.setInterval(honk, 2000);
 	var objectAvoidanceOverride = false;
 	var timer;
 	var speed = 0;
@@ -81,19 +82,19 @@
 		//publishing object avoidance checkbox status
 		if (document.getElementById("switch1").checked == true && objectAvoidanceOverride == false) {
 			console.log("checked");
-			// mySession.call('aero.near.override', [true]);
+			mySession.call('aero.near.override', [true]);
 			objectAvoidanceOverride = true;
 			console.log("making timer");
 			timer = window.setTimeout(function() {
 				objectAvoidanceOverride = false;
-				// mySession.call('aero.near.override', [false]);
+				mySession.call('aero.near.override', [false]);
 				document.getElementById("switch1").checked = false;
 				console.log("time's up");
 			}, 20000);
 
 		} else if (document.getElementById("switch1").checked == false && objectAvoidanceOverride == true) {
 			objectAvoidanceOverride = false;
-			// mySession.call('aero.near.override', [false]);
+			mySession.call('aero.near.override', [false]);
 			window.clearTimeout(timer);
 		}
 
@@ -125,6 +126,9 @@
 
 	function stop() {
 		mySession.call('aero.near.emergStop', []);
+	}
+	function honk() {
+		mySession.call('aero.near.honkHorn',[]);
 	}
 	//END GOOGLE MAPS
 	</script>
