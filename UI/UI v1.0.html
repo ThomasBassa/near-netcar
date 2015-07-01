@@ -19,36 +19,15 @@
 	var mySession;
 	var mode = "Manual";
 	connection.onopen = function(session) {
-		// 1) subscribe to a topic
-		session.subscribe('aero.near.detect', detected); //subscribes to topic to see if object is detected
+		// Subscribe to interface topics-- object detect, speed, position
+		session.subscribe('aero.near.detect', detected);
 		session.subscribe('aero.near.carSpeed', speedUpdate);
 		session.subscribe('aero.near.carPos', posUpdate);
-		// 2) publish an event
-		session.publish('com.myapp.hello', ['Hello, world!']);
-
-		function accelerate(args) {
-			return "accelerating!";
-		}
-		session.register('com.myapp.accelerate', accelerate);
-		mySession = session;
-
-
-
 	}
 
-	function regCallDemo() {
-		mySession.call('com.myapp.accelerate', [2, 3, 123, 421]).then(
-			function(res) {
-				console.log("Result:", res);
-			}
-		);
-	}
-
-	function rPCTest() {
-		mySession.call('aero.near.joyMonitor', [-1]);
-	}
 	connection.open();
 	//END AUTOBAHN
+
 	//START GOOGLE MAPS
 	var map;
 	var myLatLng = new google.maps.LatLng(29.1886, -81.0487);
@@ -123,13 +102,13 @@
 
 	}
 
+	//Callback functions for subscribed topics
 	function detected(bool) { //bool is whether or not object is detected
 		if (bool) {
 			objWindow.open(map);
 		} else if (bool == false) {
 			objWindow.close();
-		}
-
+	  }
 	}
 
 	function speedUpdate(newSpeed) {
@@ -158,7 +137,7 @@
 
 		<p id="display" class="display">Latitude: Loading...\nLongitude: Loading...\nSpeed: Loading...</p>
 		<img onclick="stop()" style="cursor:pointer;right:128px;float:right;" src="stopsign.png" />
-		<!--			<button onclick="stop()" class=stop>Stop</button>-->
+		<!-- <button onclick="stop()" class=stop>Stop</button> -->
 		<input type="checkbox" id="switch1" name="switch1" class="switch" />
 		<label for="switch1">Object Avoidance Override</label>
 
