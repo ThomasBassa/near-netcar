@@ -40,8 +40,8 @@ class MyComponent(ApplicationSession):
                         oldvalue = val[0]
                         val = (oldvalue, event.value)
             try:
-                yield self.call('aero.near.joyMonitor', val[0])
-                yield self.call('aero.near.joyMonitor', val[1])
+                yield self.call('aero.near.joyMonitor', val[0], val[1])
+#                yield self.call('aero.near.joyMonitor', val[1])
             except Exception as e:
                 print("Error {}".format(e))
             print("Axis {} at {}".format(0, val[0]))

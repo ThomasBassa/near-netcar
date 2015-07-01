@@ -18,19 +18,20 @@ class MyComponent(ApplicationSession):
 
     def onJoin(self, details):
 
-        def joyMonitor(put):
-            print("calling with value {}".format(put))
-            #value = 375 - (put*225)
+        def joyMonitor(servoAxis, motorAxis):
+            print("calling with value {}".format(servoAxis))
+            #value = 375 - (servoAxis*225)
             #pwm.setPWM(3, 0, int(value))
 
-            if put < 0:
+            if servoAxis < 0:
                 for x in range(0,100):
-                    pwm.setPWM( 3, 0, int(525-x-(put*175)))
-            elif put > 0: 
+                    pwm.setPWM( 3, 0, int(525-x-(servoAxis*175)))
+            elif servoAxis > 0: 
                 for x in range(0,100):
-                    pwm.setPWM( 3, 0, int(525-x-(put*275)))
+                    pwm.setPWM( 3, 0, int(525-x-(servoAxis*275)))
             else:
                 pwm.setPWM( 3, 0, 425)
+            #TODO do stuff with motorAxis, make engine go vroom
 
         self.register(joyMonitor, 'aero.near.joyMonitor')
         print("Session Joined.")
