@@ -1,19 +1,10 @@
 # Goals
- * Finish implimentaton of forward/backward joystick movement to motor activation 
- * Complete Website frontend code (PubSub functionality, IPs, local Crossbar server) 
- * Fix flaws on documents
- * Have code to test things without the vehicle, the Pi. or any of the parts
+ * Finish implementaton of forward/backward joystick movement to motor activation
+ * Complete Website frontend code (PubSub functionality, IPs, local Crossbar server)
  * Camera display to ground station
- * Remote control of Functions
- * Attempt to stabilize servos
+ * Attempt to more acuratlly control servos
  * Implement gradual stop instead of immediate stop
- * Smooth out axis control of servos to stop servo-jerk
- * Collaborate with hardware team for solutions
- * Implement override switch for Obstacle Detection into ground station
- * Add graphical indication functionality
- * Car stats (location, direction, speed, battery %)
- * Get GPS stats from onboard sensor
- * Use GPS to get direction and speed of the vehicle
+ * Implement override switch for obstacle detection into ground station
+ * Car stats (location, direction, speed) on the website
+ * Get direction and speed of the vehicle on the website
  * Set location on a mini-map on the website
- * Write the training material
- * Training on using the UI and controlling the car
