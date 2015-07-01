@@ -2,7 +2,7 @@
  * Finish implementaton of forward/backward joystick movement to motor activation
  * Complete Website frontend code (PubSub functionality, IPs, local Crossbar server)
  * Camera display to ground station
- * Attempt to more accurately control servos
+ * Implement gradually control servos
  * Implement gradual stop instead of immediate stop
  * Implement override switch for obstacle detection into ground station
  * Car stats (location, direction, speed) on the website
