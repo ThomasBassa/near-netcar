@@ -3,12 +3,12 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<!-- html, body, #picture { height: 100%; width: 50%; margin: 0; padding: 0;} -->
-		<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&libraries=drawing">// TODO REMOVE KEY and consolidate?
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&libraries=drawing">// REMOVE KEY and consolidate?
 		</script>
 		<script type ="text/javascript"
 			src="https://autobahn.s3.amazonaws.com/autobahnjs/latest/autobahn.min.jgz">
 		</script>
-		<script type="text/javascript"> //TODO separate into files
+		<script type="text/javascript"> // separate into files
 			//START AUTOBAHN
 			var connection = new autobahn.Connection({
 				url: 'ws://localhost:8080/ws',
@@ -42,12 +42,6 @@
 			}
 			function rPCTest(){
 				mySession.call('aero.near.joyMonitor', [-1]);
-				// if(Math.random()>.5){
-				// 	mySession.call('aero.near.joyMonitor', [Math.random()]);
-				// }
-				// else{
-				// 	mySession.call('aero.near.joyMonitor', [Math.random()*-1]);
-				// }
 			}
 			connection.open();
 			//END AUTOBAHN
