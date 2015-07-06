@@ -22,14 +22,17 @@ class MyComponent(ApplicationSession):
     global oldval
     global maxTurn
     global horizPosition
+    global verticalPosition
     horizPosition = 0.0
-    maxTurn = .25
+    verticalPosition = 0.0
+    maxTurn = .05
 
 
     def onJoin(self, details):
         global val
         global oldval
         global horizPosition
+        global verticalPosition
         val = (0.0,0.0)
         oldval = (0.0, 0.0)
         done = False
@@ -39,7 +42,7 @@ class MyComponent(ApplicationSession):
             global val
             global oldval
             global horizPosition
-
+            global verticalPosition
 #            ifPositive = True
 #            if val[0] - oldval[0] <= 0:
 #                ifPositive = False
@@ -53,13 +56,12 @@ class MyComponent(ApplicationSession):
 #                diff = diff * -1
             print("diff: {}".format(diff))
             axiszeroold = val[0]
-            axisoneold = val[1]
-            val = (axiszeroold + diff, axisoneold)
+            val = (axiszeroold + diff, verticalPosition)
             if val[0] >  1:
-                val = (1,axisoneold)
+                val = (1,verticalPosition)
             elif val[0] < -1:
-                val = (-1,axisoneold)
-            oldval = (horizPosition,val[1])
+                val = (-1,verticalPosition)
+            oldval = (horizPosition,verticalPosition)
             print("val set")
             print("Axis 0 at {}".format(val[0]))
             print("Axis 1 at {}".format(val[1]))
@@ -72,6 +74,7 @@ class MyComponent(ApplicationSession):
             global val
             global oldval
             global horizPosition
+            global verticalPosition
 
             print("updating")
             for event in pygame.event.get():
@@ -90,7 +93,7 @@ class MyComponent(ApplicationSession):
                         print("event value axis 1: {}".format(event.value))
                     elif event.axis == 1:
 
-                        val = (oldval[0], event.value)
+                        verticalPosition = event.value
             os.system('cls' if os.name == 'nt' else 'clear')            
             try:
                 #call function here
@@ -106,7 +109,7 @@ class MyComponent(ApplicationSession):
         print("Axis {} at {}".format(1, val[1]))
 #            print("Axis {} at {}".format(2, val[2]))
         l = task.LoopingCall(update)
-        l.start(.5)
+        l.start(.03333)
 #        l.start(.033333)
 #        reactor.run()
 if __name__ == '__main__':
