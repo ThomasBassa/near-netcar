@@ -50,5 +50,5 @@ class MyComponent(ApplicationSession):
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
-    runner = ApplicationRunner(url = u"ws://10.33.92.126:8080/ws", realm = u"realm1")
+    runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
