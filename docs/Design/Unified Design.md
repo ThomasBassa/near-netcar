@@ -151,26 +151,20 @@ The vehicle shall be able to send live HD feed from a camera while the vehicle i
 The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on.
 The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.
 
-![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
+![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainBlockDiagram.png)
 
 **Figure 1.** Block Diagram of Vehicle Components
 
-![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
+![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Older/HardwareDiagram.png)
 
 **Figure 2.** Block diagram of Hardware Connections
 
 ## Vehicle Design (C006)
 
-![screenshot 2015-06-17 13 10 21](https://cloud.githubusercontent.com/assets/11369623/8214167/55704aae-14f5-11e5-9748-e12c572fcc7e.png)
-
-**Figure 3.** Strut design to be 3D printed
-
-This strut design was printed using the TAZ 5 printer.
-The vehicle has one strut mounted onto the front and one onto back of the chassis to give suport for the suspension.
 
 ![screenshot 2015-06-17 13 06 49](https://cloud.githubusercontent.com/assets/11369623/8214178/5cb7feec-14f5-11e5-985d-d3d6e6b22ce7.png)
 
-**Figure 4.** Cube for the strut
+**Figure 3.** Cube for the strut
 
 We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; shocks are screwed into these.
 This block was printed to give suport for the shocks.
@@ -206,9 +200,9 @@ To PUBLISH an event - session.publish('join.session', 'Session joined')
 
 To REGISTER a procedure for remote calling - session.register(Horizontal(param)), 'com.myapp.add2')
 
-![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CommunicationsBlocks.png)
+![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/CommunicationsBlocks.png)
 
-**Figure 5.** Block diagram of server communications
+**Figure 4.** Block diagram of server communications
 
 ## Obstacle Avoidance (C011)
 The vehicle will be mounted with a lidar laser rangefinder.
@@ -226,21 +220,21 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
 LIDAR-Lite Laser Rangefinder
 http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ7oTmUTfX6Yse7cnXtwcMd9URNekiWv3NAlCizliooBoChQ_w_wcB
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/AssistManualState.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/AssistManualState.png)
 
-**Figure 6.** State diagram of manual assisted and manual mode
+**Figure 5.** State diagram of manual assisted and manual mode
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ServoRotationDiagram.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ServoRotationDiagram.png)
 
-**Figure 7.** Diagram showing how the servo's rotation angle was determined
+**Figure 6.** Diagram showing how the servo's rotation angle was determined
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainSeq.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainSeq.png)
 
-**Figure 8.** The main sequence diagram for the vehicle code
+**Figure 7.** The main sequence diagram for the vehicle code
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ObstacleDetection.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ObstacleDetection.png)
 
-**Figure 9.** Sequence diagram for obstacle detection
+**Figure 8.** Sequence diagram for obstacle detection
 
 ## Sound and Lights
 An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
@@ -296,9 +290,9 @@ Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
 The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensorSeq.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ColorSensorSeq.png)
 
-**Figure 11.** Sequence diagram for the color sensor readings
+**Figure 9.** Sequence diagram for the color sensor readings
 
 ## Battery (Z069)
 The battery will power the whole vehicle, and needs to have enough voltage output to power all the sensors. 
@@ -314,9 +308,9 @@ The container has a lid for protection. The vehicle suspension can hold three po
 Storage bin
 http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=REC-_-NavPLPHorizontal1_rr-_-NA-_-100671079-_-N
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/VehicleContainer.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/VehicleContainer.png)
 
-**Figure 12.** Diagram of the container's placement on the vehicle with measurements
+**Figure 10.** Diagram of the container's placement on the vehicle with measurements
 
 Alternatively container:
 
@@ -341,13 +335,13 @@ The vehicle's location will be tracked using a GPS module. The GPS module will t
 Adafruit Ultimate GPS HAT for Raspberry Pi
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPS_Module.png)
 
-**Figure 14.** Picture of the GPS module to be used
+**Figure 11.** Picture of the GPS module to be used
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPSSeqDiagram.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPSSeqDiagram.png)
 
-**Figure 15.** Sequence diagram for GPS reading and publishing
+**Figure 12.** Sequence diagram for GPS reading and publishing
 
 ## Waterproofing (D009)
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
