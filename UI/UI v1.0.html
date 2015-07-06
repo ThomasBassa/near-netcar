@@ -13,7 +13,7 @@
 	// separate into files
 	//START AUTOBAHN
 	var connection = new autobahn.Connection({
-		url: 'ws://104.197.24.18:8080/ws',
+		url: 'ws://10.33.92.126:8080/ws',
 		realm: 'realm1'
 	});
 	var mySession;
@@ -68,7 +68,7 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 	window.setInterval(refresh, 33);
-	window.setInterval(honk, 2000);
+	// window.setInterval(honk, 2000);        uncomment when honking exists
 	var objectAvoidanceOverride = false;
 	var timer;
 	var speed = 0;
