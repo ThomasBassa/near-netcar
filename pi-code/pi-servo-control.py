@@ -1,5 +1,6 @@
 #!/usr/bin/python
 #from twisted.internet.defer import inlineCallbacks
+from twisted.internet import reactor
 from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 from Adafruit_PWM_Servo_Driver import PWM
 import Serial
@@ -23,6 +24,18 @@ servoChannel = 3
 
 class MyComponent(ApplicationSession):
 
+    def onJoin(self, details):
+
+        #register the methods
+        self.register(honk, 'aero.near.honkHorn')
+        self.register(emergencyStop, 'aero.near.emergStop')
+        self.register(manualOverride, 'aero.near.override')
+        self.register(joyMonitor, 'aero.near.joyMonitor') 
+        callID = reactor.callLater(.015, emergencyStop)
+        print("Session Joined.")
+
+        pwm.setPWM(3, 0, servoMiddle) #have vehicle wheels turn to center
+        
     def moveServos(value):
         pwm.setPWM(servoChannel, 0, value)
 
@@ -39,6 +52,9 @@ class MyComponent(ApplicationSession):
 
         moveServos(int(newServoValue))
         lastServoValue = newServoValue
+        
+        callID.cancel()
+        callID = reactor.callLater(.015, emergencyStop)
 
     def honk():
         #honks the horn for 0.5 s when called
@@ -59,17 +75,7 @@ class MyComponent(ApplicationSession):
         session.publish('aero.near.carPos', 200)
         session.publish('aero.near.carSpeed', 250)
 
-    def onJoin(self, details):
-
-        #register the methods
-        self.register(honk, 'aero.near.honkHorn')
-        self.register(emergencyStop, 'aero.near.emergStop')
-        self.register(manualOverride, 'aero.near.override')
-        self.register(joyMonitor, 'aero.near.joyMonitor') 
-
-        print("Session Joined.")
-
-        pwm.setPWM(3, 0, servoMiddle) #have vehicle wheels turn to center
+    
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
