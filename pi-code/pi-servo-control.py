@@ -11,9 +11,9 @@ import math
 # Initialise the PWM device using the default address
 pwm = PWM(0x40,debug=True)
 
-servoMin = 150  # Min pulse length out of 4096
-servoMax = 600  # Max pulse length out of 4096
-servoMiddle = 375 # middle servo value
+servoMin = 315  # Min pulse length out of 4096
+servoMax = 520  # Max pulse length out of 4096
+servoMiddle = 417 # middle servo value
 
 pwm.setPWMFreq(60) # Set frequency to 60 Hz
 
