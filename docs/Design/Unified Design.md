@@ -333,9 +333,6 @@ camera requires 24V, and has 30fps. First the camera’s IP is determined using
 its provided software. The IP address will be fixed. The port used will be 80. 
 The port and IP will be used to contact the camera from the ground station. 
 
-![Camera](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CameraSeq.png)
-
-**Figure 13.** The sequence diagram for the camera HD feed
 
 ## Vehicle Location Tracking (D008)
 

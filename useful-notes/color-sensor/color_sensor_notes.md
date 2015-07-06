@@ -24,4 +24,3 @@ https://web.njit.edu/~kevin/rgb.txt.html
 This has useful stuff on reading the RGB values:
 https://github.com/adafruit/Adafruit_TCS34725/blob/master/Adafruit_TCS34725.cpp
 
-
