@@ -23,6 +23,7 @@
 		session.subscribe('aero.near.detect', detected);
 		session.subscribe('aero.near.carSpeed', speedUpdate);
 		session.subscribe('aero.near.carPos', posUpdate);
+		session.subscribe('aero.near.carHeading', headingUpdate);
 		mySession = session;
 	}
 
@@ -71,6 +72,7 @@
 	var objectAvoidanceOverride = false;
 	var timer;
 	var speed = 0;
+	var heading = "N°0E";
 
 	var objWindow = new google.maps.InfoWindow({
 		content: 'Object Detected!',
@@ -99,7 +101,7 @@
 		}
 
 		document.getElementById("display").innerHTML =
-			"Latitude: " + myLatLng.lat() + "<br>Longitude: " + myLatLng.lng() + "<br>Speed: " + speed;
+			"Latitude: " + myLatLng.lat() + "<br>Longitude: " + myLatLng.lng() + "<br>Speed: " + speed + "<br>Heading: " + heading;
 
 	}
 
@@ -123,6 +125,9 @@
 		console.log(myLatLng.lat() + " " + myLatLng.lng());
 		map.setCenter(myLatLng);
 	}
+	function headingUpdate(newHeading) {
+		heading = newHeading;
+	}
 
 	function stop() {
 		mySession.call('aero.near.emergStop', []);
@@ -139,7 +144,7 @@
 	<div id="camera-canvas"></div>
 	<div id="buttonland">
 
-		<p id="display" class="display">Latitude: Loading...\nLongitude: Loading...\nSpeed: Loading...</p>
+		<p id="display" class="display">Latitude: Loading...\nLongitude: Loading...\nSpeed: Loading... \nHeading: Loading...</p>
 		<img onclick="stop()" style="cursor:pointer;right:128px;float:right;" src="stopsign.png" />
 		<!-- <button onclick="stop()" class=stop>Stop</button> -->
 		<input type="checkbox" id="switch1" name="switch1" class="switch" />
