@@ -16,16 +16,64 @@ for i in range(joystick_count):
     joystick.init()
     name = joystick.get_name()
 val = None
+oldval = None
 class MyComponent(ApplicationSession):
+    global val
+    global oldval
+    global maxTurn
+    global horizPosition
+    horizPosition = 0.0
+    maxTurn = .25
+
 
     def onJoin(self, details):
         global val
+        global oldval
+        global horizPosition
         val = (0.0,0.0)
+        oldval = (0.0, 0.0)
         done = False
-        print("Session Ready")
+        print('Session Ready')
+
+        def interpolate():
+            global val
+            global oldval
+            global horizPosition
+
+#            ifPositive = True
+#            if val[0] - oldval[0] <= 0:
+#                ifPositive = False
+#            print(ifPositive)
+            diff = oldval[0] - val[0]
+            if diff > maxTurn:
+                diff = maxTurn
+            elif diff < (maxTurn*-1):
+                diff = maxTurn*-1
+#            if ifPositive == False:
+#                diff = diff * -1
+            print("diff: {}".format(diff))
+            axiszeroold = val[0]
+            axisoneold = val[1]
+            val = (axiszeroold + diff, axisoneold)
+            if val[0] >  1:
+                val = (1,axisoneold)
+            elif val[0] < -1:
+                val = (-1,axisoneold)
+            oldval = (horizPosition,val[1])
+            print("val set")
+            print("Axis 0 at {}".format(val[0]))
+            print("Axis 1 at {}".format(val[1]))
+            print("Old 0: {}".format(oldval[0]))
+            print("Old 1: {}".format(oldval[1]))
+#            yield self.call('aero.near.joyMonitor', val[0], val[1])
+
         @inlineCallbacks
         def update():
             global val
+            global oldval
+            global horizPosition
+
+            print("updating")
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
@@ -37,29 +85,35 @@ class MyComponent(ApplicationSession):
                     print("Button {} off".format(button))
                 if event.type == pygame.JOYAXISMOTION:
                     if event.axis == 0:
-                        oldvalue = val[1]
-                        val = (event.value, oldvalue)
+#                        val = (event.value, oldval[1])
+                        horizPosition = event.value
+                        print("event value axis 1: {}".format(event.value))
                     elif event.axis == 1:
-                        oldvalue = val[0]
-                        val = (oldvalue, event.value)
+
+                        val = (oldval[0], event.value)
+            os.system('cls' if os.name == 'nt' else 'clear')            
             try:
-                yield self.call('aero.near.joyMonitor', val[0], val[1])		
-#                yield self.call('aero.near.joyMonitor', val)
+                #call function here
+                print("trying to interpolate")
+                yield interpolate()
+#                yield self.call('aero.near.joyMonitor', val[0], val[1])		
             except Exception as e:
-                print("Error - no connection found.")
-	    os.system('cls' if os.name == 'nt' else 'clear')	
-	    print("Jimmy's a big 'ole butthead!")
+                print("Error: {}".format(e))
+            
+        
+        print("Jimmy's a big 'ole butthead!")
         print("Axis {} at {}".format(0, val[0]))
         print("Axis {} at {}".format(1, val[1]))
 #            print("Axis {} at {}".format(2, val[2]))
         l = task.LoopingCall(update)
-        l.start(.033333)
+        l.start(.5)
+#        l.start(.033333)
 #        reactor.run()
 if __name__ == '__main__':
     print("Main running")
     val = (0.0, 0.0)
     try:
-        runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
+        runner = ApplicationRunner(url = u"ws://10.33.92.126:8080/ws", realm = u"realm1")
         runner.run(MyComponent)
     except Exception as e:
         print("Error {}".format(e))
