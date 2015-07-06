@@ -151,11 +151,11 @@ The vehicle shall be able to send live HD feed from a camera while the vehicle i
 The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on.
 The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.
 
-![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainBlockDiagram.png)
+![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainBlockDiagram.png)
 
 **Figure 1.** Block Diagram of Vehicle Components
 
-![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/HardwareDiagram.png)
+![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Older/HardwareDiagram.png)
 
 **Figure 2.** Block diagram of Hardware Connections
 
@@ -206,7 +206,7 @@ To PUBLISH an event - session.publish('join.session', 'Session joined')
 
 To REGISTER a procedure for remote calling - session.register(Horizontal(param)), 'com.myapp.add2')
 
-![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/CommunicationsBlocks.png)
+![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/CommunicationsBlocks.png)
 
 **Figure 5.** Block diagram of server communications
 
