@@ -8,7 +8,7 @@
   * Modify current joystick control for forwards and backwards acceleration
 * Attempt to stabilize servos
   * Implement gradual stop instead of immediate stop
-  * smooth out axis control of servos to stop servo-jerk
+  * smooth out axis control of servos to stop servo-jerk (maybe, baby)
   * Collaborate with hardware team for solutions
 * Implement override switch for Obj. Avoid. into ground station
   * Actually make the button work
