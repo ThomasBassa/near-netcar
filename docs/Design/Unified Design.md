@@ -226,19 +226,19 @@ Choosing to switch it to manual mode will only last 20 seconds before automatica
 LIDAR-Lite Laser Rangefinder
 http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ7oTmUTfX6Yse7cnXtwcMd9URNekiWv3NAlCizliooBoChQ_w_wcB
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/AssistManualState.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/AssistManualState.png)
 
 **Figure 6.** State diagram of manual assisted and manual mode
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ServoRotationDiagram.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ServoRotationDiagram.png)
 
 **Figure 7.** Diagram showing how the servo's rotation angle was determined
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/MainSeq.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainSeq.png)
 
 **Figure 8.** The main sequence diagram for the vehicle code
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ObstacleDetection.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ObstacleDetection.png)
 
 **Figure 9.** Sequence diagram for obstacle detection
 
@@ -296,7 +296,7 @@ Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
 The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/ColorSensorSeq.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ColorSensorSeq.png)
 
 **Figure 11.** Sequence diagram for the color sensor readings
 
@@ -314,7 +314,7 @@ The container has a lid for protection. The vehicle suspension can hold three po
 Storage bin
 http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=REC-_-NavPLPHorizontal1_rr-_-NA-_-100671079-_-N
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/VehicleContainer.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/VehicleContainer.png)
 
 **Figure 12.** Diagram of the container's placement on the vehicle with measurements
 
@@ -341,11 +341,11 @@ The vehicle's location will be tracked using a GPS module. The GPS module will t
 Adafruit Ultimate GPS HAT for Raspberry Pi
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPS_Module.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPS_Module.png)
 
 **Figure 14.** Picture of the GPS module to be used
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/GPSSeqDiagram.png)
+![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPSSeqDiagram.png)
 
 **Figure 15.** Sequence diagram for GPS reading and publishing
 
