@@ -29,3 +29,7 @@ Sends joystick forward, backward, left, and right movement through the Ground Sy
 ### aero.near.carSpeed
 * The speed of the vehicle formatted as a float.
 * frequency - 33ms
+
+### aero.near.carHeading
+* The heading of the vehicle formatted as a string.
+* frequency - 33ms

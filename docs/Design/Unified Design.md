@@ -4,17 +4,17 @@
 * Vehicle - The RC car and its onboard Pi
 
 # System Design (A002)
-This is the set of subsystems we believe are necessary in this system.
+This is the set of subsystems necessary in this system.
 * Joystick - The way the user will control the vehicle
 * Navigation - How the user will know where to go
-* Camera (Hardware overlap) - What the use will use to see in front of the vehicle
+* Camera (Hardware overlap) - What the user will use to see in front of the vehicle
 * Website Frontend - The way the user will see the camera feed, map, and various other statistics about the vehicle 
 
 # Use Cases (A003)
 
 ## Manual Vehicle Movement (A004)
 1. User moves joystick
-2. System sends information to vehicle accordingly.
+2. System sends information to vehicle accordingly
 3. Vehicle moves
 
 ## Assisted Mode (A005)
@@ -27,12 +27,12 @@ This is the set of subsystems we believe are necessary in this system.
 1. Lidar comes on, servo begins rotating
 2. If an obstacle is detected, the vehicle stops and alerts user by publishing event
 3. User has option for a 20 sec override
-4a. If override option is not taken wait until obstacle has moved
-4b. If override option taken, start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
+4a. If override option is not taken, vehicle will wait until obstacle has moved
+4b. If override option is taken, the vehicle will start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
 
 ## Sidewalk Lost (D005)
-1. Color sensor detects vehicle on grass
-2. Use last joystick inputs and runs them backwards until color sensor detects sidewalk 
+1. One of the color sensors detects vehicle on grass
+2. Vehicle moves backwards and in the direction of the sensor which did not detect grass
 
 # Subsystem Design (B001)
 
@@ -42,19 +42,17 @@ This is the set of subsystems we believe are necessary in this system.
 The website contains a 720p video feed from the camera next to a Google map
 of the area surrounding the vehicle that both refresh at 30 Hz.
 Below the map and video feed is a toggleable switch to change the mode of
-the vehicle between manual and autonomous navigation. There is also a Stop button
+the vehicle between manual and assisted navigation. There is also a Stop button
 that causes the vehicle to stop moving as quickly as possible, to be used
-in an emergency situation. These directional instructions will also be used 
-to help the vehicle navigate autonomously. There will also be some vehicle statistics 
+in an emergency situation. There will also be some vehicle statistics 
 displayed below the camera feed, such as heading, which will aid in navigation, 
 and the speed of the vehicle, to tell the user how fast he/she is going.
 
 ### Role (B004)
 The website frontend is used to display vehicle status information.
-It allows the user to see through the vehicle's eyes via the onboard camera and
-enables the vehicle's course to be set in automatic mode.
+It allows the user to see through the vehicle's eyes via the onboard camera.
 It also shows where the vehicle is in geographic space
-so the user is also able to plan where he or she wants to go.
+so that the user is also able to plan where he or she wants to go.
 It provides directional instructions to take the user wherever
 they want to go on campus as well.
 It also enables emergency stops through the stop button.
@@ -91,32 +89,32 @@ turning the wheels of the vehicle accordingly.
 The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
 
 ### Physical (B008)
-The system consists entirely of the joystick and the computer that it's plugged it into via USB.
+The system consists entirely of the joystick and the computer that it's plugged into via USB.
 The joystick will be physically next to the computer,
 and its code will be on the computer as well.
-The user interacts by operating the joystick to control the vehicle movement.
+The user interacts by operating the joystick to control the vehicle's movement.
 
 ### Software Components (B009)
 The initial function onJoin runs when the session begins. onJoin then runs the function joyUpdate, which picks up the
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
-second. joyMonitor runs	directly on the pi, and performs some sort of hardware magic to make the servos turn.
+second. joyMonitor runs	directly on the pi, and tells the servos to turn.
 
 #### Function - onJoin() (F001)
 * Args - self, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
-* Behavior - Runs the functions within when the session connects
+* Behaviour - Runs the functions within when the session connects
 
 #### Function - joyUpdate() (F002)
 * Args - n/a
 * Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
-* Behavior - Picks up the movements of the joystick 30 times a second,
+* Behaviour - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of two floats, and calls the function 	joyMonitor() with vals.
 
 #### Function - joyMonitor(put) (F003)
 * Args - put
  <!-- get put range from hardware team -->
 * Returns - int passed to the servos
-* Behavior - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
+* Behaviour - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
 ## Vehicle Camera (C001)
 
@@ -136,9 +134,9 @@ that is controlled by the ground station and displayed in real time.
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
-## Training system (Z011)
+## Training System (Z011)
 The training system will be a printed manual describing all the features of the website frontend and the joystick.
-The training system is for new users to the vehicle, instructing them so they will know how to handle emergencies. 
+The training system is for new users to the vehicle, instructing them so they will know how to handles the vehicle, especially in case of emergencies. 
 
 ## Hardware Design (C005)
 
@@ -161,19 +159,9 @@ The vehicle will conform to IP54 standards, protecting it from water, dust, and 
 
 ## Vehicle Design (C006)
 
-
-![screenshot 2015-06-17 13 06 49](https://cloud.githubusercontent.com/assets/11369623/8214178/5cb7feec-14f5-11e5-985d-d3d6e6b22ce7.png)
-
-**Figure 3.** Cube for the strut
-
-We have 8 of these printed, 4 per strut, attached to struts with acetone-glue; shocks are screwed into these.
-This block was printed to give suport for the shocks.
-Four blocks were used to glue: one block to each side of the top 2 holes on each strut,
-to support the nails we later used to prop up the spings on the strut. They were glued using acetone.
-
 ## Ground Station Communication (C007)
 Application components connect to Crossbar.io and can then talk to each other using two patterns:
-Remote Procedure Calls and Publish & Subscribe. Crossbar.io directes and transmitts messages to the right components ("message routing").
+Remote Procedure Calls and Publish & Subscribe. Crossbar.io directs and transmitts messages to the proper components ("message routing").
 
 ### Remote Procedure Calls (C008)
 Remote Procedure Call (RPC) is a messaging pattern involving peers of three roles:
