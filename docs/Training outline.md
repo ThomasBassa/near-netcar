@@ -1,9 +1,9 @@
 ## UI Navigation
 
 * The camera feed on the right is live, displaying the view from the front of the vehicle
-* The map on the left is showing the up-to-date position of the vehicle on the campus, this map should not be relied on as the
+* The map on the left is showing the up-to-date position of the vehicle on the campus, this map should not be relied on heavily as the
 Embry Riddle campus has recently been renovated
-* The assited driving mode check box will allow you to activate assited driving mode, where the vehicle will automatically
+* The assited driving mode switch will allow you to activate assited driving mode, where the vehicle will automatically
 stop when it encounters obstacles
 * The stop button functions as an emergency brake, stopping the vehicle as quickly as possible. Such jarring acceleration could
 be disorienting or dangerous, therefore this feature is only reccomended for use in emergencies.
