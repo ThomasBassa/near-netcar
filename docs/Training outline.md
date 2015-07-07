@@ -21,3 +21,8 @@ and will not change heading without moving forward
 * When in assited driving mode, the vehicle may stop of its own accord as it detects obstacles. When this happens, an alert will
 appear to notify you. It is recommended that you switch to manual and carefully avoid the object
 * An override of the auto-stop function can be implemented at will by clicking the aforementioned mode switch in the UI
+
+### Extra Features
+
+* You can press the joystick trigger to honk the vehicle's horn
+* You can also raise or lower the slider towards the bottom of the joystick to toggle the vehicle's light
