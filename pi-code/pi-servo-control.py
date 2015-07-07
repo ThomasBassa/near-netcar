@@ -20,7 +20,7 @@ pwm.setPWMFreq(60) # Set frequency to 60 Hz
 
 lastServoValue = 375 #assume it starts in the middle
 pwmMaxChange = 15
-servoChannel = 3
+
 
 class MyComponent(ApplicationSession):
 
@@ -36,8 +36,8 @@ class MyComponent(ApplicationSession):
 
         pwm.setPWM(3, 0, servoMiddle) #have vehicle wheels turn to center
 
-    def moveServos(value):
-        pwm.setPWM(servoChannel, 0, value)
+    def moveServos(channel,value):
+        pwm.setPWM(channel, 0, value)
 
     def joyMonitor(servo, motor):
 
@@ -47,16 +47,16 @@ class MyComponent(ApplicationSession):
 
 <<<<<<< Updated upstream
         newServoValue = ((servo * 102.5) + 417.5)
-        
-	    moveServos(int(newServoValue))
-        
+
+	    moveServos(3,int(newServoValue))
+
 =======
         newServoValue = 375 - servo*225
 
         if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
             newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
 
-        moveServos(int(newServoValue))
+        moveServos(3,int(newServoValue))
         lastServoValue = newServoValue
 
 >>>>>>> Stashed changes
@@ -84,15 +84,15 @@ class MyComponent(ApplicationSession):
 
     def rotor(servo, motor):
      while(true = true):
-        moveservos(int(8-servoMiddle))
+        moveservos(2,int(8-servoMiddle))
         time.sleep(.1)
-        moveservos(int(8+servoMiddle))
+        moveservos(2,int(8+servoMiddle))
         time.sleep(.1)
 
 
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
-    moveServos(417)
+    moveServos(3,417)
     runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
