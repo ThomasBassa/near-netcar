@@ -89,10 +89,10 @@ class MyComponent(ApplicationSession):
         pull_lidar():
 
     def checkColour(sensor):
-        value =
-        return value
-        #???
-        None
+#        value =
+#        return value
+#        ???
+#        None
 
 
     def looper():
