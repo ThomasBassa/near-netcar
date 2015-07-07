@@ -199,7 +199,7 @@ it will start in manual mode and after 20 seconds elapse (timer),
 it will switch to assisted manual mode. In assisted manual mode,
 the servo will sweep back and forth constantly, on an axis that will
 establish a 1.2373 degree field of vision which will detect obstacles.
-This was determined using Figure <>. If an obstacle is detected, the vehicle will
+This was determined using Figure 6. If an obstacle is detected, the vehicle will
 cease motion and alert the user (by publishing an obstacle detection event)
 that an obstacle is obstructing its path.
 The user will then have an option to override the alert and control the vehicle manually.
