@@ -3,13 +3,15 @@
 
 ### UI Navigation
 
-The camera feed on the right is live, displaying the view from the front of the vehicle. The camera's FPS is also displayed
+* The camera feed on the right is live, displaying the view from the front of the vehicle. The camera's FPS is also displayed
 * The map on the left is showing the up-to-date position of the vehicle on the campus, this map should not be relied on heavily as the Embry Riddle campus has recently been renovated
+* A reference marker can be placed on the map with a left click, and it can be removed with a right click. The marker can also be moved by left-clicking in a different location
 * The assisted driving mode switch will allow you to activate assited driving mode, where the vehicle will automatically
 stop when it encounters obstacles
 * The stop button functions as an emergency brake, stopping the vehicle as quickly as possible. Such jarring acceleration could
 be disorienting or dangerous, therefore this feature is only reccomended for use in emergencies.
 * The data displayed in the center beneath the map and camera consists of the vehicle's speed, GPS coordinates, and current heading.
+
 
 
 ### Movement
