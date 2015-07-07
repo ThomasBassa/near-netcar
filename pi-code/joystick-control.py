@@ -67,7 +67,7 @@ class MyComponent(ApplicationSession):
             print("Axis 1 at {}".format(val[1]))
             print("Old 0: {}".format(oldval[0]))
             print("Old 1: {}".format(oldval[1]))
-#            yield self.call('aero.near.joyMonitor', val[0], val[1])
+            self.call('aero.near.joyMonitor', val[0], val[1])
 
         @inlineCallbacks
         def update():
@@ -99,7 +99,7 @@ class MyComponent(ApplicationSession):
                 #call function here
                 print("trying to interpolate")
                 yield interpolate()
-#                yield self.call('aero.near.joyMonitor', val[0], val[1])		
+                yield self.call('aero.near.joyMonitor', val[0], val[1])		
             except Exception as e:
                 print("Error: {}".format(e))
             
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     print("Main running")
     val = (0.0, 0.0)
     try:
-        runner = ApplicationRunner(url = u"ws://10.33.92.126:8080/ws", realm = u"realm1")
+        runner = ApplicationRunner(url = u"ws://192.168.1.30:8080/ws", realm = u"realm1")
         runner.run(MyComponent)
     except Exception as e:
         print("Error {}".format(e))
