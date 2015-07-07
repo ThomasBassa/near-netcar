@@ -224,7 +224,7 @@ http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=
 
 **Figure 8.** Sequence diagram for obstacle detection
 
-## Sound and Lights
+## Sound and Lights (Z022)
 An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
 
