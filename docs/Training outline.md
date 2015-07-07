@@ -25,4 +25,3 @@ appear to notify you. It is recommended that you switch to manual and carefully 
 ### Extra Features
 
 * You can press the joystick trigger to honk the vehicle's horn
-* You can also raise or lower the slider towards the bottom of the joystick to toggle the vehicle's light
