@@ -19,3 +19,6 @@
 
 - *Serial Communication* : http://elinux.org/RPi_Serial_Connection
  - This has sample code and explains serial
+
+https://helentronica.wordpress.com/2014/05/20/gps-module-python-google-maps-all-in-one/
+- more code
