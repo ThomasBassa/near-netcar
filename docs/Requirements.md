@@ -14,6 +14,7 @@
 5. The noise device shall repeatedly sound at an interval of 2 seconds
 6. The noise device shall sound constantly when an obstacle is detected
 7. The noise device shall generate between 60 and 65 decibels when sounding
+8. The noise device shall be able to be sounded by the user at will
 
 ## Vehicle Motion
 1. The vehicle shall be able to move forward
