@@ -13,6 +13,9 @@
 ## Help
 - *Code Setup* : https://learn.adafruit.com/adafruit-ultimate-gps-on-the-raspberry-pi/using-uart-instead-of-usb
  - This is a useful place to start for coding the GPS
+ - 
+ http://www.stuffaboutcode.com/2013/09/raspberry-pi-gps-setup-and-python.html
+- stuff is here
 
 - *Serial Communication* : http://elinux.org/RPi_Serial_Connection
  - This has sample code and explains serial
