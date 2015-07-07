@@ -30,12 +30,12 @@ class MyComponent(ApplicationSession):
         self.register(honk, 'aero.near.honkHorn')
         self.register(emergencyStop, 'aero.near.emergStop')
         self.register(manualOverride, 'aero.near.override')
-        self.register(joyMonitor, 'aero.near.joyMonitor') 
+        self.register(joyMonitor, 'aero.near.joyMonitor')
         callID = reactor.callLater(.015, emergencyStop)
         print("Session Joined.")
 
         pwm.setPWM(3, 0, servoMiddle) #have vehicle wheels turn to center
-        
+
     def moveServos(value):
         pwm.setPWM(servoChannel, 0, value)
 
@@ -45,10 +45,21 @@ class MyComponent(ApplicationSession):
 
         print "calling joyMonitor with value %d and %d" % (servo, motor)
 
+<<<<<<< Updated upstream
         newServoValue = ((servo * 102.5) + 417.5)
         
 	    moveServos(int(newServoValue))
         
+=======
+        newServoValue = 375 - servo*225
+
+        if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
+            newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
+
+        moveServos(int(newServoValue))
+        lastServoValue = newServoValue
+
+>>>>>>> Stashed changes
         callID.cancel()
         callID = reactor.callLater(.015, emergencyStop)
 
@@ -71,12 +82,17 @@ class MyComponent(ApplicationSession):
         session.publish('aero.near.carPos', 200)
         session.publish('aero.near.carSpeed', 250)
 
-    
+    def rotor(servo, motor):
+     while(true = true):
+        moveservos(int(8-servoMiddle))
+        time.sleep(.1)
+        moveservos(int(8+servoMiddle))
+        time.sleep(.1)
+
+
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
     moveServos(417)
     runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
-    
-   
