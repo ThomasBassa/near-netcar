@@ -45,13 +45,9 @@ class MyComponent(ApplicationSession):
 
         print "calling joyMonitor with value %d and %d" % (servo, motor)
 
-        newServoValue = 375 - servo*225
-
-        if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
-            newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
-
-        moveServos(int(newServoValue))
-        lastServoValue = newServoValue
+        newServoValue = ((servo * 102.5) + 417.5)
+        
+	    moveServos(int(newServoValue))
         
         callID.cancel()
         callID = reactor.callLater(.015, emergencyStop)
@@ -79,6 +75,7 @@ class MyComponent(ApplicationSession):
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
+    moveServos(417)
     runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
     
