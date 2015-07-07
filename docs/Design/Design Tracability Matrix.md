@@ -11,6 +11,7 @@
 | Sound and Lights 6         | C013           |
 | Sound and Lights 7         | C013           |
 | Sound and Lights 8         | C013           |
+| Sound and Lights 9         | Z022           |
 | Vehicle Motion 1           | D001           |
 | Vehicle Motion 2           | D001           |
 | Vehicle Motion 3           | D001           |
