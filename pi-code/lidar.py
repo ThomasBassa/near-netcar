@@ -12,24 +12,20 @@ RegisterHighLowB  =  0x8f          # Register to get both High and Low bytes in 
 
 lidar = Adafruit_I2C(LIDARLite_ADDRESS)
 
-def pull_lidar(): 
+def pull_lidar():
   #Write 0x04 to register 0x00
   lidar.write8(RegisterMeasure, MeasureValue) #Write 0x04 to 0x00
 
   #distanceArray=[0,0] # array to store distance bytes from read function
-  
+
   # Read 2byte distance from register 0x8f
   distance = lidar.readList(RegisterHighLowB, 2) # Read 2 Bytes from LIDAR-Lite Address and store in array
-  
+
   #int distance = (distanceArray[0] << 8) + distanceArray[1];  # Shift high byte [0] 8 to the left and add low byte [1] to create 16-bit int
-  
+
   # Print Distance
-  print distance
+  return distance
 
 if __name__ == '__main__':
 	while True:
-		pull_lidar()
-
-
-
-
+		print pull_lidar()

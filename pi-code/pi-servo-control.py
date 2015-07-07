@@ -5,6 +5,7 @@ from autobahn.twisted.wamp import ApplicationSession, ApplicationRunner
 from Adafruit_PWM_Servo_Driver import PWM
 import Serial
 import math
+from lidar import pull_lidar
 #import time
 
 # This is executed before anything else
@@ -15,6 +16,7 @@ pwm = PWM(0x40,debug=True)
 servoMin = 315  # Min pulse length out of 4096
 servoMax = 520  # Max pulse length out of 4096
 servoMiddle = 417 # middle servo value
+liservoMiddle = 1500 # lidar servo middle value
 
 pwm.setPWMFreq(60) # Set frequency to 60 Hz
 
@@ -82,14 +84,32 @@ class MyComponent(ApplicationSession):
         session.publish('aero.near.carPos', 200)
         session.publish('aero.near.carSpeed', 250)
 
-    def rotor(servo, motor):
-     while(true = true):
-        moveservos(2,int(8-servoMiddle))
-        time.sleep(.1)
-        moveservos(2,int(8+servoMiddle))
-        time.sleep(.1)
+    def rotor(servo,count):
+        moveservos(servo,int(count+liservoMiddle))
+        pull_lidar():
+
+    def checkColour(sensor):
+        value =
+        return value
+        #???
+        None
 
 
+    def looper():
+     for startUp in range(0,8):
+       rotor(2,startUp)
+       checkGPS()
+       checkColour()
+     #this doesn't work yet
+     #while(true = true):
+       for downCount in range(0,16):
+         rotor(2,downCount)
+         checkGPS()
+         checkColour()
+       for upCount in range(0,16):
+         rotor(2,upCount)
+         checkGPS()
+         checkColour()
 
 if __name__ == '__main__':
     #This is run "first" (really after the servo min/max)
