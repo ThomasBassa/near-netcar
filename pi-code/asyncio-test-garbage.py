@@ -1,5 +1,5 @@
 from os import environ
-import asyncio
+import trollius as asyncio
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 
 class MyComponent(ApplicationSession):
@@ -10,10 +10,7 @@ class MyComponent(ApplicationSession):
 
 
 if __name__ == '__main__':
-    runner = ApplicationRunner(
-        environ.get("AUTOBAHN_DEMO_ROUTER", "ws://192.168.1.30:8080/ws"),
-        u"crossbardemo",
-        debug_wamp=False,  # optional; log many WAMP details
-        debug=False,  # optional; log even more details
-    )
+    print "IM TRYING"	
+  #This is run "first" (really after the servo min/max)
+    runner = ApplicationRunner(url = u"ws://10.33.92.126:18080/ws", realm = u"realm1")
     runner.run(MyComponent)
