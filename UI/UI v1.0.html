@@ -13,7 +13,7 @@
 		// separate into files
 		//START AUTOBAHN
 		var connection = new autobahn.Connection({
-			url: 'ws://192.168.1.30:8080/ws',
+			url: 'ws://192.168.1.30:18080/ws',
 			realm: 'realm1'
 		});
 		var mySession;
@@ -136,7 +136,7 @@
 			}
 
 			document.getElementById("display").innerHTML =
-				"Latitude: " + myLatLng.lat() + "<br>Longitude: " + myLatLng.lng() + "<br>Speed: " + speed + "<br>Heading: " + heading;
+				"Latitude: " + myLatLng.lat().toFixed(3) + "<br>Longitude: " + myLatLng.lng().toFixed(3) + "<br>Speed: " + speed.toFixed(1) + " mph<br>Heading: " + heading;
 
 		}
 
@@ -150,7 +150,7 @@
 		}
 
 		function speedUpdate(newSpeed) {
-			speed = newSpeed;
+			speed = Number(newSpeed);
 		}
 
 		function posUpdate(newLat, newLng) {
@@ -159,6 +159,13 @@
 			myLatLng = new google.maps.LatLng(newLat[0], newLat[1]);
 			console.log(myLatLng.lat() + " " + myLatLng.lng());
 			map.setCenter(myLatLng);
+			carMarker = null;
+			carMarker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				title: 'Vehicle',
+				icon: icon
+			});
 		}
 		function headingUpdate(newHeading) {
 			heading = newHeading;
