@@ -14,7 +14,7 @@ def gpsUpdate(self, gps_string):
 
 
 			if gps_string[0:5] == "GPRMC":
-				gps_data = {'latitude': 0,'longitude': 0,'lat-heading': 0,'long-heading': 0,'speed': 0}    
+				gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}    
 				if gps_string[30] == 'S':
 					gps_data['latitude'] = -1 * (float(gps_string[19:21]) + (float(gps_string[22:27])/60.0))
 				else:
@@ -25,14 +25,24 @@ def gpsUpdate(self, gps_string):
 					gps_data['longitude'] = float(gps_string[31:34]) + (float(gps_string[34:40])/60.0)	
 				gps_data['speed'] = (float(gps_string[44:48]) * 1.15078)
 				latitude = float(gps_string[19:21]) + (float(gps_string[22:27])/60.0)
-				gps_data['long-heading'] = "N&#176;20W"
+				degrees = float(gps_string[50:55])
+				if degrees > 90 and degrees < 270:
+					if degrees > 180:
+						gps_data['heading'] = "S&#176;"+(degrees-180)+"W"
+					else:
+						gps_data['heading'] = "S&#176;"+(180-degrees)+"E"
+				else:
+					if degrees > 270:
+						gps_data['heading'] = "N&#176;"+(360-degrees)+"W"
+					else:
+						gps_data['heading'] = "N&#176;"+degrees+"E"
 				print gps_data
 
 			#print gps_string[0:6:]
 			
 			self.publish(u'aero.near.carPos', gps_data['latitude'], gps_data['longitude'])
 			self.publish(u'aero.near.carSpeed', gps_data['speed'])
-			self.publish(u'aero.near.carHeading', gps_data['lat-heading'], gps_data['long-heading'])
+			self.publish(u'aero.near.carHeading', gps_data['heading'])
 			#sleep(.0333)
 
 class MyComponent(ApplicationSession):
