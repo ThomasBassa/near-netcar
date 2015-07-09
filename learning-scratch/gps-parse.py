@@ -45,5 +45,5 @@ with open('fake_gps.txt', 'r') as data_file:
 print data
 
 for i in next_data:
-	print i
-	print "newline"
+    print i
+    print "newline"

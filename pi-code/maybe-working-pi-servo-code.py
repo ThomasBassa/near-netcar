@@ -6,12 +6,6 @@ import serial
 import math
 import trollius as asyncio
 import json
-#import time
-
-# This is executed before anything else
-
-# Initialise the PWM device using the default address
-
 
 class MyComponent(ApplicationSession):
 
@@ -19,8 +13,8 @@ class MyComponent(ApplicationSession):
         self.pwm.setPWM(self.servoChannel, 0, value)
 
     def joyMonitor(self, event):
-	vertical = event["vertical"]
-	horizontal = event["horizontal"]
+        vertical = event["vertical"]
+        horizontal = event["horizontal"]
         print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
         newServoValue = int((horizontal * 102.5) + self.servoMiddle)
@@ -47,25 +41,22 @@ class MyComponent(ApplicationSession):
         None
 
     def onJoin(self, details):
-	print("Session Joined.")    
-	self.lastServoValue = 417 #assume it starts in the middle
-	        #register the methods
-	        #self.register(honk, 'aero.near.honkHorn')
-	        #self.register(emergencyStop, 'aero.near.emergStop')
-	        #self.register(manualOverride, 'aero.near.override')
-	self.pwm = PWM(0x40,debug=True)
-	self.servoMin = 315  # Min pulse length out of 4096
-	self.servoMax = 520  # Max pulse length out of 4096
-	self.servoMiddle = 417 # middle servo value
-	self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
-	self.servoChannel = 3	
+        print("Session Joined.")    
+        self.lastServoValue = 417 #assume it starts in the middle
+        #register the methods
+        #self.register(honk, 'aero.near.honkHorn')
+        #self.register(emergencyStop, 'aero.near.emergStop')
+        #self.register(manualOverride, 'aero.near.override')
+        self.pwm = PWM(0x40,debug=True)
+        self.servoMin = 315  # Min pulse length out of 4096
+        self.servoMax = 520  # Max pulse length out of 4096
+        self.servoMiddle = 417 # middle servo value
+        self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
+        self.servoChannel = 3        
         self.pwm.setPWM(3, 0, self.servoMiddle) #have vehicle wheels turn to center
-	self.subscribe(self.joyMonitor, 'aero.near.joystream') 
+        self.subscribe(self.joyMonitor, 'aero.near.joystream') 
 
 if __name__ == '__main__':
     print "I'M TRYING."
-    #This is run "first" (really after the servo min/max)
     runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
     runner.run(MyComponent)
-    
-   

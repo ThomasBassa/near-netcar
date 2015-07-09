@@ -7,13 +7,13 @@ class MyComponent(ApplicationSession):
 
     @inlineCallbacks
     def onJoin(self, details):
-	print("session ready")
+        print("session ready")
 
 
         def addNumbers(x, y):
            return x + y
         
-	try:
+        try:
             yield self.register(addNumbers, u'aero.near.addNumbers')
             print("Procedure registered.")
         except Exception as e:

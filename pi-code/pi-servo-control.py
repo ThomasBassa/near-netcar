@@ -50,7 +50,7 @@ class MyComponent(ApplicationSession):
 <<<<<<< Updated upstream
         newServoValue = ((servo * 102.5) + 417.5)
 
-	    moveServos(3,int(newServoValue))
+        moveServos(3,int(newServoValue))
 
 =======
         newServoValue = 375 - servo*225

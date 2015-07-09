@@ -10,7 +10,6 @@ class MyComponent(ApplicationSession):
 
 
 if __name__ == '__main__':
-    print "IM TRYING"	
-  #This is run "first" (really after the servo min/max)
+    print "IM TRYING"
     runner = ApplicationRunner(url = u"ws://10.33.92.126:18080/ws", realm = u"realm1")
     runner.run(MyComponent)

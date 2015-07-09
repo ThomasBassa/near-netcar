@@ -27,5 +27,5 @@ def pull_lidar():
   return distance
 
 if __name__ == '__main__':
-	while True:
-		print pull_lidar()
+    while True:
+        print pull_lidar()
