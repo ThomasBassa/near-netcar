@@ -66,6 +66,7 @@ class MyComponent(ApplicationSession):
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		newServoValue = int((horizontal * 102.5) + self.servoMiddle)
+		newMotorValue = int((vertical * 500) + self.motorMiddle))
 
 		#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
 		#    newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
@@ -73,9 +74,15 @@ class MyComponent(ApplicationSession):
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
 
-	def moveServos(self, value):
-        	self.pwm.setPWM(self.servoChannel, 0, value)
+		self.moveMotor(int(newMotorValue))
+		self.lastMotorValue = newMotorValue
 
+	def moveServos(self, value):
+        self.pwm.setPWM(self.servoChannel, 0, value)
+
+    def moveMotor(self, value):
+    	self.pwm.setPWM(self.motorChannel, 0, value)	    	
+        	
 	def honk(self):
 		#honks the horn for 0.5 s when called
 		None
@@ -99,8 +106,10 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
 		self.servoChannel = 3        
 		self.pwm.setPWM(3, 0, self.servoMiddle) #have vehicle wheels turn to center
-
+		self.motorMiddle = 1500
+		self.motorChannel = 2	
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
+
 		#register the methods
 		#self.register(self.honk, 'aero.near.honkHorn')
 		#self.register(self.emergencyStop, 'aero.near.emergStop')

@@ -29,6 +29,8 @@ class MyComponent(ApplicationSession):
 			else:
 				self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
 			self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
+			self.publish(u'aero.near.carPos', self.gps_data['latitude'], self.gps_data['longitude'])
+			self.publish(u'aero.near.carSpeed', self.gps_data['speed'])
 		elif gps_list[0] == "GPVTG":
 			degrees = float(gps_list[1])
 			if degrees > 90 and degrees < 270:
@@ -41,12 +43,11 @@ class MyComponent(ApplicationSession):
 					self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
 				else:
 					self.gps_data['heading'] = "N&#176;{}E".format(degrees)
+			self.publish(u'aero.near.carHeading', self.gps_data['heading'])
+
 		print self.gps_data
 		#print gps_string[0:6:]
 		
-		self.publish(u'aero.near.carPos', gps_data['latitude'], gps_data['longitude'])
-		self.publish(u'aero.near.carSpeed', gps_data['speed'])
-		self.publish(u'aero.near.carHeading', gps_data['heading'])
 		#sleep(.0333)
 
 	def gpsRead():
