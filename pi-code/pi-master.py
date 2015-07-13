@@ -66,7 +66,7 @@ class MyComponent(ApplicationSession):
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		newServoValue = int((horizontal * 102.5) + self.servoMiddle)
-		newMotorValue = int((vertical * 500) + self.motorMiddle))
+		newMotorValue = int((vertical * 500) + self.motorMiddle)
 
 		#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
 		#    newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
