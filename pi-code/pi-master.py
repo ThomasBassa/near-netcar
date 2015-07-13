@@ -57,6 +57,7 @@ class MyComponent(ApplicationSession):
 		data = self.ser.readline()
 		return data
 	#End GPS code
+
 	def moveServos(self, value):
 		self.pwm.setPWM(self.servoChannel, 0, value)
 
@@ -98,7 +99,7 @@ class MyComponent(ApplicationSession):
 		self.servoMiddle = 417 # middle servo value
 		self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
 		self.servoChannel = 3        
-		self.pwm.setPWM(3, 0, self.servoMiddle) #have vehicle wheels turn to center
+		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
 		#register the methods
