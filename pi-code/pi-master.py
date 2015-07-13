@@ -58,9 +58,6 @@ class MyComponent(ApplicationSession):
 		return data
 	#End GPS code
 
-	def moveServos(self, value):
-		self.pwm.setPWM(self.servoChannel, 0, value)
-
 	def joyMonitor(self, event):
 		vertical = event["vertical"]
 		horizontal = event["horizontal"]
@@ -107,7 +104,7 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
 		self.servoChannel = 3        
 
-		self.pwm.setPWM(3, 0, self.servoMiddle) #have vehicle wheels turn to center
+		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		self.motorMiddle = 1500
 		self.motorChannel = 2
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
