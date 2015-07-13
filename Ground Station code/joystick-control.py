@@ -4,13 +4,12 @@ import pygame
 from twisted.internet import reactor, task
 import os
 from time import sleep
-import json
 
 class MyComponent(ApplicationSession):
 
     def read_joystick(self):
         print("reading joystick")
-        for event in pygame.event.get():
+        for event in pygame.event.get():     #reading the joystick values
             if event.type == pygame.QUIT:
                 self.joyloop.stop()
             if event.type == pygame.JOYBUTTONDOWN:
@@ -26,8 +25,8 @@ class MyComponent(ApplicationSession):
                     print("event value axis 1: {}".format(event.value))
                 elif event.axis == 1:
                     self.verticalPosition = event.value
-        os.system('cls' if os.name == 'nt' else 'clear')            
-        try:
+        os.system('cls' if os.name == 'nt' else 'clear')        #clear screen to look pretty    
+        try:                                                        #tries to set joyvalues to a dict of axis positions
             #call function here
             joyvalues = {'horizontal':self.horizPosition, 'vertical': self.verticalPosition}
             #json_joyvalues = json.dumps(joyvalues)
@@ -36,14 +35,14 @@ class MyComponent(ApplicationSession):
         except Exception as e:
             print("Error: {}".format(e))
 
-    def joygood(self, value):
+    def joygood(self, value):   
         print "joygood", value
 
     def joybad(self, error):
         print "joybad", error
 
     def onJoin(self, details):
-        pygame.init()
+        pygame.init()               #initiating the joystick
         clock = pygame.time.Clock()
         pygame.joystick.init()
 
@@ -52,12 +51,12 @@ class MyComponent(ApplicationSession):
             joystick = pygame.joystick.Joystick(i)
             joystick.init()
 
-        self.horizPosition = 0.0
+        self.horizPosition = 0.0              #setting variables that contain positions
         self.verticalPosition = 0.0
         self.maxTurn = .25
-        self.done = False
+        self.done = False                       #does nothing
         print('Session Ready') 
-        self.joyloop = task.LoopingCall(self.read_joystick)
+        self.joyloop = task.LoopingCall(self.read_joystick)     
         self.joyloop.start(.1)
 
 
