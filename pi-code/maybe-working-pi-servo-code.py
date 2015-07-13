@@ -37,9 +37,6 @@ class MyComponent(ApplicationSession):
         #???
         None
 
-    def connectGPS(self):
-        None
-
     def onJoin(self, details):
         print("Session Joined.")    
         self.lastServoValue = 417 #assume it starts in the middle
