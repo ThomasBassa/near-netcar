@@ -79,10 +79,10 @@ class MyComponent(ApplicationSession):
 		self.lastMotorValue = newMotorValue
 
 	def moveServos(self, value):
-        self.pwm.setPWM(self.servoChannel, 0, value)
+		self.pwm.setPWM(self.servoChannel, 0, value)
 
-    def moveMotor(self, value):
-    	self.pwm.setPWM(self.motorChannel, 0, value)	    	
+	def moveMotor(self, value):
+		self.pwm.setPWM(self.motorChannel, 0, value)	    	
         	
 	def honk(self):
 		#honks the horn for 0.5 s when called
