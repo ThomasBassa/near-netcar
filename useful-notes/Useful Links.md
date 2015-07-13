@@ -9,3 +9,4 @@
 	https://community.ubnt.com/t5/UniFi-Video/How-to-embed-an-aircam-stream-on-your-website/td-p/635445
 - GPS datasheet (LS200**31**): https://cdn.sparkfun.com/datasheets/GPS/LS20030~3_datasheet_v1.3.pdf
 - IP Compliance: https://en.wikipedia.org/wiki/IP_Code
+- Speed Controller Configuration Guide: http://www.castlecreations.com/support/documents/drivers_ed_guide.pdf
