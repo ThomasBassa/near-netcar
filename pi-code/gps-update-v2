@@ -19,30 +19,29 @@ class MyComponent(ApplicationSession):
 
 
 		if gps_list[0] == "GPRMC":
-			gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}    
+    
 			if gps_list[4] == 'S':
-				gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+				self.gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
 			else:
-				gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+				self.gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
 			if gps_list[6] == 'W':
-				gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
+				self.gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
 			else:
-				gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
-			gps_data['speed'] = (float(gps_list[7]) * 1.15078)
-			#latitude = float(gps_string[19:21]) + (float(gps_string[22:27])/60.0)
-			# degrees = float(gps_string[50:55])
-			# if degrees > 90 and degrees < 270:
-			# 	if degrees > 180:
-			# 		gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
-			# 	else:
-			# 		gps_data['heading'] = "S&#176;{}E".format(180-degrees)
-			# else:
-			# 	if degrees > 270:
-			# 		gps_data['heading'] = "N&#176;{}W".format(360-degrees)
-			# 	else:
-			# 		gps_data['heading'] = "N&#176;{}E".format(degrees)
-			print gps_data
-
+				self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
+			self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
+		elif gps_list[0] == "GPVTG":
+			degrees = float(gps_list[1])
+			if degrees > 90 and degrees < 270:
+				if degrees > 180:
+					self.gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
+				else:
+					self.gps_data['heading'] = "S&#176;{}E".format(180-degrees)
+			else:
+				if degrees > 270:
+					self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
+				else:
+					self.gps_data['heading'] = "N&#176;{}E".format(degrees)
+		print self.gps_data
 		#print gps_string[0:6:]
 		
 		self.publish(u'aero.near.carPos', gps_data['latitude'], gps_data['longitude'])
@@ -61,6 +60,7 @@ class MyComponent(ApplicationSession):
 
 
 	def onJoin(self, details):
+		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		gpsUpdate(gpsRead())
 		#gpsUpdate(self, '$GPRMC,194530.000,A,3051.8007,N,10035.9989,W,9.76,111.67,310714,,,A*74')
 		
