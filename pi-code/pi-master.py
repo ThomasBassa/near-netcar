@@ -13,35 +13,35 @@ class MyComponent(ApplicationSession):
 	def gpsUpdate(self):
 		while True:
 			print "GPS"
-			gps_string = self.gpsRead()[1:] #getting rid of the stupid $ marker at the beginning of the strings
-			gps_list = string.split(gps_string, ',')
-			if gps_list[0] == "GPRMC":
-				if gps_list[4] == 'S':
-					self.gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
-				else:
-					self.gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
-				if gps_list[6] == 'W':
-					self.gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
-				else:
-					self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
-				self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
-				self.publish(u'aero.near.carPos', self.gps_data['latitude'], self.gps_data['longitude'])
-				self.publish(u'aero.near.carSpeed', self.gps_data['speed'])
-			elif gps_list[0] == "GPVTG":
-				degrees = float(gps_list[1])
-				if degrees > 90 and degrees < 270:
-					if degrees > 180:
-						self.gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
-					else:
-						self.gps_data['heading'] = "S&#176;{}E".format(180-degrees)
-				else:
-					if degrees > 270:
-						self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
-					else:
-						self.gps_data['heading'] = "N&#176;{}E".format(degrees)
-				self.publish(u'aero.near.carHeading', self.gps_data['heading'])
+			# gps_string = self.gpsRead()[1:] #getting rid of the stupid $ marker at the beginning of the strings
+			# gps_list = string.split(gps_string, ',')
+			# if gps_list[0] == "GPRMC":
+			# 	if gps_list[4] == 'S':
+			# 		self.gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+			# 	else:
+			# 		self.gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+			# 	if gps_list[6] == 'W':
+			# 		self.gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
+			# 	else:
+			# 		self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
+			# 	self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
+			# 	self.publish(u'aero.near.carPos', self.gps_data['latitude'], self.gps_data['longitude'])
+			# 	self.publish(u'aero.near.carSpeed', self.gps_data['speed'])
+			# elif gps_list[0] == "GPVTG":
+			# 	degrees = float(gps_list[1])
+			# 	if degrees > 90 and degrees < 270:
+			# 		if degrees > 180:
+			# 			self.gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
+			# 		else:
+			# 			self.gps_data['heading'] = "S&#176;{}E".format(180-degrees)
+			# 	else:
+			# 		if degrees > 270:
+			# 			self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
+			# 		else:
+			# 			self.gps_data['heading'] = "N&#176;{}E".format(degrees)
+			# 	self.publish(u'aero.near.carHeading', self.gps_data['heading'])
 	
-			print self.gps_data
+			# print self.gps_data
 			yield asyncio.sleep(.03333)
 
 	def gpsRead(self):
