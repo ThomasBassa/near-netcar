@@ -6,6 +6,9 @@ import time
 import math
 import trollius as asyncio
 import os as swag
+from trollius import From
+import logging
+logging.basicConfig()
 
 class MyComponent(ApplicationSession):
 	#Begin GPS Code
@@ -13,42 +16,42 @@ class MyComponent(ApplicationSession):
 	def gpsUpdate(self):
 		while True:
 			print "GPS"
-			# gps_string = self.gpsRead()[1:] #getting rid of the stupid $ marker at the beginning of the strings
-			# gps_list = string.split(gps_string, ',')
-			# if gps_list[0] == "GPRMC":
-			# 	if gps_list[4] == 'S':
-			# 		self.gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
-			# 	else:
-			# 		self.gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
-			# 	if gps_list[6] == 'W':
-			# 		self.gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
-			# 	else:
-			# 		self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
-			# 	self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
-			# 	self.publish(u'aero.near.carPos', self.gps_data['latitude'], self.gps_data['longitude'])
-			# 	self.publish(u'aero.near.carSpeed', self.gps_data['speed'])
-			# elif gps_list[0] == "GPVTG":
-			# 	degrees = float(gps_list[1])
-			# 	if degrees > 90 and degrees < 270:
-			# 		if degrees > 180:
-			# 			self.gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
-			# 		else:
-			# 			self.gps_data['heading'] = "S&#176;{}E".format(180-degrees)
-			# 	else:
-			# 		if degrees > 270:
-			# 			self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
-			# 		else:
-			# 			self.gps_data['heading'] = "N&#176;{}E".format(degrees)
-			# 	self.publish(u'aero.near.carHeading', self.gps_data['heading'])
-	
-			# print self.gps_data
-			yield asyncio.sleep(.03333)
+			gps_string = self.gpsRead()[1:] #getting rid of the stupid $ marker at the beginning of the strings
+			gps_list = string.split(gps_string, ',')
+			if gps_list[0] == "GPRMC":
+				if gps_list[4] == 'S':
+					self.gps_data['latitude'] = -1 * (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+				else:
+					self.gps_data['latitude'] = (float(gps_list[3][0:2]) + (float(gps_list[3][2:])/60.0))
+			 	if gps_list[6] == 'W':
+			 		self.gps_data['longitude'] = -1 * (float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0))
+			 	else:
+			 		self.gps_data['longitude'] = float(gps_list[5][0:3]) + (float(gps_list[5][3:])/60.0)	
+			 	self.gps_data['speed'] = (float(gps_list[7]) * 1.15078)
+			 	self.publish(u'aero.near.carPos', self.gps_data['latitude'], self.gps_data['longitude'])
+			 	self.publish(u'aero.near.carSpeed', self.gps_data['speed'])
+			elif gps_list[0] == "GPVTG":
+				degrees = float(gps_list[1])
+			 	if degrees > 90 and degrees < 270:
+			 		if degrees > 180:
+			 			self.gps_data['heading'] = "S&#176;{}W".format(degrees-180) #&#176 converted to degree symbol in html
+			 		else:
+			 			self.gps_data['heading'] = "S&#176;{}E".format(180-degrees)
+			 	else:
+			 		if degrees > 270:
+			 			self.gps_data['heading'] = "N&#176;{}W".format(360-degrees)
+			 		else:
+			 			self.gps_data['heading'] = "N&#176;{}E".format(degrees)
+			 	self.publish(u'aero.near.carHeading', self.gps_data['heading'])
+			print self.gps_data
+			yield From(asyncio.sleep(.03333))
 
 	def gpsRead(self):
 		self.ser = serial.Serial('/dev/ttyAMA0',57600,timeout=1)
 		if self.ser.isOpen():
 			print 'Open: '
 		data = self.ser.readline()
+		print data
 		return data
 
 	#End GPS code
@@ -79,10 +82,15 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWM(self.motorChannel, 0, value)
 
 	@asyncio.coroutine
-	def honk(self, event):
+	def honk(self):
+		print "attempting to start honk loop"
+		while True:
+			print "HONK"
+			yield From(asyncio.sleep(2))
+			#honks the horn for 0.5 s when called
+	
+	def honkCommand(self, event):
 		print "HONK"
-		yield asyncio.sleep(2)
-		#honks the horn for 0.5 s when called
 	
 	def emergencyStop(self, event):
 		#stop the motors
@@ -104,20 +112,36 @@ class MyComponent(ApplicationSession):
 		self.servoChannel = 3        
 
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
+		print "What is happening????"
 		self.motorMiddle = 1500
 		self.motorChannel = 2
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
-
+		print "joystream ok"
 		#subscribe to methods to prevent register conflicts
-		self.subscribe('aero.near.honkHorn', self.honk)
-		self.subscribe('aero.near.emergStop', self.emergencyStop)
-		self.subscribe('aero.near.override', self.manualOverride)
- 		self.gpsloop = asyncio.get_event_loop()
-		self.gpsloop.run_until_complete(self.gpsUpdate())
-		self.gpsloop.run_until_complete(self.honk())
-		self.gpsloop.close()
+		self.subscribe(self.honkCommand, 'aero.near.honkHorn')
+		print "honk ok"
+		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
+		print "emergstop ok"
+		self.subscribe(self.manualOverride, 'aero.near.override')
+		print "About to make the loop"
+		
+ 		self.loop = asyncio.get_event_loop()
+		print self.loop.is_running()
+#		self.loop.stop()
+#		future = asyncio.Future()
+#		print "the future exists"
+#		asyncio.async(self.gpsUpdate())
+#		self.loop.run_until_complete(future)
+#		self.loop = asyncio.new_event_loop()
+		tasks = [
+			asyncio.async(self.gpsUpdate()),
+			asyncio.async(self.honk())]
+		print tasks
+		done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+		print tasks
+		print "running"
+		self.loop.close()
 # 		runner.run_until_complete(self.gpsUpdate())
-#		gpsloop.close()
 
 if __name__ == '__main__':
     print "I'M TRYING."
