@@ -133,14 +133,16 @@ class MyComponent(ApplicationSession):
 #		asyncio.async(self.gpsUpdate())
 #		self.loop.run_until_complete(future)
 #		self.loop = asyncio.new_event_loop()
+		self.blazeit = asyncio.new_event_loop()
+		asyncio.set_event_loop(blazeit) #may or may not work, test tomorrow
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
 			asyncio.async(self.honk())]
 		print tasks
-		done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+		done, pending = yield self.blazeit.run_until_complete(asyncio.wait(tasks))
 		print tasks
 		print "running"
-		self.loop.close()
+		self.blazeit.close()
 # 		runner.run_until_complete(self.gpsUpdate())
 
 if __name__ == '__main__':
