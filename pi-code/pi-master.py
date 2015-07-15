@@ -100,6 +100,12 @@ class MyComponent(ApplicationSession):
 		#???
 		None
 
+	@asyncio.coroutine	
+	def lidarRead(self):
+		while True:
+			print "Reading LIDAR"	
+			yield From(asyncio.sleep(.03333))
+
 	def onJoin(self, details):
 		print("Session Joined.")
 		#Setting variables
@@ -137,7 +143,8 @@ class MyComponent(ApplicationSession):
 		asyncio.set_event_loop(blazeit) #may or may not work, test tomorrow
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
-			asyncio.async(self.honk())]
+			asyncio.async(self.honk()),
+			asyncio.async(self.lidarRead())]
 		print tasks
 		done, pending = yield self.blazeit.run_until_complete(asyncio.wait(tasks))
 		print tasks
