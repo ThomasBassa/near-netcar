@@ -62,3 +62,14 @@
 2. The vehicle shall receive movement instructions from the ground station
 3. The vehicle shall respond to commands within 150 ms
 4. The vehicle shall route its communications through an external crossbar server 
+
+
+
+
+
+
+
+
+
+
+
