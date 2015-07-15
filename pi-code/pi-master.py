@@ -131,6 +131,7 @@ class MyComponent(ApplicationSession):
 		print "emergstop ok"
 		self.subscribe(self.manualOverride, 'aero.near.override')
 		print "About to make the loop"
+		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		
  		self.loop = asyncio.get_event_loop()
 #		self.loop.stop()
