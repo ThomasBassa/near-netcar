@@ -45,7 +45,7 @@ class MyComponent(ApplicationSession):
 					else:
 						self.gps_data['heading'] = "N&#176;{}E".format(degrees)
 				self.publish(u'aero.near.carHeading', self.gps_data['heading'])
-			print self.gps_data
+#			print self.gps_data
 			yield From(asyncio.sleep(.03333))
 
 	def gpsRead(self):
@@ -56,6 +56,7 @@ class MyComponent(ApplicationSession):
 	#End GPS code
 
 	def joyMonitor(self, event):
+		print "moving"
 		vertical = event["vertical"]
 		horizontal = event["horizontal"]
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
@@ -127,25 +128,24 @@ class MyComponent(ApplicationSession):
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		
  		self.loop = asyncio.get_event_loop()
-		print self.loop.is_running()
 #		self.loop.stop()
 #		future = asyncio.Future()
 #		print "the future exists"
 #		asyncio.async(self.gpsUpdate())
 #		self.loop.run_until_complete(future)
 #		self.loop = asyncio.new_event_loop()
-		self.blazeit = asyncio.new_event_loop()
-		asyncio.set_event_loop(self.blazeit) #may or may not work, test tomorrow
 		tasks = [
 			asyncio.async(self.honk()),
 			asyncio.async(self.lidarRead()),
 			asyncio.async(self.gpsUpdate())]
 		print tasks
 		swag.system('cls' if swag.name == 'nt' else 'clear')
-		done, pending = yield self.blazeit.run_until_complete(asyncio.wait(tasks))
+		try:
+			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+		except Exception as e:
+			print e
 		print tasks
 		print "running"
-		self.blazeit.close()
 # 		runner.run_until_complete(self.gpsUpdate())
 
 if __name__ == '__main__':

@@ -133,24 +133,24 @@ class MyComponent(ApplicationSession):
 		print "About to make the loop"
 		
  		self.loop = asyncio.get_event_loop()
-		print self.loop.is_running()
 #		self.loop.stop()
 #		future = asyncio.Future()
 #		print "the future exists"
 #		asyncio.async(self.gpsUpdate())
 #		self.loop.run_until_complete(future)
 #		self.loop = asyncio.new_event_loop()
-		self.blazeit = asyncio.new_event_loop()
-		asyncio.set_event_loop(self.blazeit) #may or may not work, test tomorrow
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
 			asyncio.async(self.honk()),
 			asyncio.async(self.lidarRead())]
 		print tasks
-		done, pending = yield self.blazeit.run_until_complete(asyncio.wait(tasks))
+		try:
+			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+		except Exception as e:
+			print e
 		print tasks
 		print "running"
-		self.blazeit.close()
+		self.loop.close()
 # 		runner.run_until_complete(self.gpsUpdate())
 
 if __name__ == '__main__':
