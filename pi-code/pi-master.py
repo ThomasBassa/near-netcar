@@ -9,7 +9,9 @@ import os as swag
 from trollius import From
 import logging
 import string
+from statusCheck import checkStatus
 logging.basicConfig()
+
 
 class MyComponent(ApplicationSession):
 	#Begin GPS Code
@@ -109,6 +111,9 @@ class MyComponent(ApplicationSession):
 
 	def onJoin(self, details):
 		print("Session Joined.")
+		res = yield self.call('aero.near.checkStatus')
+		print("Got result: {}".format(res))
+
 		#Setting variables
 		self.lastServoValue = 417 #Assumes it starts in the middle
 		self.pwm = PWM(0x40,debug=True)
@@ -130,6 +135,7 @@ class MyComponent(ApplicationSession):
 		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
 		print "emergstop ok"
 		self.subscribe(self.manualOverride, 'aero.near.override')
+		self.register(checkStatus, u'aero.near.checkStatus')
 		print "About to make the loop"
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		
