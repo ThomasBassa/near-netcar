@@ -65,7 +65,7 @@ class MyComponent(ApplicationSession):
 		swag.system('cls' if swag.name == 'nt' else 'clear')
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
-		newServoValue = int((horizontal * 102.5) + self.servoMiddle)
+		newServoValue = (int((horizontal * 102.5) + self.servoMiddle)) * -1
 		newMotorValue = int((vertical * 500) + self.motorMiddle)
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
@@ -111,8 +111,8 @@ class MyComponent(ApplicationSession):
 
 	def onJoin(self, details):
 		print("Session Joined.")
-		res = yield self.call('aero.near.checkStatus')
-		print("Got result: {}".format(res))
+		#res = yield self.call('aero.near.checkStatus')
+		#print("Got result: {}".format(res))
 
 		#Setting variables
 		self.lastServoValue = 417 #Assumes it starts in the middle
