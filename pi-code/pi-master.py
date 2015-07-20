@@ -135,7 +135,7 @@ class MyComponent(ApplicationSession):
 		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
 		print "emergstop ok"
 		self.subscribe(self.manualOverride, 'aero.near.override')
-		self.register(checkStatus, u'aero.near.checkStatus')
+		#self.register(checkStatus, u'aero.near.checkStatus')
 		print "About to make the loop"
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		
