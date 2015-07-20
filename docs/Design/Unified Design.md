@@ -1,54 +1,37 @@
 # Glossary (A001)
+
 * Ground Station (GS) - User interface. The website and the joystick.
   Everything on the operator's end.
 * Vehicle - The RC car and its onboard Pi
 
-# System Design (A002)
+# Musts
+
+## System Design (A002)
 This is the set of subsystems necessary in this system.
 * Joystick - The way the user will control the vehicle
-* Navigation - How the user will know where to go
 * Camera (Hardware overlap) - What the user will use to see in front of the vehicle
 * Website Frontend - The way the user will see the camera feed, map, and various other statistics about the vehicle 
 
-# Use Cases (A003)
+## Use Cases (A003)
 
-## Manual Vehicle Movement (A004)
+### Manual Vehicle Movement (A004)
 1. User moves joystick
 2. System sends information to vehicle accordingly
 3. Vehicle moves
 
-## Assisted Mode (A005)
-1. User clicks switch on Website Frontend
-2. Ground Station sends a boolean to the PubSub server
-3. Vehicle turns off assisted mode for 20 seconds 
-4. Assisted mode turns back on automatically
+## Subsystem Design (B001)
 
-## Obstacle Detection (C012)
-1. Lidar comes on, servo begins rotating
-2. If an obstacle is detected, the vehicle stops and alerts user by publishing event
-3. User has option for a 20 sec override
-4a. If override option is not taken, vehicle will wait until obstacle has moved
-4b. If override option is taken, the vehicle will start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
+### Website Frontend (B002)
 
-## Sidewalk Lost (D005)
-1. One of the color sensors detects vehicle on grass
-2. Vehicle moves backwards and in the direction of the sensor which did not detect grass
-
-# Subsystem Design (B001)
-
-## Website Frontend (B002)
-
-### Behaviour (B003)
+#### Behaviour (B003)
 The website contains a 720p video feed from the camera next to a Google map
 of the area surrounding the vehicle that both refresh at 30 Hz.
-Below the map and video feed is a toggleable switch to change the mode of
-the vehicle between manual and assisted navigation. There is also a Stop button
-that causes the vehicle to stop moving as quickly as possible, to be used
+There is also a Stop button that causes the vehicle to stop moving as quickly as possible, to be used
 in an emergency situation. There will also be some vehicle statistics 
 displayed below the camera feed, such as heading, which will aid in navigation, 
 and the speed of the vehicle, to tell the user how fast he/she is going.
 
-### Role (B004)
+#### Role (B004)
 The website frontend is used to display vehicle status information.
 It allows the user to see through the vehicle's eyes via the onboard camera.
 It also shows where the vehicle is in geographic space
@@ -60,27 +43,22 @@ The website frontend will show important information about the current status of
 such as the cardinal direction the vehicle is facing,
 and the vehicle's current speed.
 
-### Major components, location, interaction (B005)
+#### Major components, location, interaction (B005)
 * Google Map: Top 3/4ths of the screen. Left half of the screen.
   Is used to update the user on the vehicle's location.
 * Video Feed: Top 3/4ths of the screen. Right half of the screen.
   Is used to provide the user with a visual of what is in front of the vehicle and aid in navigation.
-* Assisted Mode Switch: Below the map.
-  When clicked, it will swap the vehicle from manual to assisted mode and vice versa.
-  It operates on PubSub. The vehicle subscribes to what the ground station publishes on the channel modeSwitch.
-  The ground station publishes when the state of the checkbox changes. This causes the vehicle to switch modes.
-  There will also be a timer present to indicate the amount of time the override remains in effect.
 * Stop Button: Below the video stream.
   When clicked, it will command the vehicle to stop moving as fast as possible.
   It calls an RPC named emergStop to tell the robot to begin slowing down and eventually stop.
   It can stop the robot from 30 mph in 15 meters, to be used in emergencies.
 * Data: Below the camera feed.
-  Will display the current heading to the user.
-  It will also show the camera's framerate and the vehicle's current speed.
+  Will display the current heading to the user
+  and the vehicle's current speed.
 
-## Joystick (B006)
+### Joystick (B006)
 
-### Behaviour (B007)
+#### Behaviour (B007)
 
 Joystick produces outputs based on the current position using Pygame.
 These outputs should be tuples of two floats passed through RPC protocol to the vehicle using Autobahn.
@@ -88,44 +66,44 @@ The vehicle-mounted pi runs code that maps the joystick's current position to se
 turning the wheels of the vehicle accordingly.
 The joystick will continue sending data, even when not moving, at 30 Hz (every .0333 seconds).
 
-### Physical (B008)
+#### Physical (B008)
 The system consists entirely of the joystick and the computer that it's plugged into via USB.
 The joystick will be physically next to the computer,
 and its code will be on the computer as well.
 The user interacts by operating the joystick to control the vehicle's movement.
 
-### Software Components (B009)
+#### Software Components (B009)
 The initial function onJoin runs when the session begins. onJoin then runs the function joyUpdate, which picks up the
 joystick movement, converts it into a tuple of floats, and passes is to another function, joyMonitor, 30 times a
 second. joyMonitor runs	directly on the pi, and tells the servos to turn.
 
-#### Function - onJoin() (F001)
+##### Function - onJoin() (F001)
 * Args - self, details (WAMP stuff) <!-- These should be explained, but it's okay...-->
 * Returns - n/a
 * Behaviour - Runs the functions within when the session connects
 
-#### Function - joyUpdate() (F002)
+##### Function - joyUpdate() (F002)
 * Args - n/a
 * Returns - Tuple of floats called val, -1.1 <= vals <= 1.1
 * Behaviour - Picks up the movements of the joystick 30 times a second,
 converts the position to a tuple of two floats, and calls the function 	joyMonitor() with vals.
 
-#### Function - joyMonitor(put) (F003)
+##### Function - joyMonitor(put) (F003)
 * Args - put
  <!-- get put range from hardware team -->
 * Returns - int passed to the servos
 * Behaviour - Takes in val from joyUpdate and uses it to control the servos through the setPWM function.
 
-## Vehicle Camera (C001)
+### Vehicle Camera (C001)
 
-### Behaviour (C002)
+#### Behaviour (C002)
 An HD camera will be mounted to the front of the vehicle so that it faces forward.
 The camera's onboard components capture shots of the vehicle's front-facing view and converts that view to video. The resulting video is then sent to the ground station in real time and displayed in a window on the ground station webpage.
 
-### Physical (C003)
-The sensors will be taken from a Ubiquiti Aircam camera, and attached to the strut at the front end of the vehicle.
+#### Physical (C003)
+The sensors will be taken from a Ubiquiti Aircam Mini camera, and attached to the strut at the front end of the vehicle.
 
-### Software Components (C004)
+#### Software Components (C004)
 The camera's sensor captures shots of what it sees at a rate of 30 hz.
 Default software in the camera converts the frames that are captured
 into a 30fps video at 720p resolution. That video is then sent to the UI
@@ -134,36 +112,26 @@ that is controlled by the ground station and displayed in real time.
 Ubiquiti Aircam
 http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX20N9128&cm_re=ubiquiti-_-0ED-0005-00022-_-Product
 
-## Training System (Z011)
+### Training System (Z011)
 The training system will be a printed manual describing all the features of the website frontend and the joystick.
 The training system is for new users to the vehicle, instructing them so they will know how to handles the vehicle, especially in case of emergencies. 
 
-## Hardware Design (C005)
+### Hardware Design (C005)
 
 The vehicle will communicate with the ground station.
-The vehicle shall have two modes: assisted manual mode and manual mode.
-In manual mode, a user at the ground station controls the vehicle using a joystick.
-In assisted manual mode, the vehicle intervenes when an obstacle is detected and
-keeps the vehicle on the sidewalk. The user can switch between the two modes.
+A user at the ground station controls the vehicle using a joystick.
 The vehicle shall be able to send live HD feed from a camera while the vehicle is powered.
 The vehicle will have a light and a buzzer to warn pedestrians while the vehicle is on.
 The vehicle will conform to IP54 standards, protecting it from water, dust, and touch.
+The vehicle will contain a gps to transmit its location
 
-![BlockDiagram](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainBlockDiagram.png)
+### Vehicle Design (C006)
 
-**Figure 1.** Block Diagram of Vehicle Components
-
-![HardwareConnection](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Older/HardwareDiagram.png)
-
-**Figure 2.** Block diagram of Hardware Connections
-
-## Vehicle Design (C006)
-
-## Ground Station Communication (C007)
+### Ground Station Communication (C007)
 Application components connect to Crossbar.io and can then talk to each other using two patterns:
 Remote Procedure Calls and Publish & Subscribe. Crossbar.io directs and transmitts messages to the proper components ("message routing").
 
-### Remote Procedure Calls (C008)
+#### Remote Procedure Calls (C008)
 Remote Procedure Call (RPC) is a messaging pattern involving peers of three roles:
 Caller, Callee, and Dealer. A Caller issues calls to remote procedures by providing the procedure URI
 and any arguments for the call. The Callee will execute the procedure using the supplied arguments to the call
@@ -178,53 +146,17 @@ procedures registered by other components. Crossbar.io routes calls to the compo
 and returns the result to the caller: RPC pattern - registering a procedure with the Crossbar.io router, PRC pattern - 
 calling a remote procedure and receiving the result, routed via Crossbar.io.
 
-### Publish & Subscribe (C009)
+#### Publish & Subscribe (C009)
 With the Publish & Subscribe pattern, any component can subscribe to receive events published from other components and 
 publish events which other subscribed components will receive. Crossbar.io routes event published to all components that have 
 subscribed to receive events for the topic.
 
-### Methods (C010)
+#### Methods (C010)
 To PUBLISH an event - session.publish('join.session', 'Session joined')
 
 To REGISTER a procedure for remote calling - session.register(Horizontal(param)), 'com.myapp.add2')
 
-![CommunicationBlock](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/CommunicationsBlocks.png)
-
-**Figure 4.** Block diagram of server communications
-
-## Obstacle Avoidance (C011)
-The vehicle will be mounted with a lidar laser rangefinder.
-The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on,
-it will start in manual mode and after 20 seconds elapse (timer),
-it will switch to assisted manual mode. In assisted manual mode,
-the servo will sweep back and forth constantly, on an axis that will
-establish a 1.2373 degree field of vision which will detect obstacles.
-This was determined using Figure 6. If an obstacle is detected, the vehicle will
-cease motion and alert the user (by publishing an obstacle detection event)
-that an obstacle is obstructing its path.
-The user will then have an option to override the alert and control the vehicle manually.
-Choosing to switch it to manual mode will only last 20 seconds before automatically switching back to assisted manual mode.
-
-LIDAR-Lite Laser Rangefinder
-http://www.robotshop.com/en/lidar-lite-laser-rangefinder-pulsedlight.html?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ7oTmUTfX6Yse7cnXtwcMd9URNekiWv3NAlCizliooBoChQ_w_wcB
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/AssistManualState.png)
-
-**Figure 5.** State diagram of manual assisted and manual mode
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ServoRotationDiagram.png)
-
-**Figure 6.** Diagram showing how the servo's rotation angle was determined
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/MainSeq.png)
-
-**Figure 7.** The main sequence diagram for the vehicle code
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ObstacleDetection.png)
-
-**Figure 8.** Sequence diagram for obstacle detection
-
-## Sound and Lights (Z022)
+### Sound and Lights (Z022)
 An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
 
@@ -243,9 +175,9 @@ The GPIO library will again be used.
 DC 24V Electronic Amber LED Flashing Alarm Siren 100dB BJ-3
 http://www.amazon.com/OBLONG-SURFACE-CLEARANCE-MARKER-EL-114303CA/dp/B00N54AT54/ref=sr_1_13?s=electronics&ie=UTF8&qid=1433356800&sr=1-13&keywords=amber+LEDs
 
-## Servo/Motor Control (D001)
+### Servo/Motor Control (D001)
 
-### Behavior (D002)
+#### Behavior (D002)
 This system uses the output from the joystick to control speed and direction of the vehicle.
 This output is produced into two different vehicle methods, horizontal and vertical.
 Horizontal output controls the direction of the vehicle (rotational degrees of the servos)
@@ -258,7 +190,7 @@ The last value received is saved in a variable to be used for sidewalk detection
 
 - Motor control method--> Vertical(param): This method changes the I2C output to the motors using I2C library.
 
-### Physical (D003)
+#### Physical (D003)
 This system consists of two servos, two motors, a servo controller,
 and an Evx-2 speed controller. The two servos are directly connected to the vehicle
 and wired to a Raspberry Pi that connects to a website using crossbar.io.
@@ -272,7 +204,7 @@ to call the method Vertical() and sent to the Pi which feeds the speed controlle
 Evx-2 speed controller
 https://traxxas.com/products/parts/escs/3019Revx2lvd
 
-### Software Components (D004)
+#### Software Components (D004)
 The Pi connects to the ground station through crossbar.io.
 Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
@@ -282,11 +214,11 @@ The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller w
 
 **Figure 9.** Sequence diagram for the color sensor readings
 
-## Battery (Z069)
+### Battery (Z069)
 The battery will power the whole vehicle, and needs to have enough voltage output to power all the sensors. 
 The battery needs to be large enough for all the sensors and the vehicle to run for a half hour.
 
-## Mounting Container (D006)
+### Mounting Container (D006)
 A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
 Holes will be drilled into the container around the struts and
 attached to the struts with zip ties. The holes at the bottom of the container will
@@ -308,7 +240,7 @@ Pizza bag http://www.webstaurantstore.com/choice-20-x-20-x-12-vinyl-insulated-pi
 
 <Diagram here>
 
-## Video Feed (D007)
+### Video Feed (D007)
 The casing will be removed from a Ubiquiti Aircam H.264 1Megapixel/720P 
 camera, and it will be mounted on the top of the vehicle, facing forward. The 
 camera requires 24V, and has 30fps. First the camera’s IP is determined using 
@@ -316,7 +248,7 @@ its provided software. The IP address will be fixed. The port used will be 80.
 The port and IP will be used to contact the camera from the ground station. 
 
 
-## Vehicle Location Tracking (D008)
+### Vehicle Location Tracking (D008)
 
 The vehicle's location will be tracked using a GPS module. The GPS module will talk to the Pi with serial communication. The Pi will read string messages from the GPS module. Then the program will interpret the message to find the latitude and longitude of the vehicle. This information will be published over crossbar.io to the ground station. This will happen every main loop iteration. Pin 1 on the module goes to 3.3 V power. Pin 2 is RX and goes to RDX on the Pi. Pin 3 is TX and goes to TDX on the Pi. Pin 4 is ground.
 
@@ -331,7 +263,41 @@ http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJ
 
 **Figure 12.** Sequence diagram for GPS reading and publishing
 
-## Waterproofing (D009)
+### Waterproofing (D009)
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
 container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
 come out and attach to components on the vehicle's exterior, and then sealed with rubber cement. The components of the vehicle will be able to withstand temperatures as low as 0 degrees Celsius, and up to 50 degrees Celsius
+
+# Mights
+
+## Use Cases (D021) 
+
+###  Assisted Mode (A005)
+1. User clicks switch on Website Frontend
+2. Ground Station sends a boolean to the PubSub server
+3. Vehicle turns off assisted mode for 20 seconds 
+4. Assisted mode turns back on automatically
+
+### Obstacle Detection (C012)
+1. Lidar comes on, servo begins rotating
+2. If an obstacle is detected, the vehicle stops and alerts user by publishing event
+3. User has option for a 20 sec override
+4a. If override option is not taken, vehicle will wait until obstacle has moved
+4b. If override option is taken, the vehicle will start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
+
+### Sidewalk Lost (D005)
+1. One of the color sensors detects vehicle on grass
+2. Vehicle moves backwards and in the direction of the sensor which did not detect grass
+
+## Obstacle Avoidance (C011)
+The vehicle will be mounted with a lidar laser rangefinder.
+The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on,
+it will start in manual mode and after 20 seconds elapse (timer),
+it will switch to assisted manual mode. In assisted manual mode,
+the servo will sweep back and forth constantly, on an axis that will
+establish a 1.2373 degree field of vision which will detect obstacles.
+This was determined using Figure 6. If an obstacle is detected, the vehicle will
+cease motion and alert the user (by publishing an obstacle detection event)
+that an obstacle is obstructing its path.
+The user will then have an option to override the alert and control the vehicle manually.
+Choosing to switch it to manual mode will only last 20 seconds before automatically switching back to assisted manual mode.
