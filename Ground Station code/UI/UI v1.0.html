@@ -15,7 +15,16 @@
 
 <body>
 	<div id="map-canvas"></div>
-	<div id="camera-canvas"></div>
+	<div id="camera-canvas">
+	<!--<meta http-equiv="refresh" content="10">-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+		window.setInterval(function(){
+		    $("#webcamimg").attr("src", "http://10.33.93.86/snapshot.cgi?chan=1");
+		},33);
+		</script>
+		<img id='webcamimg' src="http://10.33.93.86/snapshot.cgi?chan=1" width="100%">
+	</div>
 	<div id="buttonland">
 
 		<p id="display" class="display">Latitude: Loading...\nLongitude: Loading...\nSpeed: Loading... \nHeading: Loading...</p>
