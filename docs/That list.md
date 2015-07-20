@@ -3,7 +3,7 @@
 * Drive vehicle with R/C controls for emergencies
 * Camera feed, needed to drive 
 * Cargo carrying
-* Waterproof enclosure 
+* Waterproof enclosure
 * Horn & Lights 
 
 # May/Might 
