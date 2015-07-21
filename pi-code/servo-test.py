@@ -21,16 +21,16 @@ class MyComponent(ApplicationSession):
 			print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 			newServoValue = int(((horizontal * 102.5) * -1) + self.servoMiddle)
-			newMotorValue = int((vertical * 500) + self.motorMiddle)
+			#newMotorValue = int((vertical * 500) + self.motorMiddle)
 			print "New servo value: {}".format(newServoValue)
 			print "New motor value: {}".format(newMotorValue)
 			#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
 			#    newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
 
-			self.moveServos(int(newServoValue))
+			#self.moveServos(int(newServoValue))
 			self.lastServoValue = newServoValue
 
-			self.moveMotor(int(newMotorValue))
+			#self.moveMotor(int(newMotorValue))
 			self.lastMotorValue = newMotorValue
 
 	def moveServos(self, value):
