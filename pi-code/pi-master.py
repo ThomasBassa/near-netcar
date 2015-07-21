@@ -82,7 +82,7 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWM(self.servoChannel, 0, value)
 
 	def moveMotor(self, value):
-		self.pwm.setPWM(self.motorChannel, 0, value)
+		self.pwm.setPWM(self.motorChannel, 1500, value)
 
 	@asyncio.coroutine
 	def honk(self):
