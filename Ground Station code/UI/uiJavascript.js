@@ -104,6 +104,7 @@ var objWindow = new google.maps.InfoWindow({
 
 function refresh() {
 	console.log("refreshing");
+	$("#webcamimg").attr("src", "http://10.33.93.86/snapshot.cgi?"+new Date().getTime());
 	//publishing object avoidance checkbox status
 	if (document.getElementById("switch1").checked == true && objectAvoidanceOverride == false) {
 		console.log("checked");
