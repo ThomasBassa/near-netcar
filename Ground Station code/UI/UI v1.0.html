@@ -18,7 +18,17 @@
 	<div id="camera-canvas">
 	<!--<meta http-equiv="refresh" content="10">-->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<img id='webcamimg' src="http://10.33.93.86/snapshot.cgi" width="100%" height="100%">
+		<!--<img id='webcamimg' src="http://10.33.93.86/snapshot.cgi" width="100%" height="100%">-->
+		<OBJECT classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+			codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab"
+			width="100%" height="100%" id="vlc" events="True">
+			<param name="Src" value="rtsp://10.33.93.86:554/live/ch00_0" />
+			<param name="ShowDisplay" value="True" />
+			<param name="AutoLoop" value="False" />
+			<param name="AutoPlay" value="True" />
+			<embed id="vlcEmb"  type="application/x-google-vlc-plugin" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="100%" height="100%"
+			target="rtsp://10.33.93.86:554/live/ch00_0" ></embed>
+		</OBJECT>
 	</div>
 	<div id="buttonland">
 

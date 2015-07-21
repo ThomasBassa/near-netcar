@@ -104,7 +104,7 @@ var objWindow = new google.maps.InfoWindow({
 
 function refresh() {
 	console.log("refreshing");
-	$("#webcamimg").attr("src", "http://10.33.93.86/snapshot.cgi?"+new Date().getTime());
+	// $("#webcamimg").attr("src", "http://10.33.93.86/snapshot.cgi?"+new Date().getTime());
 	//publishing object avoidance checkbox status
 	if (document.getElementById("switch1").checked == true && objectAvoidanceOverride == false) {
 		console.log("checked");
@@ -126,7 +126,6 @@ function refresh() {
 
 	document.getElementById("display").innerHTML =
 		"Latitude: " + myLatLng.lat().toFixed(3) + "<br>Longitude: " + myLatLng.lng().toFixed(3) + "<br>Speed: " + speed.toFixed(1) + " mph<br>Heading: " + heading;
-
 }
 
 //Callback functions for subscribed topics
