@@ -65,7 +65,7 @@ class MyComponent(ApplicationSession):
 		swag.system('cls' if swag.name == 'nt' else 'clear')
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
-		newServoValue = int(((125 * horizontal) * -1) + self.servoMiddle)
+		newServoValue = int(((112.5 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * 102.4) * -1) + self.motorMiddle)
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
@@ -118,8 +118,8 @@ class MyComponent(ApplicationSession):
 		self.lastServoValue = 417 #Assumes it starts in the middle
 		self.pwm = PWM(0x40,debug=True)
 		self.servoMin = 300  # Min pulse length out of 4096
-		self.servoMax = 550  # Max pulse length out of 4096
-		self.servoMiddle = 425 # middle servo value
+		self.servoMax = 525  # Max pulse length out of 4096
+		self.servoMiddle = 412.5 # middle servo value
 		self.pwm.setPWMFreq(50) # Set frequency to 60 Hz
 		self.servoChannel = 3        
 
