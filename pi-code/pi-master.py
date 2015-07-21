@@ -66,7 +66,7 @@ class MyComponent(ApplicationSession):
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		newServoValue = int(((horizontal * 102.5) * -1) + self.servoMiddle)
-		newMotorValue = int((vertical * 500) + self.motorMiddle)
+		newMotorValue = int((vertical * 1024) + self.motorMiddle)
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
 		#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
@@ -82,7 +82,7 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWM(self.servoChannel, 0, value)
 
 	def moveMotor(self, value):
-		self.pwm.setPWM(self.motorChannel, 0, value)
+		self.pwm.setPWM(self.motorChannel, 3072, value)
 
 	@asyncio.coroutine
 	def honk(self):
@@ -125,7 +125,7 @@ class MyComponent(ApplicationSession):
 
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		print "What is happening????"
-		self.motorMiddle = 1500
+		self.motorMiddle = 3072
 		self.motorChannel = 2
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
 		print "joystream ok"
@@ -141,12 +141,6 @@ class MyComponent(ApplicationSession):
 		swag.system('cls' if swag.name == 'nt' else 'clear')
 		
  		self.loop = asyncio.get_event_loop()
-#		self.loop.stop()
-#		future = asyncio.Future()
-#		print "the future exists"
-#		asyncio.async(self.gpsUpdate())
-#		self.loop.run_until_complete(future)
-#		self.loop = asyncio.new_event_loop()
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
 			asyncio.async(self.honk()),
