@@ -23,7 +23,7 @@ class MyComponent(ApplicationSession):
 			newServoValue = int(((horizontal * 102.5) * -1) + self.servoMiddle)
 			#newMotorValue = int((vertical * 500) + self.motorMiddle)
 			print "New servo value: {}".format(newServoValue)
-			print "New motor value: {}".format(newMotorValue)
+			#print "New motor value: {}".format(newMotorValue)
 			#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
 			#    newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
 
@@ -31,7 +31,7 @@ class MyComponent(ApplicationSession):
 			self.lastServoValue = newServoValue
 
 			#self.moveMotor(int(newMotorValue))
-			self.lastMotorValue = newMotorValue
+			#self.lastMotorValue = newMotorValue
 
 	def moveServos(self, value):
 			self.pwm.setPWM(self.servoChannel, 0, value)		
