@@ -39,6 +39,16 @@ class MyComponent(ApplicationSession):
 	def onJoin(self, details):
 		print "Session joined"
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
+		#Setting variables
+		self.lastServoValue = 417 #Assumes it starts in the middle
+		self.pwm = PWM(0x40,debug=True)
+		self.servoMin = 315  # Min pulse length out of 4096
+		self.servoMax = 520  # Max pulse length out of 4096
+		self.servoMiddle = 417 # middle servo value
+		self.pwm.setPWMFreq(60) # Set frequency to 60 Hz
+		self.servoChannel = 3        
+
+		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		
 
 
