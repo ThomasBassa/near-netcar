@@ -82,7 +82,7 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWM(self.servoChannel, 0, value)
 
 	def moveMotor(self, value):
-		self.pwm.setPWM(self.motorChannel, 3072, value)
+		self.pwm.setPWM(self.motorChannel, 0, value)
 
 	@asyncio.coroutine
 	def honk(self):
@@ -125,7 +125,7 @@ class MyComponent(ApplicationSession):
 
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		print "What is happening????"
-		self.motorMiddle = 3072
+		self.motorMiddle = 2048
 		self.motorChannel = 2
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
 		print "joystream ok"
