@@ -65,7 +65,7 @@ class MyComponent(ApplicationSession):
 		swag.system('cls' if swag.name == 'nt' else 'clear')
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
-		newServoValue = int(((horizontal * 102.5) * -1) + self.servoMiddle)
+		newServoValue = int(((85.4166 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * 102.4) * -1) + self.motorMiddle)
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
