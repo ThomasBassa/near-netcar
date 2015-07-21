@@ -160,11 +160,6 @@ To REGISTER a procedure for remote calling - session.register(Horizontal(param))
 An active buzzer 65db will be used, and will sound every 2 seconds. The buzzer will be contained in the waterproof box. 
 The buzzer will be wired to the Pi in the following way:
 
-    Raspberry Pi                            Active buzzer module
-
-    GND   ------------------------------------- ‘-’
-    GPIO11 ------------------------------------- ‘s’
-
 The GPIO library for Raspberry Pi will be used in the program. The method GPIO.write(pin, power) will be used with the 
 parameters of the pin and GPIO.on/GPIO.off. Pin 11 on the Raspberry Pi will be used for 's'.
 
@@ -192,7 +187,7 @@ The last value received is saved in a variable to be used for sidewalk detection
 
 #### Physical (D003)
 This system consists of two servos, two motors, a servo controller,
-and an Evx-2 speed controller. The two servos are directly connected to the vehicle
+and a speed controller. The two servos are directly connected to the vehicle
 and wired to a Raspberry Pi that connects to a website using crossbar.io.
 This website uses RPC, passing joystick data over the Wi-Fi by calling
 the method Horizontal() to the Pi which controls the rotation of the servos.
@@ -210,43 +205,20 @@ Ground control calls methods Horizontal(param) and Vertical(param)
 with the data from the joystick to control speed and direction of the robot.
 The motor's PWM frequency is 1700 Hz, and the Pi controls the speed controller with I2C.
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/ColorSensorSeq.png)
-
-**Figure 9.** Sequence diagram for the color sensor readings
-
 ### Battery (Z069)
 The battery will power the whole vehicle, and needs to have enough voltage output to power all the sensors. 
 The battery needs to be large enough for all the sensors and the vehicle to run for a half hour.
 
 ### Mounting Container (D006)
-A 28 Qt. Latch Box with dimensions 23" x 16" x 6" will be used.
-Holes will be drilled into the container around the struts and
-attached to the struts with zip ties. The holes at the bottom of the container will
-be sealed with rubber cement to prevent water from entering the container.
-The container has a lid for protection. The vehicle suspension can hold three pounds. 
-
-Storage bin
-http://www.homedepot.com/p/Sterilite-28-Qt-Latch-Box-16551010/100671079?MERCH=REC-_-NavPLPHorizontal1_rr-_-NA-_-100671079-_-N
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/VehicleContainer.png)
-
-**Figure 10.** Diagram of the container's placement on the vehicle with measurements
-
-Alternatively container:
-
-A 20” x 20” x 12” vinyl insulated pizza deliver bag will be mounted on the vehicle. There will be a straight sheet of plastic inserted into the bottom on the bag (dimensions 18” x 16”) to keep it from sturdy. The bag will be kept folded down when empty.
-
-Pizza bag http://www.webstaurantstore.com/choice-20-x-20-x-12-vinyl-insulated-pizza-delivery-bag/124PIBAG5VNL.html
-
-<Diagram here>
+A flat 3D printed platform will hold cargo and act as a landing pad.
+The vehicle suspension can hold three pounds. 
 
 ### Video Feed (D007)
 The casing will be removed from a Ubiquiti Aircam H.264 1Megapixel/720P 
 camera, and it will be mounted on the top of the vehicle, facing forward. The 
 camera requires 24V, and has 30fps. First the camera’s IP is determined using 
-its provided software. The IP address will be fixed. The port used will be 80. 
+its provided software. The IP address will be fixed. The port used will be 8080. 
 The port and IP will be used to contact the camera from the ground station. 
-
 
 ### Vehicle Location Tracking (D008)
 
@@ -255,49 +227,7 @@ The vehicle's location will be tracked using a GPS module. The GPS module will t
 Adafruit Ultimate GPS HAT for Raspberry Pi
 http://www.adafruit.com/products/2324?gclid=CjwKEAjwwN-rBRD-oMzT6aO_wGwSJABwEIkJCAMYJyy6h1IrAPDdW4B7pWDP0m-PBwPz1TAtpNVDnxoCcenw_wcB
 
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPS_Module.png)
-
-**Figure 11.** Picture of the GPS module to be used
-
-![AssistManual](https://github.com/ThomasBassa/near-netcar/blob/master/docs/Diagrams/Current/GPSSeqDiagram.png)
-
-**Figure 12.** Sequence diagram for GPS reading and publishing
-
 ### Waterproofing (D009)
 To meet IP54 specifications, the vehicle will be enclosing the GPS, Raspberry Pi, and the breakout board in a tupperware 
 container, which will be fixed to the chassis of the vehicle. Holes will be drilled through the side for wires that need to 
-come out and attach to components on the vehicle's exterior, and then sealed with rubber cement. The components of the vehicle will be able to withstand temperatures as low as 0 degrees Celsius, and up to 50 degrees Celsius
-
-# Mights
-
-## Use Cases (D021) 
-
-###  Assisted Mode (A005)
-1. User clicks switch on Website Frontend
-2. Ground Station sends a boolean to the PubSub server
-3. Vehicle turns off assisted mode for 20 seconds 
-4. Assisted mode turns back on automatically
-
-### Obstacle Detection (C012)
-1. Lidar comes on, servo begins rotating
-2. If an obstacle is detected, the vehicle stops and alerts user by publishing event
-3. User has option for a 20 sec override
-4a. If override option is not taken, vehicle will wait until obstacle has moved
-4b. If override option is taken, the vehicle will start a 20sec timer, switch to manual mode, switch back to assisted after 20 sec
-
-### Sidewalk Lost (D005)
-1. One of the color sensors detects vehicle on grass
-2. Vehicle moves backwards and in the direction of the sensor which did not detect grass
-
-## Obstacle Avoidance (C011)
-The vehicle will be mounted with a lidar laser rangefinder.
-The vehicle will have two modes (assisted manual/manual). When the vehicle is powered on,
-it will start in manual mode and after 20 seconds elapse (timer),
-it will switch to assisted manual mode. In assisted manual mode,
-the servo will sweep back and forth constantly, on an axis that will
-establish a 1.2373 degree field of vision which will detect obstacles.
-This was determined using Figure 6. If an obstacle is detected, the vehicle will
-cease motion and alert the user (by publishing an obstacle detection event)
-that an obstacle is obstructing its path.
-The user will then have an option to override the alert and control the vehicle manually.
-Choosing to switch it to manual mode will only last 20 seconds before automatically switching back to assisted manual mode.
+come out and attach to components on the vehicle's exterior. The components of the vehicle will be able to withstand temperatures as low as 0 degrees Celsius, and up to 50 degrees Celsius

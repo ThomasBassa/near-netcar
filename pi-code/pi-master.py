@@ -18,7 +18,7 @@ class MyComponent(ApplicationSession):
 	@asyncio.coroutine
 	def gpsUpdate(self):
 		while True:
-			print "GPS"
+			swag.system('cls' if swag.name == 'nt' else 'clear')
 			gps_string = self.gpsRead()[1:] #getting rid of the stupid $ marker at the beginning of the strings
 			gps_list = string.split(gps_string, ',')
 			if gps_list[0] == "GPRMC":
@@ -138,6 +138,7 @@ class MyComponent(ApplicationSession):
 		#self.register(checkStatus, u'aero.near.checkStatus')
 		print "About to make the loop"
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
+		swag.system('cls' if swag.name == 'nt' else 'clear')
 		
  		self.loop = asyncio.get_event_loop()
 #		self.loop.stop()
