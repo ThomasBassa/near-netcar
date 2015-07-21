@@ -126,7 +126,7 @@ class MyComponent(ApplicationSession):
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		print "What is happening????"
 		self.motorMiddle = 307.2
-		self.motorChannel = 2
+		self.motorChannel = 0
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
 		print "joystream ok"
 		#subscribe to methods to prevent register conflicts
