@@ -67,6 +67,11 @@ class MyComponent(ApplicationSession):
 
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * 102.4) * -1) + self.motorMiddle)
+		if (newMotorValue - lastMotorValue > 10):
+			newMotorValue = lastMotorValue + 10
+		if (newMotorValue < lastMotorValue - 10):
+			newMotorValue = lastMotorValue - 10
+
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
 		#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
@@ -118,6 +123,7 @@ class MyComponent(ApplicationSession):
 
 		#Setting variables
 		self.lastServoValue = 417 #Assumes it starts in the middle
+		self.lastMotorValue = 307.2
 		self.pwm = PWM(0x40,debug=True)
 		self.servoMin = 250 # Min pulse length out of 4096
 		self.servoMax = 470  # Max pulse length out of 4096
