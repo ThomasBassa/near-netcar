@@ -80,8 +80,8 @@ class MyComponent(ApplicationSession):
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
 
-		if newMotorValue != self.lastMotorValue:
-			self.moveMotor(int(newMotorValue))
+		#if newMotorValue != self.lastMotorValue:
+		self.moveMotor(int(newMotorValue))
 
 		self.lastMotorValue = newMotorValue	
 
