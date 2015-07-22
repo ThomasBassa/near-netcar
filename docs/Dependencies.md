@@ -32,3 +32,7 @@
 ## asyncio
 - https://docs.python.org/3.4/library/asyncio.html
 - A python library that replaces Twisted on the Pi
+
+## VLC Media Player
+- http://www.videolan.org/index.html
+- We use the browser plugin from VLC to embed the camera's video into the UI.
