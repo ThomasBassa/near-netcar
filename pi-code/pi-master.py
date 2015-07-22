@@ -131,11 +131,12 @@ class MyComponent(ApplicationSession):
 		self.servoMiddle = 350 # middle servo value
 		self.pwm.setPWMFreq(50) # Set frequency to 60 Hz
 		self.servoChannel = 3        
-		self.pwm.setPWM(self.motorChannel, 0, 0)
+
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		print "What is happening????"
 		self.motorMiddle = 307.2
 		self.motorChannel = 0
+		self.pwm.setPWM(self.motorChannel, 0, 0)
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
 		print "joystream ok"
 		#subscribe to methods to prevent register conflicts
