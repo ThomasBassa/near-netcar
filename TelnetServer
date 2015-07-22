@@ -1,3 +1,4 @@
+print 'This code works'
 import socket
 
 print 'TRYING'
