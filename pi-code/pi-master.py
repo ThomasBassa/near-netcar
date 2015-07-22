@@ -67,10 +67,10 @@ class MyComponent(ApplicationSession):
 
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * 102.4) * -1) + self.motorMiddle)
-		if (newMotorValue - self.lastMotorValue > 10):
+		'''if (newMotorValue - self.lastMotorValue > 10):
 			newMotorValue = self.lastMotorValue + 10
 		if (newMotorValue < self.lastMotorValue - 10):
-			newMotorValue = self.lastMotorValue - 10
+			newMotorValue = self.lastMotorValue - 10'''
 
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
@@ -80,8 +80,8 @@ class MyComponent(ApplicationSession):
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
 
-		if newMotorValue != self.lastMotorValue:
-			self.moveMotor(int(newMotorValue))
+		'''if newMotorValue != self.lastMotorValue:'''
+		self.moveMotor(int(newMotorValue))
 
 		self.lastMotorValue = newMotorValue	
 
