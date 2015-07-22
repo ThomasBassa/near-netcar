@@ -60,9 +60,9 @@ class MyComponent(ApplicationSession):
 	#End GPS code
 
 	def joyMonitor(self, event):
+		swag.system('cls' if swag.name == 'nt' else 'clear')
 		vertical = event["vertical"]
 		horizontal = event["horizontal"]
-		#swag.system('cls' if swag.name == 'nt' else 'clear')
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
@@ -84,8 +84,7 @@ class MyComponent(ApplicationSession):
 		self.moveMotor(int(newMotorValue))
 
 		self.lastMotorValue = newMotorValue	
-		swag.system('cls' if swag.name == 'nt' else 'clear')
-
+		
 	def moveServos(self, value):
 		self.pwm.setPWM(self.servoChannel, 0, value)
 
