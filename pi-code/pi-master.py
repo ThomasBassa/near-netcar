@@ -75,8 +75,10 @@ class MyComponent(ApplicationSession):
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
 
-		self.moveMotor(int(newMotorValue))
-		self.lastMotorValue = newMotorValue
+		if newMotorValue != lastMotorValue:
+			self.moveMotor(int(newMotorValue))
+
+		self.lastMotorValue = newMotorValue	
 
 	def moveServos(self, value):
 		self.pwm.setPWM(self.servoChannel, 0, value)
