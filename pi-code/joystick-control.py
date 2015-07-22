@@ -11,8 +11,8 @@ class MyComponent(ApplicationSession):
     def read_joystick(self):
         print("reading joystick")
         events = pygame.event.get()
-        if events.length == 0:
-            self.verticalPosition = self.lastVertical
+        '''if events.length == 0:
+            self.verticalPosition = self.lastVertical'''
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.joyloop.stop()
@@ -26,13 +26,13 @@ class MyComponent(ApplicationSession):
                 if event.axis == 0:
 #                        val = (event.value, oldval[1])
                     self.horizPosition = event.value
-                    self.verticalPosition = self.lastVertical
+                   # self.verticalPosition = self.lastVertical
                     print("event value axis 1: {}".format(event.value))
                 elif event.axis == 1:
                     self.verticalPosition = event.value
                     self.lastVertical = self.verticalPosition 
-            else:
-                self.verticalPosition = self.lastVertical        
+        '''    else:
+                self.verticalPosition = self.lastVertical    '''    
         os.system('cls' if os.name == 'nt' else 'clear')           
         try:
             #call function here
@@ -62,7 +62,7 @@ class MyComponent(ApplicationSession):
 
         self.horizPosition = 0.0
         self.verticalPosition = 0.0
-        self.lastVertical = 0
+       # self.lastVertical = 0
         self.maxTurn = .25
         self.done = False
         print('Session Ready') 
