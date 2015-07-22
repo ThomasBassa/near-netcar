@@ -31,6 +31,8 @@ class MyComponent(ApplicationSession):
                 elif event.axis == 1:
                     self.verticalPosition = event.value
                     self.lastVertical = self.verticalPosition 
+            else:
+                self.verticalPosition = self.lastVertical        
         os.system('cls' if os.name == 'nt' else 'clear')           
         try:
             #call function here
