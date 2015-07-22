@@ -29,7 +29,7 @@ class MyComponent(ApplicationSession):
         os.system('cls' if os.name == 'nt' else 'clear')            
         try:
             #call function here
-            joyvalues = {'horizontal':self.horizPosition, 'vertical': self.verticalPosition}
+            joyvalues = {'horizontal':(self.horizPosition / 2), 'vertical': (self.verticalPosition / 2)}
             #json_joyvalues = json.dumps(joyvalues)
             self.publish('aero.near.joystream', joyvalues)
             print("sending stuff JSON= {}".format(joyvalues))
