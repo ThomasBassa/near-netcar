@@ -66,7 +66,7 @@ class MyComponent(ApplicationSession):
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
-		newMotorValue = int(((vertical * 102) * -1) + self.motorMiddle)
+		newMotorValue = int(((vertical * (self.motorMiddle - self.motorMin)) * -1) + self.motorMiddle)
 		'''if (newMotorValue - self.lastMotorValue > 10):
 			newMotorValue = self.lastMotorValue + 10
 		if (newMotorValue < self.lastMotorValue - 10):
@@ -135,9 +135,9 @@ class MyComponent(ApplicationSession):
 
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
 		print "What is happening????"
-		self.motorMin = 205
-		self.motorMiddle = 307
-		self.motorMax = 410
+		self.motorMin = 175
+		self.motorMiddle = 336
+		self.motorMax = 425
 		self.motorChannel = 0
 		self.pwm.setPWM(self.motorChannel, 0, 0)
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
