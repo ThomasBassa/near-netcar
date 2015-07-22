@@ -119,7 +119,7 @@ class MyComponent(ApplicationSession):
 		self.pwm = PWM(0x40,debug=True)
 		self.servoMin = 250 # Min pulse length out of 4096
 		self.servoMax = 470  # Max pulse length out of 4096
-		self.servoMiddle = 370 # middle servo value
+		self.servoMiddle = 350 # middle servo value
 		self.pwm.setPWMFreq(50) # Set frequency to 60 Hz
 		self.servoChannel = 3        
 
