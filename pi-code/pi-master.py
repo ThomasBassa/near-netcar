@@ -81,7 +81,8 @@ class MyComponent(ApplicationSession):
 		self.lastServoValue = newServoValue
 
 		#if newMotorValue != self.lastMotorValue:
-		self.moveMotor(int(newMotorValue))
+		if newMotorValue != self.lastMotorValue:
+			self.moveMotor(int(newMotorValue))
 
 		self.lastMotorValue = newMotorValue	
 		swag.system('cls' if swag.name == 'nt' else 'clear')
