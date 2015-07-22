@@ -67,20 +67,29 @@ class MyComponent(ApplicationSession):
 
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * (self.motorMiddle - self.motorMin)) * -1) + self.motorMiddle)
-		'''if (newMotorValue - self.lastMotorValue > 10):
-			newMotorValue = self.lastMotorValue + 10
-		if (newMotorValue < self.lastMotorValue - 10):
-			newMotorValue = self.lastMotorValue - 10'''
+
 
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
-		#if math.fabs(lastServoValue - newServoValue) > pwmMaxChange:
-		#    newServoValue = lastServoValue + math.copysign(pwmMaxChange, (lastServoValue - newServoValue))
+
+
+		#Begin interpolation attempt
+		
+		if newServoValue - self.lastServoValue > self.maxPWMChange:
+			newServoValue = self.lastServoValue + self.maxPWMChange
+		elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
+			newServoValue = self.lastServoValue - self.maxPWMChange
+
+		if newMotorValue - self.lastMotorValue > self.maxPWMChange:
+			newMotorValue = self.lastMotorValue + self.maxPWMChange
+		elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
+			newMotorValue = self.lastMotorValue - self.maxPWMChange		
+
+		#End interpolation
 
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
 
-		#if newMotorValue != self.lastMotorValue:
 		if newMotorValue != self.lastMotorValue:
 			self.moveMotor(int(newMotorValue))
 
@@ -153,8 +162,8 @@ class MyComponent(ApplicationSession):
 		print "About to make the loop"
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
 		swag.system('cls' if swag.name == 'nt' else 'clear')
-		
- 		self.loop = asyncio.get_event_loop()
+		self.maxPWMChange = 20 #For interpolation
+		self.loop = asyncio.get_event_loop()
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
 			asyncio.async(self.honk()),
