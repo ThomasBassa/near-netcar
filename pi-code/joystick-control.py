@@ -4,7 +4,6 @@ import pygame
 from twisted.internet import reactor, task
 import os
 from time import sleep
-import json
 
 class MyComponent(ApplicationSession):
 
@@ -32,15 +31,9 @@ class MyComponent(ApplicationSession):
             joyvalues = {'horizontal':(self.horizPosition / 2), 'vertical': (self.verticalPosition / 2)}
             #json_joyvalues = json.dumps(joyvalues)
             self.publish('aero.near.joystream', joyvalues)
-            print("sending stuff JSON= {}".format(joyvalues))
+            print("sent stuff: {}".format(joyvalues))
         except Exception as e:
             print("Error: {}".format(e))
-
-    def joygood(self, value):
-        print "joygood", value
-
-    def joybad(self, error):
-        print "joybad", error
 
     def onJoin(self, details):
         pygame.init()
@@ -54,8 +47,6 @@ class MyComponent(ApplicationSession):
 
         self.horizPosition = 0.0
         self.verticalPosition = 0.0
-        self.maxTurn = .25
-        self.done = False
         print('Session Ready') 
         self.joyloop = task.LoopingCall(self.read_joystick)
         self.joyloop.start(.1)
