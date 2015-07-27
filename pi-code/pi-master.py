@@ -1,4 +1,3 @@
-from pynmea2.stream import NMEAStreamReader
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 from Adafruit_PWM_Servo_Driver import PWM
 import serial
@@ -10,6 +9,7 @@ from trollius import From
 import logging
 import string
 from statusCheck import checkStatus
+
 logging.basicConfig()
 
 
@@ -131,37 +131,39 @@ class MyComponent(ApplicationSession):
 		#res = yield self.call('aero.near.checkStatus')
 		#print("Got result: {}".format(res))
 
-		#Setting variables
+		#servos - initiating variables used in servo movement
 		self.lastServoValue = 417 #Assumes it starts in the middle
 		self.lastMotorValue = 307.2
-
 		self.pwm = PWM(0x40,debug=True)
 		self.servoMin = 250 # Min pulse length out of 4096
 		self.servoMax = 470  # Max pulse length out of 4096
 		self.servoMiddle = 350 # middle servo value
 		self.pwm.setPWMFreq(50) # Set frequency to 60 Hz
 		self.servoChannel = 3        
-
 		self.pwm.setPWM(self.servoChannel, 0, self.servoMiddle) #have vehicle wheels turn to center
-		print "What is happening????"
+		
+		#motor - initiating the motor values
 		self.motorMin = 230
 		self.motorMiddle = 336
 		self.motorMax = 400
 		self.motorChannel = 0
 		self.pwm.setPWM(self.motorChannel, 0, 0)
+		self.maxPWMChange = 20 #For interpolation
+
+		#big ol' subscribing block	
 		self.subscribe(self.joyMonitor, 'aero.near.joystream')
-		print "joystream ok"
-		#subscribe to methods to prevent register conflicts
 		self.subscribe(self.honkCommand, 'aero.near.honkHorn')
-		print "honk ok"
 		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
-		print "emergstop ok"
 		self.subscribe(self.manualOverride, 'aero.near.override')
 		#self.register(checkStatus, u'aero.near.checkStatus')
-		print "About to make the loop"
+		
+		#declaring the dictionary for gps values
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
+
+		#clearing the screen
 		swag.system('cls' if swag.name == 'nt' else 'clear')
-		self.maxPWMChange = 20 #For interpolation
+		
+		#creating and running the loop
 		self.loop = asyncio.get_event_loop()
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
