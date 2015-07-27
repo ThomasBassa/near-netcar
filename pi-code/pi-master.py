@@ -60,33 +60,33 @@ class MyComponent(ApplicationSession):
 	#End GPS code
 
 	def joyMonitor(self, event):
-		swag.system('cls' if swag.name == 'nt' else 'clear')
+		#swag.system('cls' if swag.name == 'nt' else 'clear')
 
 		#creating events for vertical and horizontal movement
 		vertical = event["vertical"]
 		horizontal = event["horizontal"]
-		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
+		#print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
 		#math to convert joystick vals to pwm vals
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * (self.motorMiddle - self.motorMin)) * -1) + self.motorMiddle)
 
 		#printing called values
-		print "New servo value: {}".format(newServoValue)
-		print "New motor value: {}".format(newMotorValue)
+		# print "New servo value: {}".format(newServoValue)
+		# print "New motor value: {}".format(newMotorValue)
 
 
-		# #Begin interpolation attempt
-		# if newServoValue - self.lastServoValue > self.maxPWMChange:
-		# 	newServoValue = self.lastServoValue + self.maxPWMChange
-		# elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
-		# 	newServoValue = self.lastServoValue - self.maxPWMChange
+		#Begin interpolation attempt
+		if newServoValue - self.lastServoValue > self.maxPWMChange:
+			newServoValue = self.lastServoValue + self.maxPWMChange
+		elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
+			newServoValue = self.lastServoValue - self.maxPWMChange
 
-		# if newMotorValue - self.lastMotorValue > self.maxPWMChange:
-		# 	newMotorValue = self.lastMotorValue + self.maxPWMChange
-		# elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
-		# 	newMotorValue = self.lastMotorValue - self.maxPWMChange		
-		# #End interpolation
+		if newMotorValue - self.lastMotorValue > self.maxPWMChange:
+			newMotorValue = self.lastMotorValue + self.maxPWMChange
+		elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
+			newMotorValue = self.lastMotorValue - self.maxPWMChange		
+		#End interpolation
 
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
@@ -128,7 +128,7 @@ class MyComponent(ApplicationSession):
 			yield From(asyncio.sleep(.03333))
 
 	def onJoin(self, details):
-		print("Session Joined.")
+		#print("Session Joined.")
 		#res = yield self.call('aero.near.checkStatus')
 		#print("Got result: {}".format(res))
 
@@ -176,13 +176,13 @@ class MyComponent(ApplicationSession):
 		except Exception as e:
 			print e
 		print tasks
-		print "running"
+		#print "running"
 		self.loop.close()
 # 		runner.run_until_complete(self.gpsUpdate())
 
 	def onDisconnect(self):
 		print "Disconnected from wamp"
-		
+
 
 if __name__ == '__main__':
     print "I'M TRYING."
