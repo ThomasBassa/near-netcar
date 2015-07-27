@@ -6,4 +6,4 @@ port = 4444                # Reserve a port for your service.
 
 s.connect((host, port))
 print s.recv(1024)
-s.close
+s.close()

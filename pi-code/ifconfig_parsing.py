@@ -1,6 +1,10 @@
 import re
 import string
+
+#takes in an ifconfig example from the Rocket M2 and returns the IP address for Eaglenet
 def IfconfigParsing():
+
+	#test string
 	ifconfig = """
 
 	ath0      Link encap:Ethernet  HWaddr DC:9F:DB:00:DE:12  
@@ -36,14 +40,24 @@ def IfconfigParsing():
 	          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 	          Interrupt:48 Memory:b0000000-b0010000 
 	"""
+
+	#split based on ' '
 	arr = string.split(ifconfig)
 	found = False
+
+	#look for the address
 	for x in range(0, len(arr)):
 		if not found:
 			if "inet" == arr[x]:
 				ip = arr[x+1][5:]
 				found = True
+
+	#print the results
 	print ip	
+
+#test the method
+IfconfigParsing()
+
 #for through arr
 #if inet
 #string.split next one by ':'
