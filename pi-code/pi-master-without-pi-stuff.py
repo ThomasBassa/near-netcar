@@ -148,6 +148,12 @@ class MyComponent(ApplicationSession):
 		print "running"
 # 		runner.run_until_complete(self.gpsUpdate())
 
+	def onDisconnect(self):
+		self.loop.close()
+		print "Disconnected from wamp"
+
+
+
 if __name__ == '__main__':
     print "I'M TRYING."
     runner = ApplicationRunner(url = u"ws://104.197.24.18:8080/ws", realm = u"realm1")
