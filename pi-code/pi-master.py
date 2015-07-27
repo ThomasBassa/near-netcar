@@ -76,17 +76,17 @@ class MyComponent(ApplicationSession):
 		print "New motor value: {}".format(newMotorValue)
 
 
-		#Begin interpolation attempt
-		if newServoValue - self.lastServoValue > self.maxPWMChange:
-			newServoValue = self.lastServoValue + self.maxPWMChange
-		elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
-			newServoValue = self.lastServoValue - self.maxPWMChange
+		# #Begin interpolation attempt
+		# if newServoValue - self.lastServoValue > self.maxPWMChange:
+		# 	newServoValue = self.lastServoValue + self.maxPWMChange
+		# elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
+		# 	newServoValue = self.lastServoValue - self.maxPWMChange
 
-		if newMotorValue - self.lastMotorValue > self.maxPWMChange:
-			newMotorValue = self.lastMotorValue + self.maxPWMChange
-		elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
-			newMotorValue = self.lastMotorValue - self.maxPWMChange		
-		#End interpolation
+		# if newMotorValue - self.lastMotorValue > self.maxPWMChange:
+		# 	newMotorValue = self.lastMotorValue + self.maxPWMChange
+		# elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
+		# 	newMotorValue = self.lastMotorValue - self.maxPWMChange		
+		# #End interpolation
 
 		self.moveServos(int(newServoValue))
 		self.lastServoValue = newServoValue
@@ -179,6 +179,10 @@ class MyComponent(ApplicationSession):
 		print "running"
 		self.loop.close()
 # 		runner.run_until_complete(self.gpsUpdate())
+
+	def onDisconnect(self):
+		print "Disconnected from wamp"
+		
 
 if __name__ == '__main__':
     print "I'M TRYING."
