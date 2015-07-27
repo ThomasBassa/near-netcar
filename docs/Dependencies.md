@@ -36,3 +36,10 @@
 ## VLC Media Player
 - http://www.videolan.org/index.html
 - We use the browser plugin from VLC to embed the camera's video into the UI.
+
+## Mozilla Firefox/Internet Explorer/Safari
+- https://www.mozilla.org/en-US/firefox/new/
+- http://windows.microsoft.com/en-us/internet-explorer/download-ie
+- https://support.apple.com/downloads/safari
+- These are the only browsers compatible with the VLC plugin natively. 
+- Use one of these browsers when accessing the UI.
