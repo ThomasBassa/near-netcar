@@ -61,20 +61,22 @@ class MyComponent(ApplicationSession):
 
 	def joyMonitor(self, event):
 		swag.system('cls' if swag.name == 'nt' else 'clear')
+
+		#creating events for vertical and horizontal movement
 		vertical = event["vertical"]
 		horizontal = event["horizontal"]
 		print "calling joyMonitor with value %.3f and %.3f" % (horizontal, vertical)
 
+		#math to convert joystick vals to pwm vals
 		newServoValue = int(((110 * horizontal) * -1) + self.servoMiddle)
 		newMotorValue = int(((vertical * (self.motorMiddle - self.motorMin)) * -1) + self.motorMiddle)
 
-
+		#printing called values
 		print "New servo value: {}".format(newServoValue)
 		print "New motor value: {}".format(newMotorValue)
 
 
 		#Begin interpolation attempt
-		
 		if newServoValue - self.lastServoValue > self.maxPWMChange:
 			newServoValue = self.lastServoValue + self.maxPWMChange
 		elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
@@ -84,7 +86,6 @@ class MyComponent(ApplicationSession):
 			newMotorValue = self.lastMotorValue + self.maxPWMChange
 		elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
 			newMotorValue = self.lastMotorValue - self.maxPWMChange		
-
 		#End interpolation
 
 		self.moveServos(int(newServoValue))
