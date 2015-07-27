@@ -77,15 +77,15 @@ class MyComponent(ApplicationSession):
 
 
 		#Begin interpolation attempt
-		if newServoValue - self.lastServoValue > self.maxPWMChange:
-			newServoValue = self.lastServoValue + self.maxPWMChange
-		elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
-			newServoValue = self.lastServoValue - self.maxPWMChange
+		# if newServoValue - self.lastServoValue > self.maxPWMChange:
+		# 	newServoValue = self.lastServoValue + self.maxPWMChange
+		# elif newServoValue - self.lastServoValue < self.maxPWMChange * -1:
+		# 	newServoValue = self.lastServoValue - self.maxPWMChange
 
-		if newMotorValue - self.lastMotorValue > self.maxPWMChange:
-			newMotorValue = self.lastMotorValue + self.maxPWMChange
-		elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
-			newMotorValue = self.lastMotorValue - self.maxPWMChange		
+		# if newMotorValue - self.lastMotorValue > self.maxPWMChange:
+		# 	newMotorValue = self.lastMotorValue + self.maxPWMChange
+		# elif newMotorValue - self.lastMotorValue < self.maxPWMChange * -1:
+		# 	newMotorValue = self.lastMotorValue - self.maxPWMChange		
 		#End interpolation
 
 		self.moveServos(int(newServoValue))
@@ -124,7 +124,7 @@ class MyComponent(ApplicationSession):
 	@asyncio.coroutine	
 	def lidarRead(self):
 		while True:
-			print "Reading LIDAR"	
+			#print "Reading LIDAR"	
 			yield From(asyncio.sleep(.03333))
 
 	def onJoin(self, details):
