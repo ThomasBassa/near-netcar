@@ -8,6 +8,7 @@ import os as swag
 from trollius import From
 import string
 import logging
+import urllib2
 logging.basicConfig()
 
 class MyComponent(ApplicationSession):
@@ -99,6 +100,29 @@ class MyComponent(ApplicationSession):
 		#???
 		None
 
+	@asyncio.coroutine
+	def internet_on(self):
+		while True:
+			status = False
+			try:
+				response=urllib2.urlopen('http://104.197.24.18:8080/',timeout=1)
+				status = True
+			except urllib2.URLError as err: pass
+			if status:
+				yield From(asyncio.sleep(.5))
+			else:
+				print 'disconnect1'
+				self.leave()
+				print 'disconnect2'
+				self.loop.stop()
+				print 'disconnect3'
+				self.disconnect()
+				print 'disconnect4'
+				self.close()
+				print 'disconnect5'
+				break
+				print 'wesley this will never run and if it does im throwing a knife at my comptuer'
+
 	@asyncio.coroutine	
 	def lidarRead(self):
 		while True:
@@ -134,24 +158,29 @@ class MyComponent(ApplicationSession):
 #		asyncio.async(self.gpsUpdate())
 #		self.loop.run_until_complete(future)
 #		self.loop = asyncio.new_event_loop()
-		tasks = [
-			asyncio.async(self.honk()),
-			asyncio.async(self.lidarRead()),
-			asyncio.async(self.gpsUpdate())]
-		print tasks
-		swag.system('cls' if swag.name == 'nt' else 'clear')
-		try:
-			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
-		except Exception as e:
-			print e
-		print tasks
+# 		tasks = [
+# 			asyncio.async(self.honk()),
+# #			asyncio.async(self.lidarRead())]
+# #			asyncio.async(self.gpsUpdate())]
+# #			asyncio.async(self.internet_on())]
+# 		print tasks
+# 		swag.system('cls' if swag.name == 'nt' else 'clear')
+# 		try:
+# 			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+# 		except Exception as e:
+			# print e
+		# print tasks
 		print "running"
 # 		runner.run_until_complete(self.gpsUpdate())
 
-	def onDisconnect(self):
-		self.loop.close()
+	def onLeave(self, details):
 		print "Disconnected from wamp"
 
+	def onDisconnect(self):
+		print "Disconnected from wamp"
+
+	def onClose(self):
+		print 'closed'
 
 
 if __name__ == '__main__':
