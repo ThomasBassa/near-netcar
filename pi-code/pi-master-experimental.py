@@ -1,6 +1,6 @@
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
-#from Adafruit_PWM_Servo_Driver import PWM
-#import serial
+from Adafruit_PWM_Servo_Driver import PWM
+import serial
 import time
 import math
 import trollius as asyncio
@@ -127,11 +127,12 @@ class MyComponent(ApplicationSession):
 	@asyncio.coroutine	
 	def lidarRead(self):
 		while True:
-			print "Reading LIDAR"	
+			#print "Reading LIDAR"	
 			yield From(asyncio.sleep(.03333))
 
 	@asyncio.coroutine
 	def netDisconnect(self):
+		print "im totally running"
 		connected = False
 		while True:
 			print "netDisconnect is trying to be helpful!"
@@ -142,7 +143,9 @@ class MyComponent(ApplicationSession):
 				connected = False
 			if not connected:
 				execfile('ssh.py')
-				print "ssh.py should be running"	
+				print "ssh.py should be running"
+				self.loop.stop()
+				self.loop.close()	
 				sys.exit('Closed pi-master')
 			yield From(asyncio.sleep(5))			
 			
@@ -175,7 +178,7 @@ class MyComponent(ApplicationSession):
 		self.subscribe(self.honkCommand, 'aero.near.honkHorn')
 		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
 		self.subscribe(self.manualOverride, 'aero.near.override')
-		self.subscribe()
+		#self.subscribe()
 		#self.register(checkStatus, u'aero.near.checkStatus')
 		
 		#declaring the dictionary for gps values
