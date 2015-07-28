@@ -142,11 +142,11 @@ class MyComponent(ApplicationSession):
 			except urllib2.URLError as err:
 				connected = False
 			if connected == False:
-				#execfile('ssh.py')
+				execfile('ssh.py')
 				#print "ssh.py should be running"
                 print "RUNNING"
-				self.loop.stop()
-				self.loop.close()	
+				#self.loop.stop()
+				#self.loop.close()	
 				sys.exit('Closed pi-master')
 			yield From(asyncio.sleep(5))			
 			
