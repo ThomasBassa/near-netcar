@@ -43,3 +43,8 @@
 - https://support.apple.com/downloads/safari
 - These are the only browsers compatible with the VLC plugin natively. 
 - Use one of these browsers when accessing the UI.
+
+## Paramiko
+- http://www.paramiko.org
+- v2.6
+- Used to execute the ifconfig command on the M2 Rocket from the pi
