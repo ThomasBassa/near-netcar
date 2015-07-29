@@ -127,6 +127,25 @@ class MyComponent(ApplicationSession):
 			#print "Reading LIDAR"	
 			yield From(asyncio.sleep(.03333))
 
+	@asyncio.coroutine
+	def netDisconnect(self):
+		print "im totally running"
+		connected = False
+		while True:
+			connected = False
+			print "netDisconnect is trying to be helpful!"
+			try:
+				response=urllib2.urlopen('http://104.197.24.18:8080',timeout=1)
+				print "connected to the internet"
+				connected = True
+			except urllib2.URLError as err:
+				pass
+			if connected == False:
+				os.system('python ssh.py')
+				print "RUNNING"
+				sys.exit('Closed pi-master')
+			yield From(asyncio.sleep(5))
+
 	def onJoin(self, details):
 		#print("Session Joined.")
 		#res = yield self.call('aero.near.checkStatus')
@@ -169,6 +188,7 @@ class MyComponent(ApplicationSession):
 		tasks = [
 			asyncio.async(self.gpsUpdate()),
 			asyncio.async(self.honk()),
+			asyncio.async(self.netDisconnect()),
 			asyncio.async(self.lidarRead())]
 		print tasks
 		try:
