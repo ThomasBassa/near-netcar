@@ -11,11 +11,10 @@ def jazzercise():
 	print "debug 1.5"
 	ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy()) 
 	print "debug 1.75"
-	ssh.connect('10.33.93.83', username='laurenczech', password='pants')
+	ssh.connect('10.33.93.83', username='ubnt', password='ubnt')
 	print "debug2"
 	#ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('touch testFile.txt')
 	ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('ifconfig')
-	ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('mkdir Destop/Laurenisameanie')
 	ifconfig = ""
 	print "debug3"
 	for line in ssh_stdout:
@@ -37,12 +36,11 @@ def jazzercise():
 
 	#print the results
 	print ip	
-	#self.publish(u'aero.near.onDisconnect', ip)
+	self.publish(u'aero.near.getIP', ip)
 
 	print('published')
 	print "debug7"
 
-#os.mkdir("/Users/melanie/Desktop/gorbSucks")
 jazzercise()
 print "debug0"
 	
