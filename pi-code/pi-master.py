@@ -133,7 +133,6 @@ class MyComponent(ApplicationSession):
 		connected = False
 		while True:
 			connected = False
-			print "netDisconnect is trying to be helpful!"
 			try:
 				response=urllib2.urlopen('http://104.197.24.18:8080',timeout=1)
 				print "connected to the internet"
@@ -144,7 +143,7 @@ class MyComponent(ApplicationSession):
 				os.system('python ssh.py')
 				print "RUNNING"
 				sys.exit('Closed pi-master')
-			yield From(asyncio.sleep(5))
+			yield From(asyncio.sleep(2))
 
 	def onJoin(self, details):
 		#print("Session Joined.")
