@@ -12,6 +12,7 @@ connection.onopen = function(session) {
 	session.subscribe('aero.near.carSpeed', speedUpdate);
 	session.subscribe('aero.near.carPos', posUpdate);
 	session.subscribe('aero.near.carHeading', headingUpdate);
+	session.subscribe('aero.near.getIP', refreshIP);
 	mySession = session;
 }
 
@@ -164,5 +165,8 @@ function stop() {
 }
 function honk() {
 	mySession.publish('aero.near.honkHorn',[]);
+}
+function refreshIP(newIP){
+	document.getElementById("iparea").innerHTML = "Pi IP Address: " + newIP;
 }
 //END GOOGLE MAPS

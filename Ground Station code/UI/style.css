@@ -15,6 +15,12 @@
 	height: 80%;
 	top:0;
 }
+#ipland{
+	position:absolute;
+	left: 0px;
+	bottom:0px;
+	padding:5px;
+}
 html,body{
 	width:100%;
 	position:absolute;
