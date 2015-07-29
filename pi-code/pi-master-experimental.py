@@ -1,6 +1,6 @@
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 from Adafruit_PWM_Servo_Driver import PWM
-#import serial
+import serial
 import time
 import math
 import trollius as asyncio
@@ -176,8 +176,8 @@ class MyComponent(ApplicationSession):
 		self.subscribe(self.honkCommand, 'aero.near.honkHorn')
 		self.subscribe(self.emergencyStop, 'aero.near.emergStop')
 		self.subscribe(self.manualOverride, 'aero.near.override')
-		#self.subscribe()
-		#self.register(checkStatus, u'aero.near.checkStatus')
+		self.subscribe()
+		self.register(checkStatus, u'aero.near.checkStatus')
 		
 		#declaring the dictionary for gps values
 		self.gps_data = {'latitude': 0,'longitude': 0,'heading': 0,'speed': 0}
