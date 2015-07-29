@@ -1,6 +1,6 @@
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 from Adafruit_PWM_Servo_Driver import PWM
-import serial
+#import serial
 import time
 import math
 import trollius as asyncio
@@ -143,12 +143,9 @@ class MyComponent(ApplicationSession):
 				connected = False
 			if connected == False:
 				execfile('ssh.py')
-				#print "ssh.py should be running"
                 print "RUNNING"
-				#self.loop.stop()
-				#self.loop.close()	
-				sys.exit('Closed pi-master')
-			yield From(asyncio.sleep(5))			
+                sys.exit('Closed pi-master')
+		yield From(asyncio.sleep(5))			
 			
 	def onJoin(self, details):
 		#print("Session Joined.")

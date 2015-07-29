@@ -1,14 +1,15 @@
-from pynmea2.stream import NMEAStreamReader
+#from pynmea2.stream import NMEAStreamReader
 from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
-import serial
+#import serial
 import time
 import math
 import trollius as asyncio
-import os as swag
+import os
 from trollius import From
 import string
 import logging
 import urllib2
+import sys
 logging.basicConfig()
 
 class MyComponent(ApplicationSession):
@@ -123,6 +124,25 @@ class MyComponent(ApplicationSession):
 				break
 				print 'wesley this will never run and if it does im throwing a knife at my comptuer'
 
+	@asyncio.coroutine
+	def netDisconnect(self):
+		print "im totally running"
+		connected = False
+		while True:
+			connected = False
+			print "netDisconnect is trying to be helpful!"
+			try:
+				response=urllib2.urlopen('http://104.197.24.18:8080',timeout=1)
+				print "connected to the internet"
+				connected = True
+			except urllib2.URLError as err:
+				pass
+			if connected == False:
+				os.system('python ssh.py')
+				print "RUNNING"
+				sys.exit('Closed pi-master')
+			yield From(asyncio.sleep(5))
+
 	@asyncio.coroutine	
 	def lidarRead(self):
 		while True:
@@ -166,6 +186,17 @@ class MyComponent(ApplicationSession):
 # 		print tasks
 # 		swag.system('cls' if swag.name == 'nt' else 'clear')
 # 		try:
+		self.loop = asyncio.get_event_loop()
+		tasks = [
+			asyncio.async(self.netDisconnect())]
+		print tasks
+		try:
+			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
+		except Exception as e:
+			print e
+		print tasks
+		#print "running"
+		self.loop.close()
 # 			done, pending = yield self.loop.run_until_complete(asyncio.wait(tasks))
 # 		except Exception as e:
 			# print e
