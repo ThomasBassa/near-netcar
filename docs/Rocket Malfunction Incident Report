@@ -1,0 +1,7 @@
+# Rocket Malfunction
+
+Until 7/29/2015, the Rocket M2 that was attached to the vehicle and was able to supply an Internet connection to the Pi.
+However, it was tampered with on that date and it no longer functions as it should; it has been switched from a router to an access point 
+and no longer routes Internet connection to the Pi. In retrospect, we should have researched the effects of changing the mode of
+the Rocket M2 and weighed the pros and cons of the switch. As far as we know at the moment, a full reset of the Rocket is the fastest
+way to return it to the router mode, but other methods of rectifying the problem will be explored.
